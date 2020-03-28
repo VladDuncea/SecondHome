@@ -1,2 +1,2 @@
 # SecondHome
-SecondHome repo - Web/Mobile pet homing/rehoming application
+SecondHome: Web+Mobile pet homing and rehoming application
