@@ -1,0 +1,240 @@
+Page: checkemail.php
+User: Unknown
+Addres: 89.136.144.226 - 31/03/2020, 18:27:22
+Attempt: 
+Response: status: 0
+---------------------
+Page: checkemail.php
+User: Unknown
+Addres: 89.136.144.226 - 31/03/2020, 18:31:30
+Attempt: user-email: vlad_duncea_31@yahoo.com
+Response: status: -1
+---------------------
+Page: checkemail.php
+User: Unknown
+Addres: 89.136.144.226 - 31/03/2020, 18:33:26
+Attempt: user-email: vlad_duncea_31@yahoo.com
+Response: registered-email: 0, status: 1
+---------------------
+Page: checkemail.php
+User: Unknown
+Addres: 89.136.144.226 - 31/03/2020, 18:46:14
+Attempt: user-email: vlad_duncea_31@yahoo.com
+Response: registered-email: 0, status: 1
+---------------------
+Page: checkemail.php
+User: Unknown
+Addres: 89.136.144.226 - 31/03/2020, 18:46:48
+Attempt: user-email: vlad_duncea_31@yahoo.com
+Response: status: 1, email-used: 0
+---------------------
+Page: register.php
+User: vlad_duncea_31@yahoo.com
+Addres: 89.136.144.226 - 31/03/2020, 18:48:46
+Attempt: user-email: vlad_duncea_31@yahoo.com, user-password: Test1234, user-firstname: Vlad, user-lastname: Duncea
+Response: status: 1, account-created: 1, email-sent: 0
+---------------------
+Page: checkemail.php
+User: Unknown
+Addres: 89.136.144.226 - 31/03/2020, 18:53:13
+Attempt: user-email: vlad_duncea_31@yahoo.com
+Response: status: 1, email-used: 1
+---------------------
+Page: checkemail.php
+User: Unknown
+Addres: 89.136.144.226 - 31/03/2020, 18:54:48
+Attempt: user-email: vlad_duncea_31@yahoo.com
+Response: status: 1, email-used: 1
+---------------------
+Page: checkemail.php
+User: Unknown
+Addres: 89.136.144.226 - 31/03/2020, 18:56:00
+Attempt: user-email: vlad_duncea_31@sigurnuexista.com
+Response: status: 1, email-used: 0
+---------------------
+Page: login.php
+User: vlad_duncea_31@yahoo.com
+Addres: 89.136.144.226 - 31/03/2020, 18:57:24
+Attempt: user-email: vlad_duncea_31@yahoo.com, user-password: Test1234
+Response: status: 1, corect_credentials: 0
+---------------------
+Page: login.php
+User: vlad_duncea_31@yahoo.com
+Addres: 89.136.144.226 - 31/03/2020, 18:59:36
+Attempt: user-email: vlad_duncea_31@yahoo.com, user-password: Test1234
+Response: status: 1, correct-credentials: 1, user-firstname: Vlad, user-lastname: Duncea
+---------------------
+Page: login.php
+User: vlad_duncea_31@yahoo.com
+Addres: 89.136.144.226 - 31/03/2020, 19:00:53
+Attempt: user-email: vlad_duncea_31@yahoo.com, user-password: Test1234
+Response: status: 1, correct-credentials: 1, user-firstname: Vlad, user-lastname: Duncea
+---------------------
+Page: login.php
+User: vlad_duncea_31@yahoo.com
+Addres: 89.136.144.226 - 31/03/2020, 19:01:02
+Attempt: user-email: vlad_duncea_31@yahoo.com, user-password: Test1234
+Response: status: 1, correct-credentials: 1, user-firstname: Vlad, user-lastname: Duncea
+---------------------
+Page: login.php
+User: vlad_duncea_31@yahoo.com
+Addres: 89.136.144.226 - 31/03/2020, 19:02:44
+Attempt: user-email: vlad_duncea_31@yahoo.com, user-password: Test1234
+Response: status: 1, correct-credentials: 1, user-firstname: Vlad, user-lastname: Duncea
+---------------------
+Page: login.php
+User: vlad_duncea_31@yahoo.com
+Addres: 89.136.144.226 - 31/03/2020, 19:02:54
+Attempt: user-email: vlad_duncea_31@yahoo.com, user-password: Test1234
+Response: status: 1, correct-credentials: 1, user-firstname: Vlad, user-lastname: Duncea
+---------------------
+Page: login.php
+User: vlad_duncea_31@yahoo.com
+Addres: 89.136.144.226 - 31/03/2020, 19:03:11
+Attempt: user-email: vlad_duncea_31@yahoo.com, user-password: Test1234
+Response: status: 1, correct-credentials: 1, user-firstname: Vlad, user-lastname: Duncea
+---------------------
+Page: login.php
+User: vlad_duncea_31@yahoo.com
+Addres: 89.136.144.226 - 31/03/2020, 19:03:23
+Attempt: user-email: vlad_duncea_31@yahoo.com, user-password: Test1234
+Response: status: 1, correct-credentials: 1, user-firstname: Vlad, user-lastname: Duncea
+---------------------
+Page: login.php
+User: vlad_duncea_31@yahoo.com
+Addres: 89.136.144.226 - 31/03/2020, 19:04:07
+Attempt: user-email: vlad_duncea_31@yahoo.com, user-password: Test1234
+Response: status: 1, correct-credentials: 1, user-firstname: Vlad, user-lastname: Duncea
+---------------------
+Page: login.php
+User: vlad_duncea_31@yahoo.com
+Addres: 89.136.144.226 - 31/03/2020, 19:04:15
+Attempt: user-email: vlad_duncea_31@yahoo.com, user-password: Test1234
+Response: status: 1, correct-credentials: 1, user-firstname: Vlad, user-lastname: Duncea
+---------------------
+Page: login.php
+User: vlad_duncea_31@yahoo.com
+Addres: 89.136.144.226 - 31/03/2020, 19:04:32
+Attempt: user-email: vlad_duncea_31@yahoo.com, user-password: Test1234
+Response: status: 1, correct-credentials: 1, user-firstname: Vlad, user-lastname: Duncea
+---------------------
+Page: login.php
+User: vlad_duncea_31@yahoo.com
+Addres: 89.136.144.226 - 31/03/2020, 19:05:21
+Attempt: user-email: vlad_duncea_31@yahoo.com, user-password: Test12
+Response: status: 1, corect-credentials: 0
+---------------------
+Page: login.php
+User: vlad_duncea_31@yahoo.com
+Addres: 89.136.144.226 - 31/03/2020, 19:05:39
+Attempt: user-email: vlad_duncea_31@yahoo.com, user-password: Test12
+Response: status: 1, correct-credentials: 0
+---------------------
+Page: login.php
+User: vlad_duncea_31@yahoo.com
+Addres: 89.136.144.226 - 31/03/2020, 19:13:03
+Attempt: user-email: vlad_duncea_31@yahoo.com, user-password: Test1234
+Response: status: 1, correct-credentials: 1, user-firstname: Vlad, user-lastname: Duncea, user-type: 0
+---------------------
+Page: login.php
+User: vlad_duncea_31@yahoo.com
+Addres: 89.136.144.226 - 31/03/2020, 19:13:23
+Attempt: user-email: vlad_duncea_31@yahoo.com, user-password: Test1234
+Response: status: 1, correct-credentials: 1, user-firstname: Vlad, user-lastname: Duncea, user-type: 0
+---------------------
+Page: login.php
+User: vlad_duncea_31@yahoo.com
+Addres: 89.136.144.226 - 31/03/2020, 19:13:31
+Attempt: user-email: vlad_duncea_31@yahoo.com, user-password: Test12
+Response: status: 1, correct-credentials: 0
+---------------------
+Page: checkemail.php
+User: Unknown
+Addres: 89.136.144.226 - 31/03/2020, 19:36:16
+Attempt: user-email: vlad_duncea_31@yahoo.com
+Response: status: 1, email-used: 0
+---------------------
+Page: checkemail.php
+User: Unknown
+Addres: 89.136.144.226 - 31/03/2020, 19:36:23
+Attempt: user-email: vlad_duncea_31@sigurnuexista.com
+Response: status: 1, email-used: 0
+---------------------
+Page: login.php
+User: vlad_duncea_31@yahoo.com
+Addres: 89.136.144.226 - 31/03/2020, 19:36:31
+Attempt: user-email: vlad_duncea_31@yahoo.com, user-password: Test12
+Response: status: 1
+---------------------
+Page: login.php
+User: vlad_duncea_31@yahoo.com
+Addres: 89.136.144.226 - 31/03/2020, 19:38:27
+Attempt: user-email: vlad_duncea_31@yahoo.com, user-password: Test12
+Response: status: 1, correct-credentials: 0
+---------------------
+Page: register.php
+User: vlad_duncea_31@yahoo.com
+Addres: 89.136.144.226 - 31/03/2020, 19:38:43
+Attempt: user-email: vlad_duncea_31@yahoo.com, user-password: 123456789, user-firstname: Vlad, user-lastname: Duncea
+Response: status: 1, account-created: 1, email-sent: 1
+---------------------
+Page: login.php
+User: vlad_duncea_31@yahoo.com
+Addres: 89.136.144.226 - 31/03/2020, 19:41:53
+Attempt: user-email: vlad_duncea_31@yahoo.com, user-password: 123456789
+Response: status: 1, correct-credentials: 0
+---------------------
+Page: login.php
+User: vlad_duncea_31@yahoo.com
+Addres: 89.136.144.226 - 31/03/2020, 19:46:49
+Attempt: user-email: vlad_duncea_31@yahoo.com, user-password: Test12
+Response: status: 1, correct-credentials: 0
+---------------------
+Page: checkemail.php
+User: Unknown
+Addres: 89.136.144.226 - 31/03/2020, 19:46:52
+Attempt: user-email: vlad_duncea_31@yahoo.com
+Response: status: 1, email-used: 0
+---------------------
+Page: register.php
+User: vlad_duncea_31@yahoo.com
+Addres: 89.136.144.226 - 31/03/2020, 19:46:56
+Attempt: user-email: vlad_duncea_31@yahoo.com, user-password: 123456789, user-firstname: Vlad, user-lastname: Duncea
+Response: status: 1, account-created: 1, email-sent: 1
+---------------------
+Page: login.php
+User: vlad_duncea_31@yahoo.com
+Addres: 89.136.144.226 - 31/03/2020, 19:48:11
+Attempt: user-email: vlad_duncea_31@yahoo.com, user-password: 123456789
+Response: status: 1, correct-credentials: 0
+---------------------
+Page: login.php
+User: vlad_duncea_31@yahoo.com
+Addres: 89.136.144.226 - 31/03/2020, 19:51:46
+Attempt: user-email: vlad_duncea_31@yahoo.com, user-password: 123456789
+Response: status: 1, correct-credentials: 0
+---------------------
+Page: login.php
+User: vlad_duncea_31@yahoo.com
+Addres: 89.136.144.226 - 31/03/2020, 19:53:19
+Attempt: user-email: vlad_duncea_31@yahoo.com, user-password: 123456789
+Response: status: 1, correct-credentials: 1, user-firstname: Vlad, user-lastname: Duncea, user-type: 0
+---------------------
+Page: login.php
+User: vlad_duncea_31@yahoo.com
+Addres: 89.136.144.226 - 31/03/2020, 19:53:23
+Attempt: user-email: vlad_duncea_31@yahoo.com, user-password: Test12
+Response: status: 1, correct-credentials: 0
+---------------------
+Page: register.php
+User: bianca.pascu1999@yahoo.com
+Addres: 89.136.144.226 - 31/03/2020, 20:03:34
+Attempt: user-email: bianca.pascu1999@yahoo.com, user-password: 123456789, user-firstname: Bianca, user-lastname: Pasque
+Response: status: 1, account-created: 1, email-sent: 1
+---------------------
+Page: register.php
+User: Unknown
+Addres: 89.136.144.226 - 01/04/2020, 00:52:04
+Attempt: 
+Response: status: 0
+---------------------
