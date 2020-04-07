@@ -9,14 +9,6 @@
 <!--- LOGIN PHP -->
 <?php
 include "server/php/connection.php";
-session_start();
-// if($_POST['log-out']=="1")
-// {
-// 	unset($_COOKIE["CarnetVirtual_Admin"]);
-// 	setcookie("CarnetVirtual_Admin", null, -1, "/");
-// 	session_unset();
-// 	echo '<div class="callout callout-success"><h4><center><b>Ați fost deconectat cu succes.<b></center></h4></div>';	
-// }
 
 //Utilizatorul este deja conectat
 if(isset($_SESSION['userType']))
