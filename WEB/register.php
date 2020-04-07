@@ -13,11 +13,11 @@
 
         <div class="card">
             <div class="card-body register-card-body">
-                <p class="login-box-msg">Register a new membership</p>
+                <p class="login-box-msg">Înregistrare</p>
 
                 <form action="index.php" method="post">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Full name">
+                        <input type="text" class="form-control" placeholder="Nume complet">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password">
+                        <input type="password" class="form-control" placeholder="Parolă">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Retype password">
+                        <input type="password" class="form-control" placeholder="Rescrie parola">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -53,19 +53,19 @@
                             <div class="icheck-primary">
                                 <input type="checkbox" id="agreeTerms" name="terms" value="agree">
                                 <label for="agreeTerms">
-               I agree to the <a href="#">terms</a>
+               Sunt de acord cu <a href="#">termenii</a>
               </label>
                             </div>
                         </div>
                         <!-- /.col -->
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Register</button>
+                        <div class="col-4.5">
+                            <button type="submit" class="btn btn-primary btn-block">Înregistrare</button>
                         </div>
                         <!-- /.col -->
                     </div>
                 </form>
 
-                <a href="login.php" class="text-center">I already have a membership</a>
+                <a href="login.php" class="text-center">Am deja cont</a>
             </div>
             <!-- /.form-box -->
         </div>

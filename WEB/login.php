@@ -138,7 +138,7 @@ function get_gravatar( $email, $s = 80, $d = 'mm', $r = 'g', $img = false, $atts
         <!-- /.login-logo -->
         <div class="card">
             <div class="card-body login-card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
+                <p class="login-box-msg">Autentificare</p>
 
                 <form action="" method="post">
                     <div class="input-group mb-3">
@@ -150,7 +150,7 @@ function get_gravatar( $email, $s = 80, $d = 'mm', $r = 'g', $img = false, $atts
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" name="password" class="form-control" placeholder="Password" required>
+                        <input type="password" name="password" class="form-control" placeholder="Parolă" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -162,13 +162,13 @@ function get_gravatar( $email, $s = 80, $d = 'mm', $r = 'g', $img = false, $atts
                             <div class="icheck-primary">
                                 <input type="checkbox" name="cookie" id="remember">
                                 <label for="remember">
-                                    Remember Me
+                                    Ține-mă minte
                                 </label>
                             </div>
                         </div>
                         <!-- /.col -->
                         <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                            <button type="submit" class="btn btn-primary btn-block">Conectare</button>
                         </div>
                         <!-- /.col -->
                     </div>
@@ -189,7 +189,7 @@ function get_gravatar( $email, $s = 80, $d = 'mm', $r = 'g', $img = false, $atts
                     <a href="forgot-password.html">I forgot my password</a>
                 </p> -->
                     <p class="mb-0">
-                        <a href="register.php" class="text-center">Register a new membership</a>
+                        <a href="register.php" class="text-center">Crează cont</a>
                     </p>
             </div>
             <!-- /.login-card-body -->

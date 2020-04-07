@@ -1,65 +1,84 @@
-<?php
-include "php/connection.php";
-include "php/header.php";
-$response["status"]=-1;
+<!DOCTYPE html>
+<html>
 
-if(!isset($_POST['user-firstname'])||!isset($_POST['user-lastname'])||!isset($_POST['user-email'])||!isset($_POST['user-password']))
-{
-    //Not all parameters received
-    $response["status"]=0;
-    entry_log("Unknown",$response);     
-    echo json_encode($response);    
-    return;
-}
+<head>
+<?php include 'pieces/head.php' ?>
+</head>
 
-//Reading data from request and sanitizing
-$user_email = mysqli_real_escape_string( $conn, $_POST['user-email'] );
-$user_password = password_hash($_POST['user-password'], PASSWORD_DEFAULT);
-$user_firstname = mysqli_real_escape_string( $conn, $_POST['user-firstname']);    
-$user_lastname  = mysqli_real_escape_string( $conn, $_POST['user-lastname']);
+<body class="hold-transition register-page">
+    <div class="register-box">
+        <div class="register-logo">
+            <a href="index_user.php"><b>S</b>econd<b>H</b>ome</a>
+        </div>
 
+        <div class="card">
+            <div class="card-body register-card-body">
+                <p class="login-box-msg">Înregistrare</p>
 
-$val = check_email($user_email,$conn);
-if($val == -1 || $val == 1)
-{
-    //error or email in use
-    $response['status'] = $val;
-    entry_log("Unknown",$response);     
-    echo json_encode($response);    
-    return;
-}
+                <form action="index.php" method="post">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Full name">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Email">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" placeholder="Parolă">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" placeholder="Rescrie parola">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="icheck-primary">
+                                <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+                                <label for="agreeTerms">
+               Sunt de acord cu <a href="#">termenii</a>
+              </label>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-primary btn-block">Înregistrează-te</button>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </form>
 
-$response["account-created"] = 0; //Account is not yet created
+                <a href="login.php" class="text-center">Am deja cont</a>
+            </div>
+            <!-- /.form-box -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.register-box -->
 
-$sql="INSERT INTO Users (first_name, last_name, user_password, user_email) VALUES ('$user_firstname','$user_lastname','$user_password','$user_email')";
-if(!$result = mysqli_query($conn,$sql))
-{
-    $response["status"]=-1;  //Database error
-    error_log("Connection failed".mysqli_error($conn));   //Error logging
-    echo json_encode($response);
-    return;
-}
-else
-{
-    //Send welcome email to new User
-    $subject = "Bine ati venit la SecondHome";
-    $txt = "Buna ziua, \n va multumim ca ati ales sa fiti client SecondHome!";
-    $headers = 'From: SecondHome <secondhome@fragmentedpixel.com>' . "\r\n" .
-    'Reply-To: secondhome@fragmentedpixel.com' . "\r\n" .
-    'X-Mailer: PHP/' . phpversion();
+    <!-- jQuery -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="dist/js/adminlte.min.js"></script>
+</body>
 
-    if(mail($user_email,$subject,$txt,$headers))       //Email
-    {
-        $response["email-sent"]=1;
-    }
-    else
-        $response["email-sent"]=0;
-
-    $response["account-created"] = 1; //Account is created
-}
-
-//No error
-$response["status"] = 1; 
-echo json_encode($response);
-entry_log($user_email,$response);   //Data logging
-?>
+</html>

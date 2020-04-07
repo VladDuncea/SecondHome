@@ -43,7 +43,7 @@
                     <a href="animale.html" class="nav-link">
                         <i class="nav-icon	fas fa-paw"></i>
                         <p>
-                            Animalutele noastre
+                            Animaluțele noastre
                             <i class="fas fa-angle-left right"></i>
                             <!-- <span class="badge badge-info right">6</span> -->
                         </p>
@@ -51,7 +51,7 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="animale.php" class="nav-link">
-                                <i class="nav-icon fas fa-cat"></i>
+                                <i class="nav-icon fas fa-paw-alt"></i>
                                 <p>Toate</p>
                             </a>
                         </li>
