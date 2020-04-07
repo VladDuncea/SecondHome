@@ -42,20 +42,19 @@ if(isset($_POST['email']))
             //imaginea de pe gravatar
             $_SESSION['userImg']=get_gravatar($user_email);
             
-			if($_POST['cookie']=="1")
+			if(isset($_POST['cookie']) && $_POST['cookie']=="Yes")
 			{
-                echo '<div class="callout callout-danger"><center>Eroare server</center></div>';
-				// $Token = bin2hex(openssl_random_pseudo_bytes(20));
+				$Token = bin2hex(openssl_random_pseudo_bytes(20));
 				
-				// $sql ="INSERT INTO cookies (Token,UserID) VALUES ('$Token','{$_SESSION['userid']}')";
-				// if(mysqli_query($conn,$sql))
-				// {
-				// 	setcookie("CarnetVirtual_Admin", $Token, time() + (3600 * 24 * 7), "/");
-				// 	echo"<script>window.location = '/main.php';</script>";
-				// }
-				// else
-				// 	echo '<div class="callout callout-danger"><h4><center><b>Eroare<b></center></h4></div>';				
-				// return;
+				$sql ="INSERT INTO cookies (Token,UID) VALUES ('$Token','{$row["UID"]}')";
+				if(mysqli_query($conn,$sql))
+				{
+					setcookie("SecondHomeWeb", $Token, time() + (3600 * 24 * 7), "/");
+				}
+                else
+                {
+					error_log("Connection failed".mysqli_error($conn));				
+                }
             }
             
             //trimite utilizatorul la index
@@ -67,44 +66,39 @@ if(isset($_POST['email']))
 	echo '<div class="callout callout-danger"><center>Combinatia User/Parola nu este corecta</center></div>';
 }
 
-// if(isset($_COOKIE["CarnetVirtual_Admin"]))
-// 	log_in_cookie($_COOKIE["CarnetVirtual_Admin"],$conn);
+if(isset($_COOKIE["SecondHomeWeb"]))
+	log_in_cookie($_COOKIE["SecondHomeWeb"],$conn);
 
 //Nu e implementata inca
 function log_in_cookie($token,$conn)
 {
-	$sql1 ="SELECT  * FROM cookies WHERE Token = '$token'";
+	$sql1 ="SELECT * FROM cookies WHERE Token = '$token'";
 	$result1 = mysqli_query($conn,$sql1);
-	if($row = mysqli_fetch_assoc($result1))
+	if($row1 = mysqli_fetch_assoc($result1))
 	{
-		$sql ="SELECT  * FROM admin WHERE AID='{$row['UserID']}'";
-		$Result = mysqli_query($conn,$sql);
-		if($Row = mysqli_fetch_assoc($Result))
+		$sql2 ="SELECT * FROM Users WHERE UID='{$row1['UID']}'";
+		$result2 = mysqli_query($conn,$sql2);
+		if($row2 = mysqli_fetch_assoc($result2))
 		{
-				$email=$Row["AEmail"];
-				$_SESSION['userid']=$Row["AID"];
-				$_SESSION['userlevel']=1;
-				$_SESSION['adminname']=$Row["AName"];
-				$_SESSION['adminschool_id']=$Row["SID"];
-				$sql ="SELECT  * FROM school WHERE SID='{$Row['SID']}'";
-				$results = mysqli_query($conn,$sql);
-				if($rows = mysqli_fetch_assoc($results))
-					$_SESSION['adminschool_name']=$rows["SName"];
-				else
-					return;
-				$_SESSION['adminimg']=get_gravatar($email);  
-				
-				//$sql ="INSERT INTO cookies (Token,UserID) VALUES ('$Token','{$_SESSION['userid']}')";  //TODO: UPDATE COOKIE
-				//if(mysqli_query($conn,$sql))
-				//{
-					setcookie("CarnetVirtual_Admin", $token, time() + (3600 * 24 * 7), "/");
-					echo"<script>window.location = '/main.php';</script>";
-				//}
-				//else
-					//echo '<div class="callout callout-danger"><h4><center><b>Eroare<b></center></h4></div>';				
-				//return;
-		}
-	}
+            $email=$row2["email"];
+            
+            $_SESSION['userId']=$row2["UID"];
+            $_SESSION['userType']=$row2["user_type"];
+            $_SESSION['FirstName']=$row2["first_name"];
+            $_SESSION['LastName']=$row2["last_name"];
+                        
+            $_SESSION['userImg']=get_gravatar($email);  
+
+            setcookie("SecondHomeWeb", $token, time() + (3600 * 24 * 7), "/");
+            echo"<script>window.location = '/index.php';</script>";	
+        }
+        else
+            error_log("Connection failed".mysqli_error($conn));				
+
+    }
+    else
+        error_log("Connection failed".mysqli_error($conn));				
+
 }
 
 //functie care ia gravatarul utilizatorului
@@ -152,7 +146,7 @@ function get_gravatar( $email, $s = 80, $d = 'mm', $r = 'g', $img = false, $atts
                     <div class="row">
                         <div class="col-8">
                             <div class="icheck-primary">
-                                <input type="checkbox" name="cookie" id="remember">
+                                <input type="checkbox" name="cookie" value="Yes" id="remember">
                                 <label for="remember">
                                     Ține-mă minte
                                 </label>
