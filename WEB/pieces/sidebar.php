@@ -19,6 +19,9 @@
                 <a href="utilizator.php" class="d-block"><?php echo $_SESSION['FirstName']." ".$_SESSION['LastName'];?> </a>
             </div>
         <?php else: ?>
+            <div class="image">
+                <img src="log_in.png" class="img-circle elevation-2" alt="Autentificare">
+            </div>
             <div class="info">
                 <a href="login.php" class="d-block">Autentificare</a>
             </div>
