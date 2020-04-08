@@ -18,3 +18,6 @@ session_start()?>
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 <!--icons animale-->
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-POYwD7xcktv3gUeZO5s/9nUbRJG/WOmV6jfEGikMJu77LGYO8Rfs2X7URG822aum" crossorigin="anonymous">
+
+<!-- <link rel="icon" href="favicon.ico ?v=2" type="image/x-icon" /> -->
+<link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon" >
