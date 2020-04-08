@@ -20,7 +20,7 @@
             </div>
         <?php else: ?>
             <div class="image">
-                <img src="log_in.png" class="img-circle elevation-2" alt="Autentificare">
+                <img src="dist/img/login2.png" class="img-circle" alt="Autentificare" style="opacity: .75">
             </div>
             <div class="info">
                 <a href="login.php" class="d-block">Autentificare</a>
