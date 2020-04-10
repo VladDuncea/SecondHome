@@ -1,7 +1,8 @@
 <script src='../../dist/js/addanimal.js'></script>
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<script src='../../dist/js/getanimals.js'></script>
+<aside class="main-sidebar elevation-4 sidebar-light-orange">
     <!-- SecondHome logo + Name -->
-    <a href="index.php" class="brand-link">
+    <a href="index.php" class="brand-link navbar-orange">
         <img src="dist/img/logooo.png" alt="SecondHome Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light"><b>S</b>econd<b>H</b>ome</span>
     </a>
@@ -21,7 +22,7 @@
             </div>
         <?php else: ?>
             <div class="image">
-                <img src="dist/img/login2.png" class="img-circle" alt="Autentificare" style="opacity: .75">
+                <img src="login2.png" class="img-circle" alt="Autentificare" style="opacity: .75">
             </div>
             <div class="info">
                 <a href="login.php" class="d-block">Autentificare</a>
@@ -54,7 +55,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="animale.php" class="nav-link">
+                            <a href="#" class="nav-link" onclick="get_animal();">
                                 <i class="nav-icon fas fa-paw-alt"></i>
                                 <p>Toate</p>
                             </a>
