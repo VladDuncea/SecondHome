@@ -35,7 +35,8 @@ if($row = mysqli_fetch_assoc($result))
     {
         //Account data is correct
         $response["correct-credentials"] = 1;  
-        //Returning user data                
+        //Returning user data
+        $response["UID"] = $row["UID"];                
         $response["user-firstname"] = $row["first_name"];  
         $response["user-lastname"] = $row["last_name"];
         $response["user-type"] = $row["user_type"];

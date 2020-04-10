@@ -24,12 +24,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Vezi animalele</h1>
+                            <h1>Toate</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Acasă</a></li>
-                                <li class="breadcrumb-item active">Vezi animalele</li>
+                                <li class="breadcrumb-item active">Toate</li>
                             </ol>
                         </div>
                     </div>
@@ -58,8 +58,8 @@
                                                 <p class="text-muted text-sm"><b>Rasă: </b> British Shorthair </p>
 
                                             </div>
-                                            <div class="col-5 text-center">
-                                                <img src="../../dist/img/pis1.jpg" alt="" class="img-circle img-fluid">
+                                            <div class="col-4 text-center">
+                                                <img height="350" width="320" src="../../dist/img/pis1.jpg" alt="" class="img-circle img-fluid">
                                             </div>
                                         </div>
                                     </div>
@@ -73,7 +73,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-12 col-sm-6 col-md-4 d-flex">
+                            <div class="col-12 col-sm-4 col-md-4 d-flex">
                                 <div class="card bg-light">
                                     <div class="card-header text-muted border-bottom-0">
                                         Câini
@@ -86,8 +86,8 @@
                                                 <p class="text-muted text-sm"><b>Rasă: </b> Lup </p>
 
                                             </div>
-                                            <div class="col-5 text-center">
-                                                <img src="../../dist/img/caine1.webp" alt="" class="img-circle img-fluid">
+                                            <div class="col-4 text-center">
+                                                <img height="350" width="320" src="../../dist/img/caine1.webp" alt="" class="img-circle img-fluid" >
                                             </div>
                                         </div>
                                     </div>
@@ -114,8 +114,8 @@
                                                 <p class="text-muted text-sm"><b>Rasă: </b> British Shorthair </p>
 
                                             </div>
-                                            <div class="col-5 text-center">
-                                                <img src="../../dist/img/pis2.jpg" alt="" class="img-circle img-fluid">
+                                            <div class="col-4 text-center">
+                                                <img height="350" width="320" src="../../dist/img/pis2.jpg" alt="" class="img-circle img-fluid">
                                             </div>
                                         </div>
                                     </div>
@@ -142,8 +142,8 @@
                                                 <p class="text-muted text-sm"><b>Rasă: </b> British Shorthair </p>
 
                                             </div>
-                                            <div class="col-5 text-center">
-                                                <img src="../../dist/img/pis2.jpg" alt="" class="img-circle img-fluid">
+                                            <div class="col-4 text-center">
+                                                <img height="350" width="320" src="../../dist/img/pis2.jpg" alt="" class="img-circle img-fluid">
                                             </div>
                                         </div>
                                     </div>
@@ -170,8 +170,8 @@
                                                 <p class="text-muted text-sm"><b>Rasă: </b> British Shorthair </p>
 
                                             </div>
-                                            <div class="col-5 text-center">
-                                                <img src="../../dist/img/pis1.jpg" alt="" class="img-circle img-fluid">
+                                            <div class="col-4 text-center">
+                                                <img height="350" width="320" src="../../dist/img/pis1.jpg" alt="" class="img-circle img-fluid">
                                             </div>
                                         </div>
                                     </div>
@@ -198,8 +198,8 @@
                                                 <p class="text-muted text-sm"><b>Rasă: </b> British Shorthair </p>
 
                                             </div>
-                                            <div class="col-5 text-center">
-                                                <img src="../../dist/img/pis2.jpg" alt="" class="img-circle img-fluid">
+                                            <div class="col-4 text-center">
+                                                <img height="350" width="320" src="../../dist/img/pis2.jpg" alt="" class="img-circle img-fluid">
                                             </div>
                                         </div>
                                     </div>
@@ -226,8 +226,8 @@
                                                 <p class="text-muted text-sm"><b>Rasă: </b> Python </p>
 
                                             </div>
-                                            <div class="col-5 text-center">
-                                                <img src="../../dist/img/piton1.jpg" alt="" class="img-circle img-fluid">
+                                            <div class="col-4 text-center">
+                                                <img height="350" width="320" src="../../dist/img/piton1.jpg" alt="" class="img-circle img-fluid">
                                             </div>
                                         </div>
                                     </div>
