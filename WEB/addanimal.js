@@ -19,15 +19,14 @@ function add_animal() {
         pet_description: document.getElementById('inputDescription').value,
         pet_type: x,
         pet_breed: document.getElementById('inputRasa').value,
-        UID: 'nuEste'
-            // document.getElementById('user_name').firstChild.firstChild
+        pet_age: document.getElementById('inputVarsta').value
     }
 
     $.post('http://secondhome.fragmentedpixel.com/server/addanimal.php', data, function(result, status) {
             console.log(`${result} este ${status}`)
         }).done(function() {
-            console.log('S-a trimis');
             location.reload();
+            console.log('S-a trimis');
         })
         .fail(function(jqxhr, settings, ex) { alert('failed, ' + ex); });
 }
