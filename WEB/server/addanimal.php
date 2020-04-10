@@ -3,7 +3,7 @@ include "php/connection.php";
 include "php/header.php";
 $response["status"]=-1;
 
-if(!isset($_POST['pet_name'], $_POST['pet_description'], $_POST['pet_type'], $_POST['pet_breed']))
+if(!isset($_POST['pet_name'], $_POST['pet_description'], $_POST['pet_type'], $_POST['pet_breed'], $_POST['pet_age']))
 {
     //Not all parameters received
     $response["status"]=0;
@@ -14,7 +14,7 @@ if(!isset($_POST['pet_name'], $_POST['pet_description'], $_POST['pet_type'], $_P
 //the user id is not provided, try to extract it from SESSION
 if(!isset($_POST['UID']))
 {
-    $UID = $_SESSION['UserId'];
+    $UID = $_SESSION['userId'];
 }
 else
 {
@@ -28,9 +28,13 @@ $pet_name = mysqli_real_escape_string( $conn, $_POST['pet_name'] );
 $pet_description = mysqli_real_escape_string( $conn, $_POST['pet_description']);    
 $pet_type  = mysqli_real_escape_string( $conn, $_POST['pet_type']);
 $pet_breed  = mysqli_real_escape_string( $conn, $_POST['pet_breed']);
+$pet_age  = mysqli_real_escape_string( $conn, $_POST['pet_age']);
+//Convert pet_age to pet birthday
+$pet_birthdate = (date('Y')-$pet_age).date("-m-d");
 
 //Add the pet
-$sql="INSERT INTO Pets (pet_name, pet_description, pet_type, pet_breed) VALUES ('$pet_name','$pet_description','$pet_type','$pet_breed');";
+$sql="INSERT INTO Pets (pet_name, pet_description, pet_type, pet_breed, pet_birthdate) 
+    VALUES ('$pet_name','$pet_description','$pet_type','$pet_breed', '$pet_birthdate');";
 if(!$result = mysqli_query($conn,$sql))
 {
     $response["status"]=-1;  //Database error
