@@ -14,6 +14,7 @@ if(!isset($_POST['pet_name'], $_POST['pet_description'], $_POST['pet_type'], $_P
 //the user id is not provided, try to extract it from SESSION
 if(!isset($_POST['UID']))
 {
+    session_start();
     $UID = $_SESSION['userId'];
 }
 else
