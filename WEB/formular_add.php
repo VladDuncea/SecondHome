@@ -57,23 +57,23 @@
                         </div>
                         <div class="form-group">
                             <label for="inputStatus">Categorie</label>
-                            <select class="form-control custom-select">
+                            <select class="form-control custom-select" id="inputCategorie">
                             <option selected disabled>Selectați categoria</option>
                             <option>Pisici</option>
                             <option>Câini</option>
                             <option>Rozătoare</option>
                             <option>Reptile</option>
                             <option>Păsări</option>
-                            <option>Pești</option>
+                            <option>Acvatice</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="inputVarsta">Vârstă</label>
-                            <input type="number"  class="form-control">
+                            <input type="number" class="form-control" id="inputVarsta">
                         </div>
-                        <div class="form-group">
+                        <div >
                             <label for="inputRasa">Rasă</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" id="inputRasa">
                         </div>
                         <div class="form-group">
                             <label for="inputDescription">Descriere animăluț</label>
@@ -93,10 +93,15 @@
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                   <i class="fas fa-minus"></i></button>
+
               </div>
             </div>
             <div class="card-body">
-             
+            <button class="btn btn-secondary" onclick="document.getElementById('getFile').click()">Încarcă o imagine</button>
+            <input type='file' id="getFile" style="display:none" onchange="readURL(this);"/>
+             <!-- <input type='file' onchange="readURL(this);" > -->
+             <img id="blah" src="#" alt="Imagine încărcată" />
+            
               
             </div>
             <!-- /.card-body -->
@@ -107,7 +112,9 @@
                 <div class="row">
                     <div class="col-12">
                         <a href="index.php" class="btn btn-secondary">Anulare</a>
-                        <input type="submit" value="Adăugare animăluț" class="btn btn-success float-right">
+                        
+                        <input type="submit" onclick="add_animal();" value="Adăugare animăluț" class="btn btn-success float-right"/>
+                        <!-- <button type="submit" onchange="add_animal();" value="Submit">Adăugare animăluț</button> -->
                     </div>
                 </div>
             </section>
@@ -135,7 +142,24 @@
     <script src="../../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="../../dist/js/demo.js"></script>
+    <script src='../../dist/js/addanimal.js'></script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script>
+        function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
 
+            reader.onload = function(e) {
+                $('#blah')
+                    .attr('src', e.target.result)
+                    .width(160)
+                    .height(160);
+                };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+        }
+    </script>
 </body>
 
 </html>
