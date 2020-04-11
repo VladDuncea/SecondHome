@@ -1,5 +1,6 @@
 function get_animal() {
-    $.get('http://secondhome.fragmentedpixel.com/server/getanimals.php', function(data, status) {
+    var request_type
+    $.get('http://secondhome.fragmentedpixel.com/server/getanimals.php', request_type, function(data, status) {
         if (status == 1)
             console.log(typeof data)
         var json_data = JSON.parse(data)
