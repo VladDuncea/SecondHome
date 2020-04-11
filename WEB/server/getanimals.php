@@ -20,7 +20,7 @@ if($_POST['request_type'] == 0)
     while($row = mysqli_fetch_assoc($result))
     {
         $response['animals'][$poz]['name'] = $row['pet_name'];
-        $response['animals'][$poz]['birthdate'] = $row['pet_birthdate'];
+        $response['animals'][$poz]['birthdate'] = date_diff(date_create("now") , date_create($row['pet_birthdate']))->y;
         $response['animals'][$poz]['state'] = $row['pet_state'];
         $response['animals'][$poz]['description'] = $row['pet_description'];
         $response['animals'][$poz]['image'] = $row['pet_image'];
@@ -34,9 +34,15 @@ else{
     //LUTHER
 }
 
+session_start();
+if(isset($_SESSION['FirstName']))
+    $user = $_SESSION['FirstName']." ".$_SESSION['LastName'];
+else 
+    $user = 'Guest';
+
 //No error
 $response["status"] = 1; 
 echo json_encode($response);
 $response['animals'] = "A lot of data...";
-entry_log($UID, $response);   //Data logging
+entry_log($user, $response);   //Data logging
 ?>
