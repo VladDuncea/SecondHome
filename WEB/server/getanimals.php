@@ -19,6 +19,7 @@ if($_POST['request_type'] == 0)
     $poz = 0;
     while($row = mysqli_fetch_assoc($result))
     {
+        $response['animals'][$poz]['PID'] = $row['PID'];
         $response['animals'][$poz]['name'] = $row['pet_name'];
         $response['animals'][$poz]['birthdate'] = date_diff(date_create("now") , date_create($row['pet_birthdate']))->y;
         $response['animals'][$poz]['state'] = $row['pet_state'];

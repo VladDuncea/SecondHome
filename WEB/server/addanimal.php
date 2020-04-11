@@ -12,17 +12,29 @@ if(!isset($_POST['pet_name'], $_POST['pet_description'], $_POST['pet_type'], $_P
     return;
 }
 //the user id is not provided, try to extract it from SESSION
-if(!isset($_POST['UID']))
+if($_POST['security_code']!= '8981ASDGHJ22123')
 {
+    //Web access
+    //Verify account level
     session_start();
+    if(!isset($_SESSION['userType']))
+    {
+        $response["status"]=-1;
+        $response["err_message"] = "Unauthoried access";
+        entry_log("Unknown",$response);     
+        echo json_encode($response);  
+        return;
+    }
+
     $UID = $_SESSION['userId'];
+
 }
 else
 {
+    //Android access
     $UID = $_POST['UID'];
 }
 
-//ALL THE QUERIES SHOUL BE DONE TOGHETER!!!
 
 //Reading data from request and sanitizing
 $pet_name = mysqli_real_escape_string( $conn, $_POST['pet_name'] );
