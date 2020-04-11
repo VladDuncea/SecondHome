@@ -5,7 +5,7 @@
     <?php include 'pieces/head.php' ?>
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini" onload="get_animal();">
     <!-- Site wrapper -->
     <div class="wrapper">
         
@@ -42,211 +42,11 @@
 
                 <!-- Default box -->
                 <div class="card card-solid">
-                    <div class="card-body pb-0">
-                        <div class="row d-flex align-items-stretch">
-
-                            <div class="col-12 col-sm-6 col-md-4 d-flex">
-                                <div class="card bg-light">
-                                    <div class="card-header text-muted border-bottom-0">
-                                        Pisici
-                                    </div>
-                                    <div class="card-body pt-0">
-                                        <div class="row">
-                                            <div class="col-7">
-                                                <h2 class="lead"><b>Stela</b></h2>
-                                                <p class="text-muted text-sm"><b>Vârstă: </b> 12 ani</p>
-                                                <p class="text-muted text-sm"><b>Rasă: </b> British Shorthair </p>
-
-                                            </div>
-                                            <div class="col-4 text-center">
-                                                <img height="350" width="320" src="../../dist/img/pis1.jpg" alt="" class="img-circle img-fluid">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="text-right">
-                                            <a href="#" class="btn btn-sm btn-primary">
-                                                <i class="fas fa-paw"></i> Mai multe detalii
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12 col-sm-4 col-md-4 d-flex">
-                                <div class="card bg-light">
-                                    <div class="card-header text-muted border-bottom-0">
-                                        Câini
-                                    </div>
-                                    <div class="card-body pt-0">
-                                        <div class="row">
-                                            <div class="col-7">
-                                                <h2 class="lead"><b>Martin</b></h2>
-                                                <p class="text-muted text-sm"><b>Vârstă: </b> 12 ani</p>
-                                                <p class="text-muted text-sm"><b>Rasă: </b> Lup </p>
-
-                                            </div>
-                                            <div class="col-4 text-center">
-                                                <img height="350" width="320" src="../../dist/img/caine1.webp" alt="" class="img-circle img-fluid" >
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="text-right">
-                                            <a href="#" class="btn btn-sm btn-primary">
-                                                <i class="fas fa-paw"></i> Mai multe detalii
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12 col-sm-6 col-md-4 d-flex">
-                                <div class="card bg-light">
-                                    <div class="card-header text-muted border-bottom-0">
-                                        Pisici
-                                    </div>
-                                    <div class="card-body pt-0">
-                                        <div class="row">
-                                            <div class="col-7">
-                                                <h2 class="lead"><b>Stela</b></h2>
-                                                <p class="text-muted text-sm"><b>Vârstă: </b> 12 ani</p>
-                                                <p class="text-muted text-sm"><b>Rasă: </b> British Shorthair </p>
-
-                                            </div>
-                                            <div class="col-4 text-center">
-                                                <img height="350" width="320" src="../../dist/img/pis2.jpg" alt="" class="img-circle img-fluid">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="text-right">
-                                            <a href="#" class="btn btn-sm btn-primary">
-                                                <i class="fas fa-paw"></i> Mai multe detalii
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
-                                <div class="card bg-light">
-                                    <div class="card-header text-muted border-bottom-0">
-                                        Pisici
-                                    </div>
-                                    <div class="card-body pt-0">
-                                        <div class="row">
-                                            <div class="col-7">
-                                                <h2 class="lead"><b>Stela</b></h2>
-                                                <p class="text-muted text-sm"><b>Vârstă: </b> 12 ani</p>
-                                                <p class="text-muted text-sm"><b>Rasă: </b> British Shorthair </p>
-
-                                            </div>
-                                            <div class="col-4 text-center">
-                                                <img height="350" width="320" src="../../dist/img/pis2.jpg" alt="" class="img-circle img-fluid">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="text-right">
-                                            <a href="#" class="btn btn-sm btn-primary">
-                                                <i class="fas fa-paw"></i> Mai multe detalii
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
-                                <div class="card bg-light">
-                                    <div class="card-header text-muted border-bottom-0">
-                                        Pisici
-                                    </div>
-                                    <div class="card-body pt-0">
-                                        <div class="row">
-                                            <div class="col-7">
-                                                <h2 class="lead"><b>Stela</b></h2>
-                                                <p class="text-muted text-sm"><b>Vârstă: </b> 12 ani</p>
-                                                <p class="text-muted text-sm"><b>Rasă: </b> British Shorthair </p>
-
-                                            </div>
-                                            <div class="col-4 text-center">
-                                                <img height="350" width="320" src="../../dist/img/pis1.jpg" alt="" class="img-circle img-fluid">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="text-right">
-                                            <a href="#" class="btn btn-sm btn-primary">
-                                                <i class="fas fa-paw"></i> Mai multe detalii
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
-                                <div class="card bg-light">
-                                    <div class="card-header text-muted border-bottom-0">
-                                        Pisici
-                                    </div>
-                                    <div class="card-body pt-0">
-                                        <div class="row">
-                                            <div class="col-7">
-                                                <h2 class="lead"><b>Stela</b></h2>
-                                                <p class="text-muted text-sm"><b>Vârstă: </b> 12 ani</p>
-                                                <p class="text-muted text-sm"><b>Rasă: </b> British Shorthair </p>
-
-                                            </div>
-                                            <div class="col-4 text-center">
-                                                <img height="350" width="320" src="../../dist/img/pis2.jpg" alt="" class="img-circle img-fluid">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="text-right">
-                                            <a href="#" class="btn btn-sm btn-primary">
-                                                <i class="fas fa-paw"></i> Mai multe detalii
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
-                                <div class="card bg-light">
-                                    <div class="card-header text-muted border-bottom-0">
-                                        Reptile
-                                    </div>
-                                    <div class="card-body pt-0">
-                                        <div class="row">
-                                            <div class="col-7">
-                                                <h2 class="lead"><b>Stela</b></h2>
-                                                <p class="text-muted text-sm"><b>Vârstă: </b> 12 ani</p>
-                                                <p class="text-muted text-sm"><b>Rasă: </b> Python </p>
-
-                                            </div>
-                                            <div class="col-4 text-center">
-                                                <img height="350" width="320" src="../../dist/img/piton1.jpg" alt="" class="img-circle img-fluid">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="text-right">
-                                            <a href="#" class="btn btn-sm btn-primary">
-                                                <i class="fas fa-paw"></i> Mai multe detalii
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                    <div class="card-body pb-0" >
+                        <div class="row d-flex justify-content-around" id='boxAnimals'>
                         </div>
                     </div>
                 </div>
-
-
-
                 <!-- /.card-body -->
                 <div class="card-footer">
                     <nav aria-label="Contacts Page Navigation">
@@ -290,6 +90,10 @@
     <script src="../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
+    <script src="../dist/js/getanimals.js"></script>
+
+    
+    
 </body>
 
 </html>
