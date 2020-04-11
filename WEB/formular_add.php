@@ -2,8 +2,13 @@
 <html>
 
 <head>
-    <?php include 'pieces/head.php' ?>
-    
+    <?php include 'pieces/head.php';
+    //Redirect unauthorized access
+    if(!isset($_SESSION['userType']))
+    {
+        echo"<script>window.location = 'unauth_access.php';</script>";
+        return;
+    } ?>
 </head>
 
 <body class="hold-transition sidebar-mini">

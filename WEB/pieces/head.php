@@ -1,6 +1,11 @@
 <?php 
 //Start PHP session, needed on every page with $_SESSION variables
-session_start()?>
+session_start();
+//If  user has cookie but is not logged in relog him
+//TODO: redirect back to same page after
+if(isset($_COOKIE["SecondHomeWeb"]) && !isset($_SESSION['userType']))
+    echo"<script>window.location = 'login.php';</script>";
+?>
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
