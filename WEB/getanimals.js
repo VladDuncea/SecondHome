@@ -1,5 +1,5 @@
 function get_animal() {
-    var request_type
+    var request_type = 0
     $.get('http://secondhome.fragmentedpixel.com/server/getanimals.php', request_type, function(data, status) {
         if (status == 1)
             console.log(typeof data)
@@ -30,7 +30,7 @@ function get_animal() {
                 </div>
                 <div class="card-footer">
                     <div class="text-right">
-                        <a href="#" class="btn btn-sm btn-primary">
+                        <a href="#" class="btn btn-sm btn-success">
                             <i class="fas fa-paw"id='detalii'></i> Mai multe detalii
                         </a>
                     </div>

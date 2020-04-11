@@ -46,7 +46,7 @@
                 <section class="content">
                 <div class="row">
                     <div class="col-md-6">
-                    <div class="card card-primary">
+                    <div class="card card-success">
                         <div class="card-header">
                         <h3 class="card-title">Adăugare animăluț</h3>
 
@@ -64,12 +64,12 @@
                             <label for="inputStatus">Categorie</label>
                             <select class="form-control custom-select" id="inputCategorie">
                             <option selected disabled>Selectați categoria</option>
-                            <option>Pisici</option>
-                            <option>Câini</option>
-                            <option>Rozătoare</option>
-                            <option>Reptile</option>
-                            <option>Păsări</option>
-                            <option>Acvatice</option>
+                            <option value=1>Pisici</option>
+                            <option value=2>Câini</option>
+                            <option value=3>Rozătoare</option>
+                            <option value=4>Reptile</option>
+                            <option value=5>Păsări</option>
+                            <option value=6>Acvatice</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -103,7 +103,7 @@
             </div>
             <div class="card-body">
             <button class="btn btn-secondary" onclick="document.getElementById('getFile').click()">Încarcă o imagine</button>
-            <input type='file' id="getFile" style="display:none" onchange="readURL(this);"/>
+            <input type='file' name='pet_image' id="getFile" style="display:none" onchange="readURL(this);"/>
              <!-- <input type='file' onchange="readURL(this);" > -->
              <img id="blah" src="#" alt="Imagine încărcată" />
             
