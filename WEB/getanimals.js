@@ -5,6 +5,7 @@ function get_animal() {
         var json_data = JSON.parse(data)
         nr_animals = json_data.nr_animals
         animals = json_data.animals
+            // console.log(json_data)
         var type_animal = ["Toate", "Pisici", "Câini", "Rozătoare", "Reptile", "Păsări", "Acvatice"]
         for (var i = 0; i < nr_animals; i++) {
             const animal_box = `
@@ -17,7 +18,7 @@ function get_animal() {
                     <div class="row">
                         <div class="col-7">
                             <h2 class="lead" ><b>${animals[i].name}</b></h2>
-                            <p class="text-muted text-sm" ><b>Vârstă: </b> ${animals[i].age}</p>
+                            <p class="text-muted text-sm" ><b>Vârstă: </b> ${animals[i].birthdate}</p>
                             <p class="text-muted text-sm" ><b>Rasă: </b> ${animals[i].breed} </p>
 
                         </div>
