@@ -6,7 +6,12 @@ $response["status"]=-1;
 //0 - get all animals waiting for addoption
 if($_POST['request_type'] == 0)
 {
-    $sql="SELECT * FROM Pets ORDER BY PID";
+    //type of animals to be returned
+    if(!isset($_POST['pet_type']) || $_POST['pet_type']==0)
+        $sql="SELECT * FROM Pets ORDER BY PID";
+    else
+        $sql="SELECT * FROM Pets WHERE pet_type = {$_POST['pet_type']} ORDER BY PID";
+
     if(!$result = mysqli_query($conn,$sql))
     {
         $response["status"]=-1;  //Database error
