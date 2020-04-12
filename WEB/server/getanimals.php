@@ -50,5 +50,5 @@ else
 $response["status"] = 1; 
 echo json_encode($response);
 $response['animals'] = "A lot of data...";
-entry_log($user, $response);   //Data logging
+entry_log("getanimals",$user, $response);   //Data logging
 ?>

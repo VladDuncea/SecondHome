@@ -8,7 +8,7 @@ $response["status"] = -1;
 if(!isset($_POST['user-email'])||!isset($_POST['user-password']))
 {
     $response["status"]=0;
-    entry_log("Unknown",$response);     //Data logging
+    entry_log("login","Unknown",$response);     //Data logging
     echo json_encode($response);    //Send data to requester
     return;
 }
@@ -45,5 +45,5 @@ if($row = mysqli_fetch_assoc($result))
 
 $response["status"] = 1;  //No error code
 echo json_encode($response);    //Sending data to requester
-entry_log($user_email,$response);   //Data logging
+entry_log("login",$user_email,$response);   //Data logging
 ?>

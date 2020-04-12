@@ -7,7 +7,7 @@ $response["status"] = -1;
 if(!isset($_POST['user-email']))
 {
     $response["status"]=0;
-    entry_log("Unknown",$response);     //Data logging
+    entry_log("checkemail","Unknown",$response);     //Data logging
     echo json_encode($response);    //Send data to requester
     return;
 }
@@ -28,6 +28,6 @@ else
     $response['email-used'] = $val;
 }
 
-entry_log("Unknown",$response);     //Data logging
+entry_log("checkemail","Unknown",$response);     //Data logging
 echo json_encode($response);    //Send data to requester
 ?>

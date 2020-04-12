@@ -7,7 +7,7 @@ if(!isset($_POST['user-firstname'])||!isset($_POST['user-lastname'])||!isset($_P
 {
     //Not all parameters received
     $response["status"]=0;
-    entry_log("Unknown",$response);     
+    entry_log("register","Unknown",$response);     
     echo json_encode($response);    
     return;
 }
@@ -24,7 +24,7 @@ if($val == -1 || $val == 1)
 {
     //error or email in use
     $response['status'] = $val;
-    entry_log("Unknown",$response);     
+    entry_log("register","Unknown",$response);     
     echo json_encode($response);    
     return;
 }
@@ -61,5 +61,5 @@ else
 //No error
 $response["status"] = 1; 
 echo json_encode($response);
-entry_log($user_email,$response);   //Data logging
+entry_log("register",$user_email,$response);   //Data logging
 ?>

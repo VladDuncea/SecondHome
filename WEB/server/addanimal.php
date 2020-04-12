@@ -7,7 +7,7 @@ if(!isset($_POST['pet_name'], $_POST['pet_description'], $_POST['pet_type'], $_P
 {
     //Not all parameters received
     $response["status"]=0;
-    entry_log("Unknown",$response);     
+    entry_log("addanimal","Unknown",$response);     
     echo json_encode($response);    
     return;
 }
@@ -21,7 +21,7 @@ if($_POST['security_code']!= '8981ASDGHJ22123')
     {
         $response["status"]=-1;
         $response["err_message"] = "Unauthoried access";
-        entry_log("Unknown",$response);     
+        entry_log("addanimal","Unknown",$response);     
         echo json_encode($response);  
         return;
     }
@@ -35,6 +35,14 @@ else
     $UID = $_POST['UID'];
 }
 
+//Get the image
+$pet_image = 'NULL';
+if(isset($_FILES['pet_image']['name']))
+{
+    $response['test']['am_poza'] =1;
+    $pet_image = addslashes (file_get_contents($_FILES['pet_image']['tmp_name']));
+}
+
 
 //Reading data from request and sanitizing
 $pet_name = mysqli_real_escape_string( $conn, $_POST['pet_name'] );
@@ -46,8 +54,8 @@ $pet_age  = mysqli_real_escape_string( $conn, $_POST['pet_age']);
 $pet_birthdate = (date('Y')-$pet_age).date("-m-d");
 
 //Add the pet
-$sql="INSERT INTO Pets (pet_name, pet_description, pet_type, pet_breed, pet_birthdate) 
-    VALUES ('$pet_name','$pet_description','$pet_type','$pet_breed', '$pet_birthdate');";
+$sql="INSERT INTO Pets (pet_name, pet_description, pet_type, pet_breed, pet_birthdate,pet_image) 
+    VALUES ('$pet_name','$pet_description','$pet_type','$pet_breed', '$pet_birthdate',$pet_image);";
 if(!$result = mysqli_query($conn,$sql))
 {
     $response["status"]=-1;  //Database error
@@ -88,5 +96,5 @@ if(!$result = mysqli_query($conn,$sql))
 //No error
 $response["status"] = 1; 
 echo json_encode($response);
-entry_log($UID, $response);   //Data logging
+entry_log("addanimal",$UID, $response);   //Data logging
 ?>

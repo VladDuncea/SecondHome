@@ -1,6 +1,6 @@
 <?
 
-function entry_log($username,$resp) //Data logging function
+function entry_log($file_name,$username,$resp) //Data logging function
 {
     $formpost = $sep = '';      //Formatting request data
     foreach( $_POST as $key => $value ) {
@@ -20,7 +20,7 @@ function entry_log($username,$resp) //Data logging function
             "Response: ".$formresp.PHP_EOL.
             "---------------------".PHP_EOL;
 
-    file_put_contents('entry_log.txt', $log, FILE_APPEND);      //Writing to file
+    file_put_contents("logs/log_$file_name.txt", $log, FILE_APPEND);      //Writing to file
 }
 
 function check_email($email,$conn)
