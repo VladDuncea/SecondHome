@@ -5,7 +5,7 @@
     <?php include 'pieces/head.php' ?>
 </head>
 
-<body class="hold-transition sidebar-mini" onload="get_animal(0,0);">
+<body class="hold-transition sidebar-mini" onload="get_animal(0,3);">
     <!-- Site wrapper -->
     <div class="wrapper">
         
@@ -24,12 +24,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Toate</h1>
+                            <h1>Rozătoare</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="index.php">Acasă</a></li>
-                                <li class="breadcrumb-item active">Toate</li>
+                                <li class="breadcrumb-item active">Rozătoare</li>
                             </ol>
                         </div>
                     </div>

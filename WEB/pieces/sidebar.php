@@ -61,39 +61,39 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="categ_pisici.php" class="nav-link">
+                            <a href="pisici.php" class="nav-link">
                                 <i class="nav-icon fas fa-cat"></i>
                                 <p>Pisici</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+                            <a href="caini.php" class="nav-link">
                                 <i class="nav-icon fas fa-dog"></i>
                                 <p>Câini</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/layout/boxed.html" class="nav-link">
+                            <a href="rozatoare.php" class="nav-link">
                                 <i class="nav-icon fas fa-rabbit"></i>
                                 <p>Rozătoare</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/layout/fixed-sidebar.html" class="nav-link">
+                            <a href="reptile.php" class="nav-link">
                                 <i class="nav-icon fas fa-snake"></i>
                                 <p>Reptile
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/layout/fixed-sidebar.html" class="nav-link">
+                            <a href="pasari.php" class="nav-link">
                                 <i class="nav-icon fas fa-crow"></i>
                                 <p>Păsări
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/layout/fixed-sidebar.html" class="nav-link">
+                            <a href="acvatice.php" class="nav-link">
                                 <i class="nav-icon fas fa-fish"></i>
                                 <p>Acvatice
                                 </p>
