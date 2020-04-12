@@ -16,6 +16,7 @@
         android:layout_height="match_parent"
 
         >
+
         <TextView
             android:id="@+id/userMessage"
             android:layout_width="344dp"
@@ -26,6 +27,19 @@
             android:text=""
             android:textColor="@color/colorAccent"
             android:textSize="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/contactButtonLoggedIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="393dp"
+            android:layout_marginEnd="169dp"
+            android:layout_marginRight="169dp"
+            android:text="Contact"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

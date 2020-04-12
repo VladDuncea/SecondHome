@@ -19,12 +19,13 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 import com.example.secondhome.ui.login.LoginActivity;
+import com.example.secondhome.ui.login.RegisterActivity;
 import com.google.android.material.navigation.NavigationView;
 
 import java.io.Console;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
-    private Button button;
+    private Button login,register;
     private DrawerLayout mDrawer;
     private ActionBarDrawerToggle mToggle;
     private NavigationView navigationView;
@@ -42,16 +43,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        button =(Button) findViewById(R.id.button5);
-        View.OnClickListener lisener=new View.OnClickListener() {
+        login =(Button) findViewById(R.id.button5);
+        register=(Button) findViewById(R.id.button6);
+
+        View.OnClickListener lisenerLogin=new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         };
-        button.setOnClickListener(lisener);
-
+        View.OnClickListener lisenerRegister=new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        };
+        login.setOnClickListener(lisenerLogin);
+        register.setOnClickListener(lisenerRegister);
 
     }
 

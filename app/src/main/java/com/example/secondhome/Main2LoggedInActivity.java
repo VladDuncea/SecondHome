@@ -28,6 +28,7 @@ import java.io.Console;
 public class Main2LoggedInActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
     private TextView nameMessage;
     private DrawerLayout mDrawer;
+    private Button contact;
     private ActionBarDrawerToggle mToggle;
     private NavigationView navigationView;
     private ActionMenuItem item;
@@ -45,8 +46,16 @@ public class Main2LoggedInActivity extends AppCompatActivity implements Navigati
         //  mDrawer.addDrawerListener();
         mToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        contact=(Button) findViewById(R.id.contactButtonLoggedIn);
 
-
+        View.OnClickListener lisenerContact=new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Main2LoggedInActivity.this, ContactActivity.class);
+                startActivity(intent);
+            }
+        };
+        contact.setOnClickListener(lisenerContact);
     }
 
 
