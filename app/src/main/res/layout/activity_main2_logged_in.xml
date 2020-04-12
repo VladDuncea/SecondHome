@@ -15,33 +15,64 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
+
         >
 
         <TextView
             android:id="@+id/userMessage"
             android:layout_width="344dp"
             android:layout_height="59dp"
-            android:layout_marginTop="42dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="33dp"
+            android:layout_marginLeft="33dp"
+            android:layout_marginTop="65dp"
             android:layout_marginEnd="34dp"
             android:layout_marginRight="34dp"
+            android:layout_marginBottom="458dp"
             android:text=""
+            android:textAlignment="center"
             android:textColor="@color/colorAccent"
             android:textSize="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
+            android:layout_gravity="center_horizontal"
             android:id="@+id/contactButtonLoggedIn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="154dp"
+            android:layout_marginLeft="154dp"
             android:layout_marginTop="393dp"
             android:layout_marginEnd="169dp"
             android:layout_marginRight="169dp"
-            android:text="Contact"
             android:background="@color/colorPrimary"
+            android:text="Contact"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="155dp"
+            android:layout_marginLeft="155dp"
+            android:layout_marginTop="456dp"
+            android:layout_marginEnd="168dp"
+            android:layout_marginRight="168dp"
+            android:background="@color/colorPrimary"
+            android:text="logout"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         />
     </androidx.constraintlayout.widget.ConstraintLayout>

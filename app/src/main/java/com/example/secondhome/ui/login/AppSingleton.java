@@ -1,5 +1,7 @@
 package com.example.secondhome.ui.login;
 import android.content.Context;
+import android.widget.Toast;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
@@ -42,6 +44,10 @@ public class AppSingleton {
     public <T> void addToRequestQueue(Request<T> req,String tag) {
         req.setTag(tag);
         getRequestQueue().add(req);
+    }
+    public void logoutUser()
+    {
+        this.user=null;
     }
 }
 

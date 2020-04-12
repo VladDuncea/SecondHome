@@ -18,6 +18,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.secondhome.ui.login.AppSingleton;
 import com.example.secondhome.ui.login.LoginActivity;
@@ -29,6 +30,7 @@ public class Main2LoggedInActivity extends AppCompatActivity implements Navigati
     private TextView nameMessage;
     private DrawerLayout mDrawer;
     private Button contact;
+    private Button logout;
     private ActionBarDrawerToggle mToggle;
     private NavigationView navigationView;
     private ActionMenuItem item;
@@ -56,6 +58,19 @@ public class Main2LoggedInActivity extends AppCompatActivity implements Navigati
             }
         };
         contact.setOnClickListener(lisenerContact);
+
+        //logout
+        logout=(Button) findViewById(R.id.logout);
+        View.OnClickListener lisenerLogout=new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppSingleton.getInstance(getApplicationContext()).logoutUser();
+                Toast.makeText(getApplicationContext(), "Ati fost deconectat", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(Main2LoggedInActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        };
+        logout.setOnClickListener(lisenerLogout);
     }
 
 
