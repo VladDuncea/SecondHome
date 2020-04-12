@@ -1,6 +1,6 @@
-function get_animal() {
-    var request_type = 0
-    $.get('http://secondhome.fragmentedpixel.com/server/getanimals.php', request_type, function(data, status) {
+function get_animal(request_type, pet_type) {
+
+    $.post('http://secondhome.fragmentedpixel.com/server/getanimals.php', { request_type: request_type, pet_type: pet_type }, function(data, status) {
         if (status == 1)
             console.log(typeof data)
         var json_data = JSON.parse(data)
@@ -8,6 +8,7 @@ function get_animal() {
         animals = json_data.animals
             // console.log(json_data)
         var type_animal = ["Toate", "Pisici", "Câini", "Rozătoare", "Reptile", "Păsări", "Acvatice"]
+
         for (var i = 0; i < nr_animals; i++) {
             const animal_box = `
          <div class="d-flex">
@@ -24,7 +25,7 @@ function get_animal() {
 
                         </div>
                         <div class="col-4 text-center">
-                            <img height="350" width="320" src="../../dist/img/pis1.jpg" alt="" class="img-circle img-fluid">
+                            <img height="350" width="320" src='${animals[i].image}' alt="" class="img-circle img-fluid">
                         </div>
                     </div>
                 </div>
