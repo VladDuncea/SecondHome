@@ -157,7 +157,7 @@ if(isset($_POST['first_name']))
     $(document).ready(function () {
         $.validator.setDefaults({
             submitHandler: function () {
-                $('#form_id')[0].submit();
+                $('#register_form')[0].submit();
             }
         });
         $('#register_form').validate({
@@ -208,7 +208,10 @@ if(isset($_POST['first_name']))
             {
                 equalTo: "Passwords do no match"
             },
-            terms: "Please accept our terms"
+            terms:
+            {
+                required:"Please accept our terms"
+            } 
             },
             errorElement: 'span',
             errorPlacement: function (error, element) {

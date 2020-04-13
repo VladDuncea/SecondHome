@@ -48,7 +48,7 @@ if(isset($_FILES['pet_image']['name']))
     $extensions_arr = array("jpg","jpeg","png","gif");
   
     // Check extension
-    if(in_array($imageFileType,$extensions_arr) )
+    if(in_array(strtolower($imageFileType),$extensions_arr) )
     {
       // Convert to base64 
       $image_base64 = base64_encode(file_get_contents($_FILES['pet_image']['tmp_name']) );
