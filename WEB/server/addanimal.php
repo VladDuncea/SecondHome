@@ -12,7 +12,7 @@ if(!isset($_POST['pet_name'], $_POST['pet_description'], $_POST['pet_type'], $_P
     return;
 }
 //the user id is not provided, try to extract it from SESSION
-if($_POST['security_code']!= '8981ASDGHJ22123')
+if(!isset($_POST['security_code']) || $_POST['security_code']!= '8981ASDGHJ22123')
 {
     //Web access
     //Verify account level
@@ -34,13 +34,36 @@ else
     //Android access
     $UID = $_POST['UID'];
 }
-
-//Get the image
-$pet_image = 'NULL';
+$pet_image = null;
 if(isset($_FILES['pet_image']['name']))
 {
-    $response['test']['am_poza'] =1;
-    $pet_image = addslashes (file_get_contents($_FILES['pet_image']['tmp_name']));
+    /* Getting file name */
+    $filename = $_FILES['pet_image']['name'];
+
+    /* Location */
+    $location = "upload/".$filename;
+    $imageFileType = pathinfo($location,PATHINFO_EXTENSION);
+  
+    // Valid file extensions
+    $extensions_arr = array("jpg","jpeg","png","gif");
+  
+    // Check extension
+    if(in_array($imageFileType,$extensions_arr) )
+    {
+      // Convert to base64 
+      $image_base64 = base64_encode(file_get_contents($_FILES['pet_image']['tmp_name']) );
+      $pet_image = 'data:image/'.$imageFileType.';base64,'.$image_base64;
+    }
+    else
+    {
+        $response["status"]=0;
+        $response["err_message"] = "Extension type not supported: ".$imageFileType;
+        entry_log("addanimal","Unknown",$response);     
+        echo json_encode($response);  
+        return;
+    }
+
+    //$pet_image = addslashes (file_get_contents($_FILES['pet_image']['tmp_name']));
 }
 
 
@@ -54,8 +77,14 @@ $pet_age  = mysqli_real_escape_string( $conn, $_POST['pet_age']);
 $pet_birthdate = (date('Y')-$pet_age).date("-m-d");
 
 //Add the pet
-$sql="INSERT INTO Pets (pet_name, pet_description, pet_type, pet_breed, pet_birthdate,pet_image) 
-    VALUES ('$pet_name','$pet_description','$pet_type','$pet_breed', '$pet_birthdate',$pet_image);";
+if($pet_image!=null)
+    $sql="INSERT INTO Pets (pet_name, pet_description, pet_type, pet_breed, pet_birthdate,pet_image) 
+    VALUES ('$pet_name','$pet_description','$pet_type','$pet_breed', '$pet_birthdate','$pet_image');";
+else
+    $sql="INSERT INTO Pets (pet_name, pet_description, pet_type, pet_breed, pet_birthdate) 
+    VALUES ('$pet_name','$pet_description','$pet_type','$pet_breed', '$pet_birthdate');";
+
+
 if(!$result = mysqli_query($conn,$sql))
 {
     $response["status"]=-1;  //Database error

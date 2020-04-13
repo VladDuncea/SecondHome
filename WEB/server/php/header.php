@@ -26,7 +26,7 @@ function entry_log($file_name,$username,$resp) //Data logging function
 function check_email($email,$conn)
 {
     
-    $sql ="SELECT user_email FROM Users WHERE user_email='{$_POST['user-email']}'";
+    $sql ="SELECT user_email FROM Users WHERE user_email='{$email}'";
     if(!$result = mysqli_query($conn,$sql))
     {
         $response = -1;  // Database error
