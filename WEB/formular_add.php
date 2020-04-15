@@ -94,8 +94,8 @@
                                 </div>
 
                                 <div class="card-body">
-                                    <div class="form-group">
-                                        <button type="button" class="btn btn-secondary" onclick="document.getElementById('getFile').click()">Încarcă o imagine</button>
+                                    <div class="form-group" style="margin: 0">
+                                        <button type="button" class="btn btn-secondary" style="margin: 5px" onclick="document.getElementById('getFile').click()">Încarcă o imagine</button>
                                         <input type='file' id="getFile" name="animal_image" style="visibility:hidden;" onchange="readURL(this);"/><br>
                                         <!-- <input type='file' onchange="readURL(this);" > -->
                                         <img id="blah" src="#" style="display:none" alt="Imagine încărcată" /><br/>  
