@@ -153,7 +153,7 @@ function get_gravatar( $email, $s = 80, $d = 'mm', $r = 'g', $img = false, $atts
                             </div>
                         </div>
                         <!-- /.col -->
-                        <div class="col-4">
+                        <div class="col-4.5">
                             <button type="submit" class="btn btn-primary btn-block">Conectare</button>
                         </div>
                         <!-- /.col -->

@@ -10,7 +10,7 @@ function readURL(input) {
             document.getElementById("blah").style.display = "initial";
         };
         reader.readAsDataURL(input.files[0]);
-       
+
     }
 }
 
@@ -37,23 +37,20 @@ function add_animal() {
         processData: false,
         success: function(data, status, jqXHR) {
             //TODO use adminlte notification
-            if(data['status'] == 1)
-            {
+            if (data['status'] == 1) {
                 $(document).Toasts('create', {
-                    class: 'bg-success', 
+                    class: 'bg-success',
                     title: 'Succes!',
                     subtitle: '',
                     body: 'Animalul dvs a fost adaugat cu succes, il puteti vedea si edita in pagina dedicata animalelor.'
-                  });
-            }
-            else
-            {
+                });
+            } else {
                 $(document).Toasts('create', {
-                    class: 'bg-danger', 
+                    class: 'bg-danger',
                     title: 'Eroare',
                     subtitle: '',
                     body: 'Eroare la adaugare animal!'
-                  })
+                })
             }
         },
         error: function(jqXHR, status, error) {
@@ -64,26 +61,23 @@ function add_animal() {
 }
 
 var validator = $('#addanimal_form').validate({
-        submitHandler: function (form) {
-            add_animal();
-            form.reset();
-            document.getElementById("blah").style.display = "none";
-        },
-        rules: {
-        animal_name:
-        {
+    submitHandler: function(form) {
+        add_animal();
+        form.reset();
+        document.getElementById("blah").style.display = "none";
+    },
+    rules: {
+        animal_name: {
             required: true
         },
-        animal_type:
-        {
+        animal_type: {
             required: true
         },
         animal_age: {
             required: true,
-            range: [1,100]
+            range: [1, 100]
         },
-        animal_breed:
-        {
+        animal_breed: {
             required: true
         },
         animal_description: {
@@ -93,8 +87,8 @@ var validator = $('#addanimal_form').validate({
         animal_image: {
             required: true
         },
-        },
-        messages: {
+    },
+    messages: {
         animal_name: {
             required: "Campul este obligatoriu"
         },
@@ -115,16 +109,16 @@ var validator = $('#addanimal_form').validate({
         animal_image: {
             required: "Campul este obligatoriu"
         },
-        },
-        errorElement: 'span',
-        errorPlacement: function (error, element) {
+    },
+    errorElement: 'span',
+    errorPlacement: function(error, element) {
         error.addClass('invalid-feedback');
         element.closest('.form-group').append(error);
-        },
-        highlight: function (element, errorClass, validClass) {
+    },
+    highlight: function(element, errorClass, validClass) {
         $(element).addClass('is-invalid');
-        },
-        unhighlight: function (element, errorClass, validClass) {
+    },
+    unhighlight: function(element, errorClass, validClass) {
         $(element).removeClass('is-invalid');
-        }
+    }
 });
