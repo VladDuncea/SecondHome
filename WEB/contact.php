@@ -47,7 +47,7 @@
                                 <h5 class="widget-user-desc">CEO</h5>
                             </div>
                             <div class="widget-user-image">
-                                <img class="img-circle elevation-2" src="../dist/img/bianca.jpeg" alt="User Avatar">
+                                <img class="img-circle elevation-2" src="dist/img/bianca.jpeg" alt="User Avatar">
                             </div>
                             <div class="card-footer">
                                 <p><i class="fas fa-mobile-alt"></i><b> &nbsp;Telefon:</b> 0719858256</p>
@@ -65,7 +65,7 @@
                                 <h5 class="widget-user-desc">CEO</h5>
                             </div>
                             <div class="widget-user-image">
-                                <img class="img-circle elevation-2" src="../dist/img/vlad.jpg" alt="User Avatar">
+                                <img class="img-circle elevation-2" src="dist/img/vlad.jpg" alt="User Avatar">
                             </div>
                             <div class="card-footer">
                                 <p><i class="fas fa-mobile-alt"></i><b> &nbsp;Telefon:</b> 0756389810</p>
@@ -83,7 +83,7 @@
                                 <h5 class="widget-user-desc">CEO</h5>
                             </div>
                             <div class="widget-user-image">
-                                <img class="img-circle elevation-2" src="../dist/img/andreea.jpg" alt="User Avatar">
+                                <img class="img-circle elevation-2" src="dist/img/andreea.jpg" alt="User Avatar">
                             </div>
                             <div class="card-footer">
                                 <p><i class="fas fa-mobile-alt"></i><b> &nbsp;Telefon:</b> 0726738456</p>
@@ -126,25 +126,27 @@
                                 <h3 class="card-title">Scrie-ne</h3>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="To:">
+                            <form action="" method="post">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <input class="form-control" name="email" placeholder="From:" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" name="subject" placeholder="Subject:" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea id="compose-textarea" name="body" class="form-control" style="height: 170px" required>
+                                        </textarea>
+                                    </div> 
                                 </div>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="Subject:">
+                                <!-- /.card-body -->
+                                <div class="card-footer">
+                                    <div class="float-right">
+                                        <button type="submit" class="btn btn-success"><i class="far fa-envelope"></i> Trimite</button>
+                                    </div>
+                                    <button type="reset" class="btn btn-default"><i class="fas fa-times"></i> Renunta</button>
                                 </div>
-                                <div class="form-group">
-                                    <textarea id="compose-textarea" class="form-control" style="height: 170px">
-                                    </textarea>
-                                </div> 
-                            </div>
-                            <!-- /.card-body -->
-                            <div class="card-footer">
-                                <div class="float-right">
-                                    <button type="submit" class="btn btn-success"><i class="far fa-envelope"></i> Trimite</button>
-                                </div>
-                                <button type="reset" class="btn btn-default"><i class="fas fa-times"></i> Renunta</button>
-                            </div>
+                            </form>
                             <!-- /.card-footer -->
                         </div>
                         <!-- /.card -->
@@ -168,14 +170,49 @@
     <!-- ./wrapper -->
 
     <!-- jQuery -->
-    <script src="../plugins/jquery/jquery.min.js"></script>
+    <script src="plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
-    <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="../dist/js/adminlte.min.js"></script>
+    <script src="dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="../dist/js/demo.js"></script>
+    <script src="dist/js/demo.js"></script>
+    <!--Toasts-->
+    <script src="plugins/toastr/toastr.min.js"></script>
     
+
+    <?php
+    //TRIMITERE EMAIL
+    if(isset($_POST['subject'],$_POST['body'],$_POST['email']))
+    {
+        //Send welcome email to new User
+        $subject = $_POST['subject'];
+        $txt = $_POST['body'];
+        $headers = "From: {$_POST['email']}" . "\r\n" .
+        'X-Mailer: PHP/' . phpversion();
+
+        if(mail("secondhome@fragmentedpixel.com",$subject,$txt,$headers)) //Email
+        {
+            echo "<script>$(document).Toasts('create', {
+                class: 'bg-success',
+                title: 'Succes!',
+                subtitle: '',
+                body: 'Emailul a fost trimis! Va vom raspunde cat de curand.'
+            });</script>";
+        }
+        else
+        {
+            echo "<script>$(document).Toasts('create', {
+                class: 'bg-danger',
+                title: 'Eroare',
+                subtitle: '',
+                body: 'Eroare la trimitere email, va rugam incercati mai tarziu!'
+            });</script>";
+            
+        }
+        
+    }
+    ?>    
     
 </body>
 
