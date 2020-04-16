@@ -78,10 +78,9 @@ function get_animal(request_type, pet_type) {
                 </div>
                 <div class="card-body" style="padding: 2">       
                     <div class="text-center">
-                    <button type="button" class="btn btn-secondary" onclick="optiuni_animal(1,${animals[i].PID} );" id='${animals[i].PID}c' style="margin-right: 87px" value='Cazează'><i class="fas fa-paw"id='detalii'></i> Cazează</button>
-                            
+                    <button type="button" class="btn btn-secondary" onclick="optiuni_animal(1,${animals[i].PID} );" id='${animals[i].PID}c' value='Cazează'><i class="fas fa-paw"id='detalii'></i> Cazează</button>       
                     <button type="button" class="btn btn-secondary" onclick="optiuni_animal(0,${animals[i].PID});" id='${animals[i].PID}a'  value='Dă spre adopție'><i class="fas fa-paw"id='detalii'></i> Dă spre adopție</button>
-                      
+                    <button type="button" class="btn btn-secondary" id='${animals[i].PID}e' ><i class="fas fa-paw"id='detalii'></i> Editează</button> 
                     </div> 
                 </div>
             </div>

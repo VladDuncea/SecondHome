@@ -42,7 +42,7 @@ function add_animal() {
                     class: 'bg-success',
                     title: 'Succes!',
                     subtitle: '',
-                    body: 'Animalul dvs a fost adaugat cu succes, il puteti vedea si edita in pagina dedicata animalelor mele.'
+                    body: 'Animalul dvs a fost adaugat cu succes, il puteti vedea si edita in pagina Animalele mele.'
                 });
             } else {
                 $(document).Toasts('create', {
