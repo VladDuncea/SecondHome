@@ -171,9 +171,9 @@ function get_gravatar( $email, $s = 80, $d = 'mm', $r = 'g', $img = false, $atts
                 </div> -->
                     <!-- /.social-auth-links -->
 
-                    <!-- <p class="mb-1">
-                    <a href="forgot-password.html">I forgot my password</a>
-                </p> -->
+                    <p class="mb-1">
+                    <a href="forgot-password.html">Am uitat parola</a>
+                </p>
                     <p class="mb-0">
                         <a href="register.php" class="text-center">Crează cont</a>
                     </p>
