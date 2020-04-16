@@ -91,6 +91,7 @@
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
     <script src="../dist/js/getanimals.js"></script>
+    <script src="../dist/js/animalrequest.js"></script>
 
     
     
