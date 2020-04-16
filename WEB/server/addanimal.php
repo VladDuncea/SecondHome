@@ -29,11 +29,12 @@ if(!isset($_POST['security_code']) || $_POST['security_code']!= '8981ASDGHJ22123
     $UID = $_SESSION['userId'];
 
 }
-else
+else if ($_POST['security_code']== '8981ASDGHJ22123')
 {
     //Android access
     $UID = $_POST['UID'];
 }
+
 $pet_image = null;
 if(isset($_FILES['pet_image']['name']))
 {

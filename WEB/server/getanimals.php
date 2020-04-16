@@ -12,34 +12,73 @@ if($_POST['request_type'] == 0)
     else
         $sql="SELECT * FROM Pets WHERE pet_type = {$_POST['pet_type']} ORDER BY PID";
 
-    if(!$result = mysqli_query($conn,$sql))
+    
+}
+else if($_POST['request_type'] == 1)
+{
+    if(!isset($_POST['security_code']) || $_POST['security_code']!= '8981ASDGHJ22123')
     {
-        $response["status"]=-1;  //Database error
-        error_log("Connection failed".mysqli_error($conn));   //Error logging
-        echo json_encode($response);
+        //WEB
+        //Verify account level
+        session_start();
+        if(!isset($_SESSION['userType']))
+        {
+            $response["status"]=-1;
+            $response["err_message"] = "Unauthoried access";
+            entry_log("addanimal","Unknown",$response);     
+            echo json_encode($response);  
+            return;
+        }
+        $UID = $_SESSION['userId'];
+        
+    }
+    else if($_POST['security_code']== '8981ASDGHJ22123')
+    {
+        //ANDROID
+        $UID = $_POST['UID'];
+    }
+    else
+    {
+        $response["status"]=0;
+        $response["err_message"] = "Missing parameters!";
+        entry_log("addanimal","Unknown",$response);     
+        echo json_encode($response);  
         return;
     }
 
-    $response['nr_animals'] = $result->num_rows;
-    $poz = 0;
-    while($row = mysqli_fetch_assoc($result))
-    {
-        $response['animals'][$poz]['PID'] = $row['PID'];
-        $response['animals'][$poz]['name'] = $row['pet_name'];
-        $response['animals'][$poz]['birthdate'] = date_diff(date_create("now") , date_create($row['pet_birthdate']))->y;
-        $response['animals'][$poz]['state'] = $row['pet_state'];
-        $response['animals'][$poz]['description'] = $row['pet_description'];
-        $response['animals'][$poz]['image'] = $row['pet_image'];
-        $response['animals'][$poz]['food'] = $row['pet_food'];
-        $response['animals'][$poz]['type'] = $row['pet_type'];
-        $response['animals'][$poz]['breed'] = $row['pet_breed'];
-        $poz++;
-    }
-}
-else{
-    //LUTHER
+    //Get animals bound to user
+    $sql="SELECT * FROM Pets WHERE PID IN (SELECT PID FROM Users_Pets WHERE UID = $UID)";
+
 }
 
+//Get animals and format them
+if(!$result = mysqli_query($conn,$sql))
+{
+    $response["status"]=-1;  //Database error
+    error_log("Connection failed".mysqli_error($conn));   //Error logging
+    echo json_encode($response);
+    return;
+}
+
+$response['nr_animals'] = $result->num_rows;
+$poz = 0;
+while($row = mysqli_fetch_assoc($result))
+{
+    $response['animals'][$poz]['PID'] = $row['PID'];
+    $response['animals'][$poz]['name'] = $row['pet_name'];
+    $response['animals'][$poz]['birthdate'] = date_diff(date_create("now") , date_create($row['pet_birthdate']))->y;
+    $response['animals'][$poz]['state'] = $row['pet_state'];
+    $response['animals'][$poz]['description'] = $row['pet_description'];
+    $response['animals'][$poz]['image'] = $row['pet_image'];
+    $response['animals'][$poz]['food'] = $row['pet_food'];
+    $response['animals'][$poz]['type'] = $row['pet_type'];
+    $response['animals'][$poz]['breed'] = $row['pet_breed'];
+    $poz++;
+}
+
+
+
+//Data for entry_log
 session_start();
 if(isset($_SESSION['FirstName']))
     $user = $_SESSION['FirstName']." ".$_SESSION['LastName'];
