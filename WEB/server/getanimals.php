@@ -72,7 +72,8 @@ else if($_POST['request_type'] == 1)
     //Get animals bound to user
     $sql="  SELECT * FROM Pets
             LEFT JOIN (SELECT PID,request_type,request_state FROM Requests WHERE UID = $UID) aux USING (PID) 
-            WHERE PID IN (SELECT PID FROM Users_Pets WHERE UID = $UID)";
+            WHERE PID IN (SELECT PID FROM Users_Pets WHERE UID = $UID)
+            ORDER BY PID DESC";
 
     //Get animals and format them
     if(!$result = mysqli_query($conn,$sql))
@@ -106,7 +107,7 @@ else if($_POST['request_type'] == 1)
         {
             $response['animals'][$poz]['has_request'] = 0;
         }
-        
+
         $response['animals'][$poz]['image'] = $row['pet_image'];
         $poz++;
     }
