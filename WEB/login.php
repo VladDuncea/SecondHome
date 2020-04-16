@@ -182,7 +182,16 @@ function get_gravatar( $email, $s = 80, $d = 'mm', $r = 'g', $img = false, $atts
         </div>
     </div>
     <!-- /.login-box -->
-
+    <style>
+        .login-page{
+        background: url("pet.png");
+        background-size: auto;
+        }
+        .login-logo {
+            background-color:white;
+            /* text-shadow: 2px 2px; */
+        }
+    </style>
     <!-- jQuery -->
     <script src="plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->

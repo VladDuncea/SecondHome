@@ -127,8 +127,16 @@ if(isset($_POST['first_name']))
         <!-- /.card -->
     </div>
     <!-- /.register-box -->
-
-   
+    <style>
+        .register-page{
+        background: url("pet.png");
+        background-size: auto;
+        }
+        .register-logo {
+            background-color:white;
+            /* text-shadow: 2px 2px; */
+        }
+    </style>
 
     <!-- jQuery -->
     <script src="plugins/jquery/jquery.min.js"></script>

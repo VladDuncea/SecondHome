@@ -17,7 +17,8 @@
         <!--/main sidebar-->
 
         <!-- Content Wrapper -->
-        <div class="content-wrapper">
+        <div class="content-wrapper" >
+            
         </div>
         <!-- /.content-wrapper -->
         
@@ -30,9 +31,15 @@
             <!-- Control sidebar content goes here -->
         </aside>
         <!-- /.control-sidebar -->
+
     </div>
     <!-- ./wrapper -->
-
+    <style>
+    .content-wrapper{
+        background: url("image_animal.png");
+        background-size: auto;
+        }
+    </style> 
     <!-- jQuery -->
     <script src="plugins/jquery/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
