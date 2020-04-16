@@ -114,14 +114,14 @@ if(!$result = mysqli_query($conn,$sql))
 }
 
 //Add request
-$sql="INSERT INTO Requests (UID, PID, request_type,request_state,request_description) VALUES ('$UID','$PID','0','0','Cerere dare spre adoptie')";
-if(!$result = mysqli_query($conn,$sql))
-{
-    $response["status"]=-1;  //Database error
-    error_log("Connection failed".mysqli_error($conn));   //Error logging
-    echo json_encode($response);
-    return;
-}
+// $sql="INSERT INTO Requests (UID, PID, request_type,request_state,request_description) VALUES ('$UID','$PID','0','0','Cerere dare spre adoptie')";
+// if(!$result = mysqli_query($conn,$sql))
+// {
+//     $response["status"]=-1;  //Database error
+//     error_log("Connection failed".mysqli_error($conn));   //Error logging
+//     echo json_encode($response);
+//     return;
+// }
 
 //No error
 $response["status"] = 1; 
