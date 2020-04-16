@@ -89,6 +89,7 @@ else
 if(!$result = mysqli_query($conn,$sql))
 {
     $response["status"]=-1;  //Database error
+    $response["err_message"] = "SQL error";
     error_log("Connection failed".mysqli_error($conn));   //Error logging
     echo json_encode($response);
     return;
@@ -99,6 +100,7 @@ $sql = "SELECT LAST_INSERT_ID() AS ID;";
 if(!$result = mysqli_query($conn,$sql))
 {
     $response["status"]=-1;  //Database error
+    $response["err_message"] = "SQL error";
     error_log("Connection failed".mysqli_error($conn));   //Error logging
     echo json_encode($response);
     return;
@@ -108,20 +110,11 @@ $sql="INSERT INTO Users_Pets (UID, PID) VALUES ('$UID','$PID')";
 if(!$result = mysqli_query($conn,$sql))
 {
     $response["status"]=-1;  //Database error
+    $response["err_message"] = "SQL error";
     error_log("Connection failed".mysqli_error($conn));   //Error logging
     echo json_encode($response);
     return;
 }
-
-//Add request
-// $sql="INSERT INTO Requests (UID, PID, request_type,request_state,request_description) VALUES ('$UID','$PID','0','0','Cerere dare spre adoptie')";
-// if(!$result = mysqli_query($conn,$sql))
-// {
-//     $response["status"]=-1;  //Database error
-//     error_log("Connection failed".mysqli_error($conn));   //Error logging
-//     echo json_encode($response);
-//     return;
-// }
 
 //No error
 $response["status"] = 1; 

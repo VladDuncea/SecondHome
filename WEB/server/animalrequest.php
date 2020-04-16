@@ -45,6 +45,42 @@ if(!isset($_POST['PID'],$_POST['request_type']))
 $PID = mysqli_real_escape_string( $conn,$_POST['PID']);
 $req_type = mysqli_real_escape_string( $conn,$_POST['request_type']);
 
+//Verify that user has that pet
+$sql = "SELECT COUNT(PID) nr FROM Users_Pets WHERE PID=$PID AND UID=$UID";
+if(!$result = mysqli_query($conn,$sql))
+{
+    $response["status"]=-1;  //Database error
+    $response["err_message"] = "SQL error";
+    error_log("Connection failed".mysqli_error($conn));   //Error logging
+    echo json_encode($response);
+    return;
+}
+if(mysqli_fetch_assoc($result)["nr"] == 0)
+{
+    //Not his pet
+    $response["status"]=0;
+    $response["err_message"] = "Unauthorized access!";
+    echo json_encode($response);
+    return;
+}
+//Verify that pet has no current request
+$sql = "SELECT COUNT(PID) nr FROM Requests WHERE PID=$PID AND UID=$UID";
+if(!$result = mysqli_query($conn,$sql))
+{
+    $response["status"]=-1; 
+    $response["err_message"] = "SQL error";
+    error_log("Connection failed".mysqli_error($conn));   //Error logging
+    echo json_encode($response);
+    return;
+}
+if(mysqli_fetch_assoc($result)["nr"] > 0)
+{
+    //Pet already has request
+    $response["status"]=0;
+    $response["err_message"] = "Wrong action!";
+    echo json_encode($response);
+    return;
+}
 
 //Add request
 if($req_type == 0)
@@ -59,9 +95,14 @@ else if($req_type == 1)
 if(!$result = mysqli_query($conn,$sql))
 {
     $response["status"]=-1;  //Database error
+    $response["err_message"] = "SQL error";
     error_log("Connection failed".mysqli_error($conn));   //Error logging
     echo json_encode($response);
     return;
 }
 
+//No error
+$response["status"] = 1; 
+echo json_encode($response);
+entry_log("addanimal",$UID, $response);   //Data logging
 ?>
