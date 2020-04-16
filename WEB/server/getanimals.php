@@ -101,7 +101,7 @@ else if($_POST['request_type'] == 1)
         {
             $response['animals'][$poz]['has_request'] = 1;
             $response['animals'][$poz]['request_type'] = $row['request_type'];
-            $response['animals'][$poz]['request_type'] = $row['request_state'];
+            $response['animals'][$poz]['request_state'] = $row['request_state'];
         }
         else
         {
