@@ -53,6 +53,7 @@
     android:layout_marginBottom="64dp"
     android:background="@color/green"
     android:textColor="@color/white"
+    android:padding="3dp"
     android:text="Intră în cont"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
