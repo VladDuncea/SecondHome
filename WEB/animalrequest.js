@@ -2,32 +2,26 @@ function optiuni_animal(request_type, PID) {
     console.log(PID)
     console.log(request_type)
     $.post('http://secondhome.fragmentedpixel.com/server/animalrequest.php', { request_type: request_type, PID: PID }, function(data, status) {
-        if (status == 1) {
-            // if (request_type == 1) {
-            //     var elem1 = document.getElementById(`${PID}c`);
-            //     if (elem1.value == "Cazează") elem1.value = "Asteaptă cazarea";
-            //     else elem1.value = "Cazează";
-            // } else if (request_type == 0) {
-            //     var elem2 = document.getElementById(`${PID}a`);
-            //     if (elem2.value == "Dă spre adopție") elem2.value = "Asteaptă adopția";
-            //     else elem2.value = "Dă spre adopție";
-            // }
-        } else {
-            if (request_type == 1) {
-                var elem1 = document.getElementById(`${PID}c`);
-                if (elem1.value == "Cazează") {
-                    elem1.value = "Asteaptă cazarea";
-                    elem1.innerText = "Asteaptă cazarea";
-                } else elem1.value = "Cazează";
-            } else if (request_type == 0) {
-                var elem2 = document.getElementById(`${PID}a`);
-                if (elem2.value == "Dă spre adopție") {
-                    elem2.value = "Asteaptă adopția";
-                    elem2.innerHTML = "Asteaptă adopția";
 
-                } else elem2.value = "Dă spre adopție";
+        console.log(`${status}`)
+        if (`${status}` == 'success') {
+            console.log("am ajuns aici")
+            if (request_type == 1) {
+                var elem1 = document.getElementById(`${PID}a`);
+                document.getElementById(`${PID}c`).value = 'Asteapta cazarea'
+                document.getElementById(`${PID}c`).innerHTML = '<i class="fas fa-paw"></i> Asteapta cazarea'
+                elem1.style = "display: none"
+            } else
+            if (request_type == 0) {
+                var elem2 = document.getElementById(`${PID}c`);
+                elem2.style = "display: none"
+                var elem3 = document.getElementById(`${PID}a`)
+
+                elem3.value = 'Asteapta adoptia'
+                elem3.innerHTML = '<i class="fas fa-paw"></i> Asteapta adoptia'
+                console.log(elem3.value)
+
             }
         }
-
     })
 }
