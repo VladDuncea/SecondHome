@@ -191,10 +191,10 @@ function get_animal(request_type_active, pet_type) {
                     }
 
                 }
-                console.log(`${buttonState2}`)
-                console.log(`${buttonState1}`)
-                console.log(`${buttonState2}`)
-                console.log("-----------------------")
+                // console.log(`${buttonState2}`)
+                // console.log(`${buttonState1}`)
+                // console.log(`${buttonState2}`)
+                // console.log("-----------------------")
             }
         }
 
