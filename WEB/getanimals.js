@@ -53,10 +53,10 @@ function get_animal(request_type_active, pet_type) {
                 var buttonState1 = undefined,
                     buttonState2 = undefined,
                     buttonState = undefined;
-                console.log(`${animals[i].PID}`)
-                    // console.log(`${animals[i].has_request}`)
-                    // console.log(`${animals[i].request_type}`)
-                    // console.log(`${animals[i].request_state}`)
+                // console.log(`${animals[i].PID}`)
+                // console.log(`${animals[i].has_request}`)
+                // console.log(`${animals[i].request_type}`)
+                // console.log(`${animals[i].request_state}`)
 
                 // const buttonState;
                 if (animals[i].has_request == 1) {
@@ -131,7 +131,7 @@ function get_animal(request_type_active, pet_type) {
                                             </div>
                                             <div class="card-body" style="padding: 2">       
                                                 <div class="text-center">
-                                                <button type="button" class="btn btn-secondary" >${buttonState}</button>       
+                                                <button type="button" class="btn btn-secondary" disabled>${buttonState}</button>       
                                                 <button type="button" class="btn btn-secondary" id='${animals[i].PID}e' ><i class="fas fa-paw"id='detalii'></i> Editează</button> 
                                                 </div> 
                                             </div>
