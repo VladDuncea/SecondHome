@@ -7,16 +7,17 @@ public class LoggedInUser {
 
     private String userEmail;
     private String displayName;
-
-    public LoggedInUser(String userId, String displayName) {
-        this.userEmail = userId;
+    private String UID;
+    public LoggedInUser(String uid,String userEmail, String displayName) {
+        this.userEmail = userEmail;
         this.displayName = displayName;
+        this.UID=uid;
     }
 
-    public String getUserId() {
+    public String getUserEmail() {
         return userEmail;
     }
-
+    public String getUID(){ return UID; }
     public String getDisplayName() {
         return displayName;
     }

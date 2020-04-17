@@ -41,10 +41,10 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <Button
-            android:layout_gravity="center_horizontal"
             android:id="@+id/contactButtonLoggedIn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_marginStart="154dp"
             android:layout_marginLeft="154dp"
             android:layout_marginTop="393dp"
@@ -70,6 +70,24 @@
             android:text="logout"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/animalForm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="131dp"
+            android:layout_marginLeft="131dp"
+            android:layout_marginTop="320dp"
+            android:layout_marginEnd="169dp"
+            android:layout_marginRight="169dp"
+            android:background="@color/colorPrimary"
+            android:text="Adauga un animal"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

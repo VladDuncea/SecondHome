@@ -7,30 +7,25 @@ import androidx.appcompat.view.menu.ActionMenuItem;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.secondhome.contact.ContactActivity;
 import com.example.secondhome.ui.login.AppSingleton;
 import com.example.secondhome.ui.login.LoginActivity;
 import com.google.android.material.navigation.NavigationView;
-
-import java.io.Console;
 
 public class Main2LoggedInActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
     private TextView nameMessage;
     private DrawerLayout mDrawer;
     private Button contact;
     private Button logout;
+    private Button addAnimal;
     private ActionBarDrawerToggle mToggle;
     private NavigationView navigationView;
     private ActionMenuItem item;
@@ -71,6 +66,17 @@ public class Main2LoggedInActivity extends AppCompatActivity implements Navigati
             }
         };
         logout.setOnClickListener(lisenerLogout);
+
+        addAnimal=(Button) findViewById(R.id.animalForm);
+        View.OnClickListener listenerAddAnimal=new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Main2LoggedInActivity.this, AddAnimalFormActivity.class);
+                startActivity(intent);
+            }
+        };
+        addAnimal.setOnClickListener(listenerAddAnimal);
+
     }
 
 

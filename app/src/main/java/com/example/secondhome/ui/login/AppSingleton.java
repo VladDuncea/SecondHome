@@ -32,6 +32,9 @@ public class AppSingleton {
         }
         return mRequestQueue;
     }
+    public LoggedInUser getUser(){
+        return user;
+    }
     public String getLoggedInUserName()
     {
         return user.getDisplayName();

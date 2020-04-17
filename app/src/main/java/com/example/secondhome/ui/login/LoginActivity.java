@@ -69,9 +69,11 @@ public class LoginActivity extends AppCompatActivity {
                      // if(!error){
                           System.out.println("here");
                           String userName= obj.getString("user-firstname");
+                          String UID=obj.getString("UID");
+                          System.out.println(obj);
                           System.out.println("user");
 
-                          user=new LoggedInUser(email,userName);
+                          user=new LoggedInUser(UID,email,userName);
                           AppSingleton.getInstance(getApplicationContext()).setUser(user);
                           Intent intent=new Intent(LoginActivity.this, Main2LoggedInActivity.class);
                           System.out.println("We want to add user");

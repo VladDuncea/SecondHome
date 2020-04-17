@@ -12,7 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ContactActivity"></activity>
+        <activity android:name=".contact.AchievmentsActivity" />
+        <activity android:name=".contact.FacilitiesActivity" />
+        <activity android:name=".contact.AboutUsActivity" />
+        <activity android:name=".AddAnimalFormActivity$AboutUsActivity" />
+        <activity android:name=".AddAnimalFormActivity" />
+        <activity android:name=".contact.ContactActivity" />
         <activity android:name=".ui.login.RegisterActivity" />
         <activity android:name=".Main2LoggedInActivity" />
         <activity
