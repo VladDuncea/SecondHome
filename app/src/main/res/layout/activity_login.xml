@@ -11,7 +11,18 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".ui.login.LoginActivity">
-
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/dancingscript"
+        android:text="Acceseaza contul"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <EditText
         android:id="@+id/email"
         android:layout_width="0dp"
@@ -24,7 +35,7 @@
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/textView" />
 
     <EditText
         android:id="@+id/password"
@@ -51,7 +62,7 @@
     android:layout_marginTop="16dp"
     android:layout_marginEnd="48dp"
     android:layout_marginBottom="64dp"
-    android:background="@color/green"
+    android:background="@drawable/btn_shape_round_green"
     android:textColor="@color/white"
     android:padding="3dp"
     android:text="Intră în cont"

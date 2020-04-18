@@ -60,6 +60,9 @@
         android:layout_marginLeft="145dp"
         android:layout_marginTop="493dp"
         android:layout_marginBottom="62dp"
+        android:background="@drawable/btn_shape_round_green"
+        android:textColor="@color/white"
+        android:padding="3dp"
         android:text="Înregistrare"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -105,9 +108,22 @@
         android:layout_marginTop="165dp"
         android:layout_marginBottom="393dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="Nume"
+        android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/dancingscript"
+        android:text="Creaza un cont"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
