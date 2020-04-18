@@ -12,7 +12,7 @@ if(!isset($_POST['security_code']) || $_POST['security_code']!= '8981ASDGHJ22123
     {
         $response["status"]=-1;
         $response["err_message"] = "Unauthoried access";
-        entry_log("addanimal","Unknown",$response);     
+        entry_log("animalrequest","Unknown",$response);     
         echo json_encode($response);  
         return;
     }
@@ -28,7 +28,7 @@ else
 {
     $response["status"]=0;
     $response["err_message"] = "Missing parameters!";
-    entry_log("addanimal","Unknown",$response);     
+    entry_log("animalrequest","Unknown",$response);     
     echo json_encode($response);  
     return;
 }
@@ -38,7 +38,7 @@ if(!isset($_POST['PID'],$_POST['request_type']))
 {
     $response["status"]=0;
     $response["err_message"] = "Missing parameters!";
-    entry_log("addanimal","Unknown",$response);     
+    entry_log("animalrequest","Unknown",$response);     
     echo json_encode($response);  
     return;
 }
@@ -104,5 +104,5 @@ if(!$result = mysqli_query($conn,$sql))
 //No error
 $response["status"] = 1; 
 echo json_encode($response);
-entry_log("addanimal",$UID, $response);   //Data logging
+entry_log("animalrequest",$UID, $response);   //Data logging
 ?>

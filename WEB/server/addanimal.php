@@ -59,7 +59,7 @@ if(isset($_FILES['pet_image']['name']))
     {
         $response["status"]=0;
         $response["err_message"] = "Extension type not supported: ".$imageFileType;
-        entry_log("addanimal","Unknown",$response);     
+        entry_log("addanimal",$UID,$response);     
         echo json_encode($response);  
         return;
     }

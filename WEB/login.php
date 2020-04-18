@@ -38,7 +38,8 @@ if(isset($_POST['email']))
 			$_SESSION['userType']=$row["user_type"];
             $_SESSION['FirstName']=$row["first_name"];
             $_SESSION['LastName']=$row["last_name"];
-            
+            $_SESSION['userEmail']=$user_email;
+
             //imaginea de pe gravatar
             $_SESSION['userImg']=get_gravatar($user_email);
             
@@ -80,13 +81,15 @@ function log_in_cookie($token,$conn)
 		$result2 = mysqli_query($conn,$sql2);
 		if($row2 = mysqli_fetch_assoc($result2))
 		{
-            $email=$row2["email"];
+            $email=$row2["user_email"];
+            
             
             $_SESSION['userId']=$row2["UID"];
             $_SESSION['userType']=$row2["user_type"];
             $_SESSION['FirstName']=$row2["first_name"];
             $_SESSION['LastName']=$row2["last_name"];
-                        
+            $_SESSION['userEmail']=$email;
+
             $_SESSION['userImg']=get_gravatar($email);  
 
             setcookie("SecondHomeWeb", $token, time() + (3600 * 24 * 7), "/");

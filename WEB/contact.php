@@ -129,7 +129,11 @@
                             <form action="" method="post">
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <input class="form-control" name="email" placeholder="From:" required>
+                                        <?php if (isset($_SESSION['userId'])): ?>
+                                            <input class="form-control" name="email" value="<?php echo $_SESSION['userEmail']?>" required>
+                                        <?php else: ?>
+                                            <input class="form-control" name="email" placeholder="From:" required>
+                                        <?php endif; ?>
                                     </div>
                                     <div class="form-group">
                                         <input class="form-control" name="subject" placeholder="Subject:" required>

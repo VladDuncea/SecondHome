@@ -48,7 +48,7 @@ else if($_POST['request_type'] == 1)
         {
             $response["status"]=-1;
             $response["err_message"] = "Unauthoried access";
-            entry_log("addanimal","Unknown",$response);     
+            entry_log("getanimals","Unknown",$response);     
             echo json_encode($response);  
             return;
         }
@@ -64,7 +64,7 @@ else if($_POST['request_type'] == 1)
     {
         $response["status"]=0;
         $response["err_message"] = "Missing parameters!";
-        entry_log("addanimal","Unknown",$response);     
+        entry_log("getanimals","Unknown",$response);     
         echo json_encode($response);  
         return;
     }
