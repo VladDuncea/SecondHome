@@ -55,7 +55,7 @@ public class ContactActivity extends AppCompatActivity {
         View.OnClickListener lisenerWriteUs=new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(ContactActivity.this, AchievmentsActivity.class);
+                Intent intent=new Intent(ContactActivity.this, WriteUs.class);
                 startActivity(intent);
             }
         };

@@ -4,24 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".contact.ContactActivity">
 
     <ImageView
         android:id="@+id/bianca"
-        android:layout_width="wrap_content"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="40dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titContacts"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/bianca" />
 
     <ImageView
         android:id="@+id/andreea"
-        android:layout_width="wrap_content"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="34dp"
         android:layout_marginLeft="34dp"
@@ -35,7 +37,7 @@
 
     <ImageView
         android:id="@+id/vlad"
-        android:layout_width="wrap_content"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="34dp"
         android:layout_marginLeft="34dp"
@@ -52,10 +54,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
         android:text="Pascu Bianca"
         android:textColor="@color/colorAccent"
+        android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.128"
         app:layout_constraintStart_toEndOf="@+id/bianca"
         app:layout_constraintTop_toTopOf="@+id/bianca" />
 
@@ -65,69 +69,68 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="10dp"
         android:text="CEO"
         android:textColor="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.116"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toEndOf="@+id/bianca"
         app:layout_constraintTop_toBottomOf="@+id/Bianca" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/Vlad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="166dp"
-        android:layout_marginLeft="166dp"
-        android:layout_marginTop="170dp"
-        android:layout_marginBottom="414dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
         android:text="Duncea Vlad"
         android:textColor="@color/colorAccent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.128"
+        app:layout_constraintStart_toEndOf="@+id/vlad"
+        app:layout_constraintTop_toTopOf="@+id/vlad" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/ceo2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="166dp"
-        android:layout_marginLeft="166dp"
-        android:layout_marginTop="196dp"
-        android:layout_marginBottom="388dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
         android:text="CEO"
         android:textColor="@color/colorAccent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toEndOf="@+id/vlad"
+        app:layout_constraintTop_toBottomOf="@+id/Vlad" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/Andreea"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="166dp"
-        android:layout_marginLeft="166dp"
-        android:layout_marginTop="313dp"
-        android:layout_marginBottom="271dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
         android:text="Bran Andreea"
         android:textColor="@color/colorAccent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.128"
+        app:layout_constraintStart_toEndOf="@+id/andreea"
+        app:layout_constraintTop_toTopOf="@+id/andreea" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/ceo3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="166dp"
-        android:layout_marginLeft="166dp"
-        android:layout_marginTop="338dp"
-        android:layout_marginBottom="246dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
         android:text="CEO"
         android:textColor="@color/colorAccent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toEndOf="@+id/andreea"
+        app:layout_constraintTop_toBottomOf="@+id/Andreea" />
 
     <Button
         android:id="@+id/contactUs"
@@ -135,7 +138,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="500dp"
         android:layout_marginBottom="55dp"
-        android:background="@color/green"
+        android:background="@drawable/btn_shape_round_green"
         android:padding="3dp"
         android:text="Scrie-ne!"
         android:textColor="@color/white"
@@ -149,200 +152,186 @@
         android:id="@+id/aboutUs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="49dp"
-        android:layout_marginLeft="49dp"
-        android:layout_marginTop="565dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
         android:background="@color/white"
+        android:textColor="@android:color/tab_indicator_text"
+        android:textAllCaps="false"
         android:text="Despre noi"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@id/facilities" />
 
     <Button
         android:id="@+id/facilities"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="560dp"
         android:background="@color/white"
+        android:textColor="@android:color/tab_indicator_text"
+        android:textAllCaps="false"
         android:text="Facilități"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/achievments"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="566dp"
-        android:layout_marginEnd="45dp"
-        android:layout_marginRight="45dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
         android:background="@color/white"
         android:text="Realizări"
+        android:textColor="@android:color/tab_indicator_text"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/facilities" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="190dp"
-        android:layout_marginLeft="190dp"
-        android:layout_marginTop="69dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="2dp"
         android:layout_marginBottom="515dp"
         android:text="0719858256"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/phone1"
+        app:layout_constraintTop_toBottomOf="@id/textView3" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="190dp"
-        android:layout_marginLeft="190dp"
-        android:layout_marginTop="88dp"
-        android:layout_marginBottom="496dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="2dp"
         android:text="bianca.pascu@yahoo.com"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/email1"
+        app:layout_constraintTop_toBottomOf="@id/phone1" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/phone2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="194dp"
-        android:layout_marginLeft="194dp"
-        android:layout_marginTop="216dp"
-        android:layout_marginBottom="368dp"
-        android:text="0756389810"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="515dp"
+        android:text="0719858256"
+        app:layout_constraintStart_toEndOf="@id/phoneIcon2"
+        app:layout_constraintTop_toBottomOf="@id/ceo2" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/emailVlad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="194dp"
-        android:layout_marginLeft="194dp"
-        android:layout_marginTop="234dp"
-        android:layout_marginBottom="350dp"
-        android:text="vlad.duncea@yahoo.com"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="duncea.vlad@yahoo.com"
+        app:layout_constraintStart_toEndOf="@id/email2"
+        app:layout_constraintTop_toBottomOf="@id/phone2" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/phone3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="195dp"
-        android:layout_marginLeft="195dp"
-        android:layout_marginTop="360dp"
-        android:layout_marginBottom="224dp"
-        android:text="0726738456"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="196dp"
-        android:layout_marginLeft="196dp"
-        android:layout_marginTop="381dp"
-        android:layout_marginBottom="203dp"
-        android:text="andreea.bran@yahoo.com"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="515dp"
+        android:text="0719858256"
+        app:layout_constraintStart_toEndOf="@id/phoneIcon3"
+        app:layout_constraintTop_toBottomOf="@id/ceo3" />
 
     <TextView
         android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="bran.andree@yahoo.com"
+        app:layout_constraintStart_toEndOf="@id/email3"
+        app:layout_constraintTop_toBottomOf="@id/phone3" />
+
+    <TextView
+        android:id="@+id/phone1"
         android:layout_width="23dp"
         android:layout_height="20dp"
-        android:layout_marginStart="163dp"
-        android:layout_marginLeft="163dp"
-        android:layout_marginTop="69dp"
-        android:layout_marginBottom="514dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="0dp"
         android:background="@drawable/ic_phone_black_24dp"
         android:text=""
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/bianca"
+        app:layout_constraintTop_toBottomOf="@id/textView3" />
 
     <TextView
-        android:id="@+id/textView16"
-        android:layout_width="24dp"
+        android:id="@+id/phoneIcon2"
+        android:layout_width="23dp"
         android:layout_height="20dp"
-        android:layout_marginStart="166dp"
-        android:layout_marginLeft="166dp"
-        android:layout_marginTop="216dp"
-        android:layout_marginBottom="367dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="0dp"
         android:background="@drawable/ic_phone_black_24dp"
         android:text=""
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/vlad"
+        app:layout_constraintTop_toBottomOf="@id/ceo2" />
 
     <TextView
-        android:id="@+id/textView17"
-        android:layout_width="25dp"
-        android:layout_height="23dp"
-        android:layout_marginStart="165dp"
-        android:layout_marginLeft="165dp"
-        android:layout_marginTop="359dp"
-        android:layout_marginBottom="225dp"
+        android:id="@+id/phoneIcon3"
+        android:layout_width="23dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="0dp"
         android:background="@drawable/ic_phone_black_24dp"
         android:text=""
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/andreea"
+        app:layout_constraintTop_toBottomOf="@id/ceo3" />
 
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/email1"
         android:layout_width="23dp"
         android:layout_height="22dp"
-        android:layout_marginStart="163dp"
-        android:layout_marginLeft="163dp"
-        android:layout_marginTop="89dp"
-        android:layout_marginBottom="492dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="0dp"
         android:background="@drawable/ic_mail_outline_black_24dp"
         android:text=""
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/bianca"
+        app:layout_constraintTop_toBottomOf="@id/phone1" />
 
     <TextView
-        android:id="@+id/textView19"
-        android:layout_width="22dp"
+        android:id="@+id/email2"
+        android:layout_width="23dp"
         android:layout_height="22dp"
-        android:layout_marginStart="166dp"
-        android:layout_marginLeft="166dp"
-        android:layout_marginTop="234dp"
-        android:layout_marginBottom="347dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="0dp"
         android:background="@drawable/ic_mail_outline_black_24dp"
         android:text=""
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/vlad"
+        app:layout_constraintTop_toBottomOf="@id/phone2" />
 
     <TextView
-        android:id="@+id/textView20"
-        android:layout_width="24dp"
-        android:layout_height="23dp"
-        android:layout_marginStart="165dp"
-        android:layout_marginLeft="165dp"
-        android:layout_marginTop="381dp"
-        android:layout_marginBottom="199dp"
+        android:id="@+id/email3"
+        android:layout_width="23dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="0dp"
         android:background="@drawable/ic_mail_outline_black_24dp"
         android:text=""
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/andreea"
+        app:layout_constraintTop_toBottomOf="@id/phone3" />
+
+    <TextView
+        android:id="@+id/titContacts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/dancingscript"
+        android:text="Contacte"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
