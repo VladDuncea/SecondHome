@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".contact.WriteUs"></activity>
+        <activity android:name=".showanimals.DogActivity" />
+        <activity android:name=".showanimals.CatActivity" />
         <activity android:name=".contact.AchievmentsActivity" />
         <activity android:name=".contact.FacilitiesActivity" />
         <activity android:name=".contact.AboutUsActivity" />

@@ -13,6 +13,7 @@ import com.example.secondhome.Main2LoggedInActivity;
 import com.example.secondhome.R;
 
 public class ContactActivity extends AppCompatActivity {
+    Button contactUs;
     Button aboutus;
     Button achievements;
     Button facilities;
@@ -50,6 +51,15 @@ public class ContactActivity extends AppCompatActivity {
             }
         };
         achievements.setOnClickListener(lisenerAchievments);
+        contactUs=(Button) findViewById(R.id.contactUs);
+        View.OnClickListener lisenerWriteUs=new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(ContactActivity.this, AchievmentsActivity.class);
+                startActivity(intent);
+            }
+        };
+        contactUs.setOnClickListener(lisenerWriteUs);
     }
 
 }

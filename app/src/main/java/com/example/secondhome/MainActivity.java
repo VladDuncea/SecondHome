@@ -18,6 +18,9 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import com.example.secondhome.contact.ContactActivity;
+import com.example.secondhome.showanimals.CatActivity;
+import com.example.secondhome.showanimals.DogActivity;
 import com.example.secondhome.ui.login.LoginActivity;
 import com.example.secondhome.ui.login.RegisterActivity;
 import com.google.android.material.navigation.NavigationView;
@@ -34,12 +37,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        setNavigationViewListener();
         mDrawer=(DrawerLayout) findViewById(R.id.mainmenu);
         mToggle= new ActionBarDrawerToggle(this, mDrawer,R.string.open,R.string.close);
         navigationView = (NavigationView) findViewById(R.id.mymenu);
         mDrawer.addDrawerListener(mToggle);
-      //  mDrawer.addDrawerListener();
         mToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -67,20 +69,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     private void setNavigationViewListener() {
-        System.out.println("in here");
+        System.out.println("setting navigation listener");
         NavigationView navigationView = (NavigationView) findViewById(R.id.mymenu);
         navigationView.setNavigationItemSelectedListener(this);
     }
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
-        System.out.println("in here2");
+        System.out.println("On selected item");
         switch (item.getItemId()) {
 
-            case R.id.db: {
-
+            case R.id.db8:
+                Intent intent=new Intent(MainActivity.this, ContactActivity.class);
+                startActivity(intent);
                 break;
-            }
+            case R.id.db2:
+                intent=new Intent(MainActivity.this, CatActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.db3:
+                intent=new Intent(MainActivity.this, DogActivity.class);
+                startActivity(intent);
+                break;
         }
         //close navigation drawer
         mDrawer.closeDrawer(GravityCompat.START);
@@ -89,6 +99,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         System.out.println("in here");
+
         if(item.getItemId()==R.id.db)
         {
             System.out.println("in here");

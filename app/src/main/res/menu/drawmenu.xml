@@ -6,19 +6,37 @@
         android:icon="@drawable/ic_home_black_24dp"
         />
     <item
-        android:id="@+id/db1"
-        android:title="View Pets"
+        android:id="@+id/db9"
+        android:title="Toate animalele"
         android:icon="@drawable/ic_paw" />
-    <item
+    <group>
+        <item
         android:id="@+id/db2"
-        android:title="item2"
-        android:icon="@drawable/ic_paw" />
+        android:title="Pisici"
+        android:icon="@drawable/ic_black_cat" />
+        <item
+            android:id="@+id/db3"
+            android:title="Câini"
+            android:icon="@drawable/ic_dog" />
+        <item
+            android:id="@+id/db4"
+            android:title="Rozătoare"
+            android:icon="@drawable/ic_rabbit" />
+        <item
+            android:id="@+id/db5"
+            android:title="Reptile"
+            android:icon="@drawable/ic_snake" />
+        <item
+            android:id="@+id/db6"
+            android:title="Păsări"
+            android:icon="@drawable/ic_parrot" />
+        <item
+            android:id="@+id/db7"
+            android:title="Acvatice"
+            android:icon="@drawable/ic_fish" />
+    </group>
     <item
-        android:id="@+id/db3"
-        android:title="item3"
-        android:icon="@drawable/ic_paw" />
-    <item
-        android:id="@+id/db4"
+        android:id="@+id/db8"
         android:title="Contact"
         android:icon="@drawable/ic_phone_black_24dp" />
 </menu>

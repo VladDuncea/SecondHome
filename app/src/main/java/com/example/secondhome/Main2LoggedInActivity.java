@@ -33,6 +33,7 @@ public class Main2LoggedInActivity extends AppCompatActivity implements Navigati
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2_logged_in);
+        setNavigationViewListener();
         nameMessage=(TextView) findViewById(R.id.userMessage);
         nameMessage.append(" Bine ai venit, "+ AppSingleton.getInstance(getApplicationContext()).getLoggedInUserName().toString()+"!");
 
@@ -43,16 +44,6 @@ public class Main2LoggedInActivity extends AppCompatActivity implements Navigati
         //  mDrawer.addDrawerListener();
         mToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        contact=(Button) findViewById(R.id.contactButtonLoggedIn);
-
-        View.OnClickListener lisenerContact=new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(Main2LoggedInActivity.this, ContactActivity.class);
-                startActivity(intent);
-            }
-        };
-        contact.setOnClickListener(lisenerContact);
 
         //logout
         logout=(Button) findViewById(R.id.logout);
@@ -91,9 +82,10 @@ public class Main2LoggedInActivity extends AppCompatActivity implements Navigati
         System.out.println("in here2");
         switch (item.getItemId()) {
 
-            case R.id.db: {
+            case R.id.db8: {
+                Intent intent=new Intent(Main2LoggedInActivity.this, ContactActivity.class);
+                startActivity(intent);
 
-                break;
             }
         }
         //close navigation drawer

@@ -35,13 +35,13 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/contactButtonLoggedIn"
+            android:id="@+id/animalForm"
             android:layout_width="143dp"
             android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="472dp"
             android:background="@drawable/btn_shape_round"
-            android:text="Contact"
+            android:text="Adaugă un animal"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -59,19 +59,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/animalForm"
-            android:layout_width="143dp"
-            android:layout_height="43dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="416dp"
-            android:background="@drawable/btn_shape_round"
-
-            android:text="Adaugă un animal"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
 
         />
