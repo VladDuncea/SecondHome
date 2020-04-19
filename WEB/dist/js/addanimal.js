@@ -1,13 +1,20 @@
+var cropper;
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
 
         reader.onload = function(e) {
-            $('#blah')
-                .attr('src', e.target.result)
-                .width(160)
-                .height(160);
-            document.getElementById("blah").style.display = "initial";
+            $('#blah').attr('src', e.target.result);
+            
+            var image = document.querySelector('#blah');
+            image.style.display = "initial";
+            if(cropper)
+            {
+                cropper.destroy();
+            }
+            cropper = new Cropper(image, {
+            aspectRatio: 1,
+            viewMode: 3});
         };
         reader.readAsDataURL(input.files[0]);
 
@@ -19,13 +26,25 @@ function add_animal() {
     var categorie = document.getElementById('inputCategorie').value;
     // console.log(categorie)
     var jform = new FormData();
-    jform.append('pet_image', $('#getFile')[0].files[0]);
+    var canvas;
+    if (cropper) {
+        canvas = cropper.getCroppedCanvas({
+        width: 128,
+        height: 128,
+        });
+    }
+    //jform.append('pet_image', $('#getFile')[0].files[0]);
+    jform.append('imgbase64', canvas.toDataURL());
     jform.append('pet_name', document.getElementById('inputName').value);
     jform.append('pet_description', document.getElementById('inputDescription').value);
     jform.append('pet_type', categorie);
     jform.append('pet_breed', document.getElementById('inputRasa').value);
     jform.append('pet_age', document.getElementById('inputVarsta').value);
-
+    if(cropper)
+    {
+        cropper.destroy();
+        cropper= null;
+    }
     $.ajax({
         url: '/server/addanimal.php',
         type: 'POST',

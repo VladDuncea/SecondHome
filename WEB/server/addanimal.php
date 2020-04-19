@@ -36,37 +36,41 @@ else if ($_POST['security_code']== '8981ASDGHJ22123')
 }
 
 $pet_image = null;
-if(isset($_FILES['pet_image']['name']))
+// if(isset($_FILES['pet_image']['name']))
+// {
+//     /* Getting file name */
+//     $filename = $_FILES['pet_image']['name'];
+
+//     /* Location */
+//     $location = "upload/".$filename;
+//     $imageFileType = pathinfo($location,PATHINFO_EXTENSION);
+  
+//     // Valid file extensions
+//     $extensions_arr = array("jpg","jpeg","png","gif");
+  
+//     // Check extension
+//     if(in_array(strtolower($imageFileType),$extensions_arr) )
+//     {
+//         $tmpfname = tempnam(sys_get_temp_dir(), 'IMG');
+//         compressImage($_FILES['pet_image']['tmp_name'],$tmpfname,60);
+//         // Convert to base64 
+//         $image_base64 = base64_encode(file_get_contents($tmpfname) );
+//         $pet_image = 'data:image/'.$imageFileType.';base64,'.$image_base64;
+//     }
+//     else
+//     {
+//         $response["status"]=0;
+//         $response["err_message"] = "Extension type not supported: ".$imageFileType;
+//         entry_log("addanimal",$UID,$response);     
+//         echo json_encode($response);  
+//         return;
+//     }
+
+//     //$pet_image = addslashes (file_get_contents($_FILES['pet_image']['tmp_name']));
+// }
+if(isset($_POST["imgbase64"]))
 {
-    /* Getting file name */
-    $filename = $_FILES['pet_image']['name'];
-
-    /* Location */
-    $location = "upload/".$filename;
-    $imageFileType = pathinfo($location,PATHINFO_EXTENSION);
-  
-    // Valid file extensions
-    $extensions_arr = array("jpg","jpeg","png","gif");
-  
-    // Check extension
-    if(in_array(strtolower($imageFileType),$extensions_arr) )
-    {
-        $tmpfname = tempnam(sys_get_temp_dir(), 'IMG');
-        compressImage($_FILES['pet_image']['tmp_name'],$tmpfname,60);
-        // Convert to base64 
-        $image_base64 = base64_encode(file_get_contents($tmpfname) );
-        $pet_image = 'data:image/'.$imageFileType.';base64,'.$image_base64;
-    }
-    else
-    {
-        $response["status"]=0;
-        $response["err_message"] = "Extension type not supported: ".$imageFileType;
-        entry_log("addanimal",$UID,$response);     
-        echo json_encode($response);  
-        return;
-    }
-
-    //$pet_image = addslashes (file_get_contents($_FILES['pet_image']['tmp_name']));
+    $pet_image = $_POST["imgbase64"];
 }
 
 
