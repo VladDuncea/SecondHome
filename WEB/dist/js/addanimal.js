@@ -7,6 +7,7 @@ function readURL(input) {
             $('#blah').attr('src', e.target.result);
             
             var image = document.querySelector('#blah');
+            //document.querySelector('#cropper_container').style.height = "500px";
             image.style.display = "initial";
             if(cropper)
             {
@@ -84,6 +85,7 @@ var validator = $('#addanimal_form').validate({
         add_animal();
         form.reset();
         document.getElementById("blah").style.display = "none";
+        //document.querySelector('#cropper_container').style.height = "1";
     },
     rules: {
         animal_name: {

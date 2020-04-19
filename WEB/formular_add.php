@@ -11,12 +11,14 @@
     } ?>
     <link rel="stylesheet" href="plugins/cropper/cropper.css">
     <style>
-
-
-    #blah {
-        max-width: 100%;
+    .container
+    {
+        max-width:500px;
     }
-  </style>
+    #blah {
+        width: 100%;
+    }
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -106,10 +108,10 @@
                                         <button type="button" class="btn btn-secondary" style="margin: 5px" onclick="document.getElementById('getFile').click()">Încarcă o imagine</button>
                                         <input type='file' id="getFile" name="animal_image" style="visibility:hidden;" onchange="readURL(this);"/><br>
                                         <!-- <input type='file' onchange="readURL(this);" > -->
-                                        <div class="container">
-                                            <img id="blah" src="#" style="display:none" alt="Imagine încărcată" />
+                                        <div id="cropper_container" class="container">
+                                            <img id="blah" src="#" style="display:none" alt="Imagine încărcată" class="cropper-hidden"/>
                                         </div>
-                                        <br>  
+                                        
                                     </div>
                                     <!-- ------------------------------------------------- -->
                                     <!-- <div class="container">

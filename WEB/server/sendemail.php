@@ -1,4 +1,7 @@
 <?php
+include "php/connection.php";
+include "php/header.php";
+$response["status"]=-1;
 //TRIMITERE EMAIL
 if(!isset($_POST['security_code']) || $_POST['security_code']!= '8981ASDGHJ22123')
 {
