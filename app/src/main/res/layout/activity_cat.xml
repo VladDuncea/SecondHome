@@ -7,20 +7,10 @@
     android:orientation="vertical"
     android:id="@+id/showallCats"
     android:gravity="center"
-    tools:context=".showanimals.CatActivity">
+    tools:context=".showanimals.AnimalsActivity">
 
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/mymenuCats"
-        android:layout_width="290dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/header"
-        app:itemIconTint="@color/colorAccent"
-        app:itemTextColor="@color/colorAccent"
-        app:menu="@menu/drawmenu">
 
-    </com.google.android.material.navigation.NavigationView>
 
         <ScrollView
             android:layout_width="391dp"
@@ -38,13 +28,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:layout_marginStart="85dp"
-                android:layout_marginLeft="85dp"
-                android:layout_marginEnd="85dp"
-                android:layout_marginRight="85dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
                 android:paddingBottom="10dp"
                 android:fontFamily="@font/dancingscript"
-                android:text="Pisicile noastre"
+                android:text="Asteapta sa fie adoptati"
                 android:textSize="40sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -53,6 +43,16 @@
                 />
             </LinearLayout>
         </ScrollView>
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/mymenuCats"
+        android:layout_width="290dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/header"
+        app:itemIconTint="@color/colorAccent"
+        app:itemTextColor="@color/colorAccent"
+        app:menu="@menu/drawmenu">
 
+    </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>

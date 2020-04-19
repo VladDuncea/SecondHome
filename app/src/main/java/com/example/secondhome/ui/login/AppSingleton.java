@@ -12,6 +12,7 @@ public class AppSingleton {
     private RequestQueue mRequestQueue;
     private static Context mContext;
     private static LoggedInUser user=null;
+    private String animalsToShow=null;
     private AppSingleton(Context context) {
         mContext = context;
         mRequestQueue = getRequestQueue();
@@ -40,6 +41,11 @@ public class AppSingleton {
         return user.getDisplayName();
 
     }
+    public void setAnimalsToShow(String s){
+        System.out.println("in animals");
+        animalsToShow=s;}
+    public String getAnimalsToShow(){if(animalsToShow!=null) return animalsToShow;
+        return "0";}
     public void setUser(LoggedInUser u)
     {
         this.user=u;

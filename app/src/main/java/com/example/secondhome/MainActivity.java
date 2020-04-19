@@ -7,25 +7,19 @@ import androidx.appcompat.view.menu.ActionMenuItem;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 
 import com.example.secondhome.contact.ContactActivity;
-import com.example.secondhome.showanimals.CatActivity;
+import com.example.secondhome.showanimals.AnimalsActivity;
 import com.example.secondhome.showanimals.DogActivity;
+import com.example.secondhome.ui.login.AppSingleton;
 import com.example.secondhome.ui.login.LoginActivity;
 import com.example.secondhome.ui.login.RegisterActivity;
 import com.google.android.material.navigation.NavigationView;
-
-import java.io.Console;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
     private Button login,register;
@@ -37,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         setNavigationViewListener();
         mDrawer=(DrawerLayout) findViewById(R.id.mainmenu);
         mToggle= new ActionBarDrawerToggle(this, mDrawer,R.string.open,R.string.close);
@@ -76,21 +72,59 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
-        System.out.println("On selected item");
+        System.out.println("On navigation selected item");
+        System.out.println(AppSingleton.getInstance(getApplicationContext()).getAnimalsToShow());
         switch (item.getItemId()) {
 
-            case R.id.db8:
-                Intent intent=new Intent(MainActivity.this, ContactActivity.class);
+            case R.id.db0:
+                AppSingleton.getInstance(getApplicationContext()).setAnimalsToShow("0");
+                Intent intent=new Intent(MainActivity.this, AnimalsActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.db1:
+                AppSingleton.getInstance(getApplicationContext()).setAnimalsToShow("1");
+                intent=new Intent(MainActivity.this, AnimalsActivity.class);
                 startActivity(intent);
                 break;
             case R.id.db2:
-                intent=new Intent(MainActivity.this, CatActivity.class);
+                AppSingleton.getInstance(getApplicationContext()).setAnimalsToShow("2");
+                intent=new Intent(MainActivity.this, AnimalsActivity.class);
                 startActivity(intent);
                 break;
             case R.id.db3:
-                intent=new Intent(MainActivity.this, DogActivity.class);
+                AppSingleton.getInstance(getApplicationContext()).setAnimalsToShow("3");
+                intent=new Intent(MainActivity.this, AnimalsActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.db4:
+                AppSingleton.getInstance(getApplicationContext()).setAnimalsToShow("4");
+                intent=new Intent(MainActivity.this, AnimalsActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.db5:
+                AppSingleton.getInstance(getApplicationContext()).setAnimalsToShow("5");
+                intent=new Intent(MainActivity.this, AnimalsActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.db6:
+                AppSingleton.getInstance(getApplicationContext()).setAnimalsToShow("6");
+                intent=new Intent(MainActivity.this, AnimalsActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.db:
+                if(AppSingleton.getInstance(getApplicationContext()).getUser()!=null)
+                {
+                    intent=new Intent(MainActivity.this, Main2LoggedInActivity.class);
+                    intent.putExtra("username", AppSingleton.getInstance(getApplicationContext()).getLoggedInUserName());
+                }
+                else intent=new Intent(MainActivity.this, MainActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.db8:
+                intent=new Intent(MainActivity.this, ContactActivity.class);
+                startActivity(intent);
+                break;
+
         }
         //close navigation drawer
         mDrawer.closeDrawer(GravityCompat.START);
@@ -99,14 +133,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         System.out.println("in here");
-
-        if(item.getItemId()==R.id.db)
-        {
-            System.out.println("in here");
-            Intent intent=new Intent(this, LoginActivity.class);
-            startActivity(intent);
-            return true;
-        }
         if(mToggle.onOptionsItemSelected(item))
         {
             return true;

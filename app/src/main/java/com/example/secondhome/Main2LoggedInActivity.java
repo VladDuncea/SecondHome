@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.secondhome.contact.ContactActivity;
+import com.example.secondhome.showanimals.AnimalsActivity;
 import com.example.secondhome.ui.login.AppSingleton;
 import com.example.secondhome.ui.login.LoginActivity;
 import com.google.android.material.navigation.NavigationView;
@@ -79,14 +80,58 @@ public class Main2LoggedInActivity extends AppCompatActivity implements Navigati
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
-        System.out.println("in here2");
+        System.out.println("On navigation selected item");
         switch (item.getItemId()) {
 
-            case R.id.db8: {
-                Intent intent=new Intent(Main2LoggedInActivity.this, ContactActivity.class);
+            case R.id.db0:
+                AppSingleton.getInstance(getApplicationContext()).setAnimalsToShow("0");
+                Intent intent=new Intent(Main2LoggedInActivity.this, AnimalsActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.db1:
+                AppSingleton.getInstance(getApplicationContext()).setAnimalsToShow("1");
+                intent=new Intent(Main2LoggedInActivity.this, AnimalsActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.db2:
+                AppSingleton.getInstance(getApplicationContext()).setAnimalsToShow("2");
+                intent=new Intent(Main2LoggedInActivity.this, AnimalsActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.db3:
+                AppSingleton.getInstance(getApplicationContext()).setAnimalsToShow("3");
+                intent=new Intent(Main2LoggedInActivity.this, AnimalsActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.db4:
+                AppSingleton.getInstance(getApplicationContext()).setAnimalsToShow("4");
+                intent=new Intent(Main2LoggedInActivity.this, AnimalsActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.db5:
+                AppSingleton.getInstance(getApplicationContext()).setAnimalsToShow("5");
+                intent=new Intent(Main2LoggedInActivity.this, AnimalsActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.db6:
+                AppSingleton.getInstance(getApplicationContext()).setAnimalsToShow("6");
+                intent=new Intent(Main2LoggedInActivity.this,AnimalsActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.db:
+                if(AppSingleton.getInstance(getApplicationContext()).getUser()!=null)
+                {
+                    intent=new Intent(Main2LoggedInActivity.this, Main2LoggedInActivity.class);
+                    intent.putExtra("username", AppSingleton.getInstance(getApplicationContext()).getLoggedInUserName());
+                }
+                else intent=new Intent(Main2LoggedInActivity.this, MainActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.db8:
+                intent=new Intent(Main2LoggedInActivity.this, ContactActivity.class);
+                startActivity(intent);
+                break;
 
-            }
         }
         //close navigation drawer
         mDrawer.closeDrawer(GravityCompat.START);
