@@ -51,9 +51,11 @@ if(isset($_FILES['pet_image']['name']))
     // Check extension
     if(in_array(strtolower($imageFileType),$extensions_arr) )
     {
-      // Convert to base64 
-      $image_base64 = base64_encode(file_get_contents($_FILES['pet_image']['tmp_name']) );
-      $pet_image = 'data:image/'.$imageFileType.';base64,'.$image_base64;
+        $tmpfname = tempnam(sys_get_temp_dir(), 'IMG');
+        compressImage($_FILES['pet_image']['tmp_name'],$tmpfname,60);
+        // Convert to base64 
+        $image_base64 = base64_encode(file_get_contents($tmpfname) );
+        $pet_image = 'data:image/'.$imageFileType.';base64,'.$image_base64;
     }
     else
     {
@@ -120,4 +122,24 @@ if(!$result = mysqli_query($conn,$sql))
 $response["status"] = 1; 
 echo json_encode($response);
 entry_log("addanimal",$UID, $response);   //Data logging
+
+
+// Compress image
+function compressImage($source, $destination, $quality) 
+{
+
+    $info = getimagesize($source);
+  
+    if ($info['mime'] == 'image/jpeg') 
+      $image = imagecreatefromjpeg($source);
+  
+    elseif ($info['mime'] == 'image/gif') 
+      $image = imagecreatefromgif($source);
+  
+    elseif ($info['mime'] == 'image/png') 
+      $image = imagecreatefrompng($source);
+  
+    imagejpeg($image, $destination, $quality);
+  
+}
 ?>
