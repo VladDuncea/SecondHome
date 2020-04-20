@@ -10,8 +10,9 @@ function get_animal(request_type_active, pet_type) {
         var type_animal = ["Toate", "Pisici", "Câini", "Rozătoare", "Reptile", "Păsări", "Acvatice"]
         if (request_type_active == 0) {
             for (var i = 0; i < nr_animals; i++) {
+                // col-sm-3
                 const animal_box = `
-         <div class="d-flex col-sm-3">
+         <div class="d-flex">
             <div class="card bg-light">
                 <div class="card-header text-muted border-bottom-0" >
                    ${type_animal[animals[i].type]}
@@ -25,7 +26,7 @@ function get_animal(request_type_active, pet_type) {
 
                         </div>
                         <div class="col-4 text-center">
-                            <img height="350" width="320" src='${animals[i].image}' alt="" class="img-circle img-fluid " >
+                            <img  style="height:300 ; width: 300px" src='${animals[i].image}' alt="" class="img-circle img-fluid" >
                         </div>
                     </div>
                 </div>
@@ -104,7 +105,7 @@ function get_animal(request_type_active, pet_type) {
                         buttonState = buttonState1
 
                     const animal_box = `
-                                        <div class="d-flex col-sm-3">
+                                        <div class="d-flex ">
                                             <div class="card bg-light">
                                             <div class="card-header text-muted border-bottom-0" >
                                             ${type_animal[animals[i].type]}
@@ -118,7 +119,7 @@ function get_animal(request_type_active, pet_type) {
                             
                                                     </div>
                                                     <div class="col-4 text-center">
-                                                        <img height="350" width="320" src='${animals[i].image}' alt="" class="img-circle img-fluid">
+                                                        <img style="height:300 ; width: 300px" src='${animals[i].image}' alt="" class="img-circle img-fluid">
                                                     </div>
                                                 </div>
                                             </div>
@@ -148,7 +149,7 @@ function get_animal(request_type_active, pet_type) {
                 } else if (`${buttonState2}` == '<i class="fas fa-paw"></i> Da spre adoptie' && `${buttonState1}` == '<i class="fas fa-paw"></i> Cazează') {
                     // --------------------------------------------------------------------------
                     const animal_box = `
-                                <div class="d-flex col-sm-3">
+                                <div class="d-flex ">
                                     <div class="card bg-light">
                                     <div class="card-header text-muted border-bottom-0" >
                                     ${type_animal[animals[i].type]}
@@ -162,7 +163,7 @@ function get_animal(request_type_active, pet_type) {
 
                                             </div>
                                             <div class="col-4 text-center">
-                                                <img height="350" width="320" src='${animals[i].image}' alt="" class="img-circle img-fluid">
+                                                <img style="height:300 ; width: 300px" src='${animals[i].image}' alt="" class="img-circle img-fluid">
                                             </div>
                                         </div>
                                     </div>

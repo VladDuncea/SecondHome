@@ -92,6 +92,13 @@
     <script src="../dist/js/demo.js"></script>
     <script src="../dist/js/getanimals.js"></script>
 
+    <!-- <style>
+  
+    .img-fluid {
+      max-width: 90%;
+      height: 80px;
+    }
+    </style> -->
     
     
 </body>
