@@ -35,33 +35,59 @@
                                 <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
                                 <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
                                 <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="7"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="8"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="9"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="10"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="11"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="12"></li>
+
                                 <!-- <li data-target="#carouselExampleIndicators" data-slide-to="7"></li> -->
                             </ol>
                             <div class="carousel-inner">
+
                                 <div class="carousel-item active">
-                                <img class="d-block w-100" src="image/index.png" alt="First slide">
-                                </div>
-                                <!-- <div class="carousel-item">
-                                <img class="d-block w-100" src="image/animal4.png" alt="Third slide">
-                                </div> -->
-                                <div class="carousel-item">
-                                <img class="d-block w-100" src="image/animal3.png" alt="Third slide">
+                                <img class="d-block w-100" src="image/4.jpg" alt="Third slide">
                                 </div>
                                 <div class="carousel-item">
-                                <img class="d-block w-100" src="image/animal.png" alt="Second slide">
+                                <img class="d-block w-100" src="image/8.jpg" alt="Third slide">
+                                </div>
+                                <div class="carousel-item ">
+                                <img class="d-block w-100" src="image/animal6.png" alt="Third slide">
                                 </div>
                                 <div class="carousel-item">
-                                <img class="d-block w-100" src="image/animal2.png" alt="Third slide">
+                                <img class="d-block w-100" src="image/9.jpg" alt="Third slide">
                                 </div>
+                                <div class="carousel-item">
+                                <img class="d-block w-100" src="image/1.jpg" alt="Third slide">
+                                </div>
+                                <div class="carousel-item">
+                                <img class="d-block w-100" src="image/2.jpg "alt="Second slide">
+                                </div>
+                                <div class="carousel-item">
+                                <img class="d-block w-100" src="image/3.jpg" alt="Third slide">
+                                </div>
+                                <div class="carousel-item">
+                                <img class="d-block w-100" src="image/5.jpg" alt="Third slide">
+                                </div>
+                                
                                 <div class="carousel-item">
                                 <img class="d-block w-100" src="image/animal5.png" alt="Third slide">
                                 </div>
                                 <div class="carousel-item">
-                                <img class="d-block w-100" src="image/animal6.png" alt="Third slide">
+                                <img class="d-block w-100" src="image/7.jpg" alt="Third slide">
+                                </div>
+                                <div class="carousel-item">
+                                <img class="d-block w-100" src="image/6.jpg" alt="Third slide">
+                                </div>
+                                <div class="carousel-item">
+                                <img class="d-block w-100" src="image/10.jpg" alt="Third slide">
                                 </div>
                                 <div class="carousel-item">
                                 <img class="d-block w-100" src="image/animal7.png" alt="Third slide">
                                 </div>
+                                
+                               
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
