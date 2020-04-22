@@ -36,7 +36,9 @@ function get_animal(request_type_active, pet_type) {
                             </a>
                         </div>
                     </div>
-                      </div> </div>`;
+                </div>
+                
+                </div>`;
                 // console.log(document.getElementById('boxAnimals'));
 
                 if (document.getElementById('boxAnimals') != null) {

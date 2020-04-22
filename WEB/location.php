@@ -41,9 +41,19 @@
 
             <!-- Main content -->
             <section class="content">
+            <div class="card-body pb-0" >
+               
+                        <div class="card-body"> 
+                            <div id="googleMap1" style="width:100%;height:400px;"></div> 
+                        </div>
+                 
 
-            
-                    
+               
+                        <div class="card-body"> 
+                        <div id="googleMap2" style="width:100%;height:400px;"></div> 
+                        </div>
+                 
+                </div>
             </section>
             <!-- /.content -->
         </div>
@@ -60,6 +70,35 @@
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
+    <script>
+        function myMap() {
+            var myLatLng = {lat: 44.439663, lng: 26.096306};
+
+            var map1= new google.maps.Map(document.getElementById("googleMap1"), {
+            center:myLatLng,
+            zoom:17,
+        })
+            var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map1,
+            title: 'Second Home'
+            });
+        
+            var myLatLng = {lat: 44.4396, lng: 26.196306};
+
+            var map2= new google.maps.Map(document.getElementById("googleMap2"), {
+            center:myLatLng,
+            zoom:17,
+            })
+            var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map2,
+            title: 'Second Home'
+            });
+        }
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBGabViU3Y4MWiD6U7APxaO3KyBH4QlpY&callback=myMap"></script>
 
     <!-- jQuery -->
     <script src="../plugins/jquery/jquery.min.js"></script>

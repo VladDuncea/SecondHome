@@ -70,7 +70,6 @@
                                 <div class="carousel-item">
                                 <img class="d-block w-100" src="image/5.jpg" alt="Third slide">
                                 </div>
-                                
                                 <div class="carousel-item">
                                 <img class="d-block w-100" src="image/animal5.png" alt="Third slide">
                                 </div>
