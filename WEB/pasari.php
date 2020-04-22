@@ -24,12 +24,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Păsări</h1>
+                            <h1><i class="nav-icon fas fa-crow"></i> Păsări</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="index.php">Acasă</a></li>
-                                <li class="breadcrumb-item active">Păsări</li>
+                                <li class="breadcrumb-item active"><i class="nav-icon fas fa-crow"></i> Păsări</li>
                             </ol>
                         </div>
                     </div>

@@ -11,34 +11,32 @@ function get_animal(request_type_active, pet_type) {
         if (request_type_active == 0) {
             for (var i = 0; i < nr_animals; i++) {
                 // col-sm-3
-                const animal_box = `
-         <div class="d-flex">
-            <div class="card bg-light">
-                <div class="card-header text-muted border-bottom-0" >
-                   ${type_animal[animals[i].type]}
-                </div>
-                <div class="card-body pt-0">
-                    <div class="row">
-                        <div class="col-7">
-                            <h2 class="lead" ><b>${animals[i].name}</b></h2>
-                            <p class="text-muted text-sm" ><b>Vârstă: </b> ${animals[i].birthdate}</p>
-                            <p class="text-muted text-sm" ><b>Rasă: </b> ${animals[i].breed} </p>
-
-                        </div>
-                        <div class="col-4 text-center">
-                            <img  style="height:300 ; width: 300px" src='${animals[i].image}' alt="" class="img-circle img-fluid" >
+                const animal_box = `<div class="d-flex">
+                <div class="card bg-light">
+                    <div class="card-header text-muted border-bottom-0" >
+                       ${type_animal[animals[i].type]}
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="row">
+                            <div class="col-7">
+                                <h2 class="lead" ><b>${animals[i].name}</b></h2>
+                                <p class="text-muted text-sm" ><b>Vârstă: </b> ${animals[i].birthdate}</p>
+                                <p class="text-muted text-sm" ><b>Rasă: </b> ${animals[i].breed} </p>
+    
+                            </div>
+                            <div class="col-4 text-center">
+                                <img  style="height:300 ; width: 300px" src='${animals[i].image}' alt="" class="img-circle img-fluid" >
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="card-footer">
-                    <div class="text-right">
-                        <a href="#" class="btn btn-sm btn-success">
-                            <i class="fas fa-paw"id='detalii'></i> Mai multe detalii
-                        </a>
+                    <div class="card-footer">
+                        <div class="text-right">
+                            <a href="#" class="btn btn-sm btn-success">
+                                <i class="fas fa-paw"id='detalii'></i> Mai multe detalii
+                            </a>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>`;
+                      </div> </div>`;
                 // console.log(document.getElementById('boxAnimals'));
 
                 if (document.getElementById('boxAnimals') != null) {
@@ -51,6 +49,31 @@ function get_animal(request_type_active, pet_type) {
         } else if (request_type_active == 1) {
 
             for (var i = 0; i < nr_animals; i++) {
+                const card = `<div class="d-flex">
+                <div class="card bg-light">
+                    <div class="card-header text-muted border-bottom-0" >
+                       ${type_animal[animals[i].type]}
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="row">
+                            <div class="col-7">
+                                <h2 class="lead" ><b>${animals[i].name}</b></h2>
+                                <p class="text-muted text-sm" ><b>Vârstă: </b> ${animals[i].birthdate}</p>
+                                <p class="text-muted text-sm" ><b>Rasă: </b> ${animals[i].breed} </p>
+    
+                            </div>
+                            <div class="col-4 text-center">
+                                <img  style="height:300 ; width: 300px" src='${animals[i].image}' alt="" class="img-circle img-fluid" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="text-right">
+                            <a href="#" class="btn btn-sm btn-success">
+                                <i class="fas fa-paw"id='detalii'></i> Mai multe detalii
+                            </a>
+                        </div>
+                    </div>`
                 var buttonState1 = undefined,
                     buttonState2 = undefined,
                     buttonState = undefined;
@@ -104,32 +127,7 @@ function get_animal(request_type_active, pet_type) {
                     if (buttonState2 == undefined)
                         buttonState = buttonState1
 
-                    const animal_box = `
-                                        <div class="d-flex ">
-                                            <div class="card bg-light">
-                                            <div class="card-header text-muted border-bottom-0" >
-                                            ${type_animal[animals[i].type]}
-                                            </div>
-                                            <div class="card-body pt-0">
-                                                <div class="row">
-                                                    <div class="col-7">
-                                                        <h2 class="lead" ><b>${animals[i].name}</b></h2>
-                                                        <p class="text-muted text-sm" ><b>Vârstă: </b> ${animals[i].birthdate}</p>
-                                                        <p class="text-muted text-sm" ><b>Rasă: </b> ${animals[i].breed} </p>
-                            
-                                                    </div>
-                                                    <div class="col-4 text-center">
-                                                        <img style="height:300 ; width: 300px" src='${animals[i].image}' alt="" class="img-circle img-fluid">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="card-footer">
-                                                <div class="text-right">
-                                                    <a href="#" class="btn btn-sm btn-success">
-                                                        <i class="fas fa-paw"id='detalii'></i> Mai multe detalii
-                                                    </a>
-                                                </div>
-                                            </div>
+                    const animal_box = card + `
                                             <div class="card-body" style="padding: 2">       
                                                 <div class="text-center">
                                                 <button type="button" class="btn btn-secondary" disabled>${buttonState}</button>       
@@ -148,32 +146,7 @@ function get_animal(request_type_active, pet_type) {
 
                 } else if (`${buttonState2}` == '<i class="fas fa-paw"></i> Da spre adoptie' && `${buttonState1}` == '<i class="fas fa-paw"></i> Cazează') {
                     // --------------------------------------------------------------------------
-                    const animal_box = `
-                                <div class="d-flex ">
-                                    <div class="card bg-light">
-                                    <div class="card-header text-muted border-bottom-0" >
-                                    ${type_animal[animals[i].type]}
-                                    </div>
-                                    <div class="card-body pt-0">
-                                        <div class="row">
-                                            <div class="col-7">
-                                                <h2 class="lead" ><b>${animals[i].name}</b></h2>
-                                                <p class="text-muted text-sm" ><b>Vârstă: </b> ${animals[i].birthdate}</p>
-                                                <p class="text-muted text-sm" ><b>Rasă: </b> ${animals[i].breed} </p>
-
-                                            </div>
-                                            <div class="col-4 text-center">
-                                                <img style="height:300 ; width: 300px" src='${animals[i].image}' alt="" class="img-circle img-fluid">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="text-right">
-                                            <a href="#" class="btn btn-sm btn-success">
-                                                <i class="fas fa-paw"id='detalii'></i> Mai multe detalii
-                                            </a>
-                                        </div>
-                                    </div>
+                    const animal_box = card + `
                                     <div class="card-body" style="padding: 2">       
                                         <div class="text-center">
                                         <button type="button" class="btn btn-secondary" onclick="optiuni_animal(1,${animals[i].PID});" id='${animals[i].PID}c' value='Cazează'>${buttonState1}</button>       

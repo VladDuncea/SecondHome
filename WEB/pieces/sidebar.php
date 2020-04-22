@@ -102,21 +102,29 @@
                     </ul>
                 </li>
 
+                <li class="nav-item">
+                    <a href="location.php" class="nav-link">
+                        <i class="nav-icon	fas fa-paw"></i>
+                        <p>
+                            Locatiile noastre
+                        </p>
+                    </a>
+                </li>
                 
                
 
                 <!-- Deconectare, apare doar cand userul e conectat -->
                 <?php if (isset($_SESSION['userId'])): ?>
                     <li class="nav-item">
-                    <a href="animalele_mele.php" class="nav-link">
-                        <i class="nav-icon	fas fa-paw"></i>
-                        <p>
-                            Animalele mele
-                            <!-- <i class="fas fa-angle-left right"></i> -->
-                            <!-- <span class="badge badge-info right">6</span> -->
-                        </p>
-                    </a>
-                </li>
+                        <a href="animalele_mele.php" class="nav-link">
+                            <i class="nav-icon	fas fa-paw"></i>
+                            <p>
+                                Animalele mele
+                                <!-- <i class="fas fa-angle-left right"></i> -->
+                                <!-- <span class="badge badge-info right">6</span> -->
+                            </p>
+                        </a>
+                    </li>
                 <li class="nav-item">
                     <a href="formular_add.php" class="nav-link">
                         <i class="nav-icon	fas fa-paw"></i>

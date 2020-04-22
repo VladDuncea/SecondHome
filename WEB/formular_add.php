@@ -40,12 +40,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Formular</h1>
+                            <h1><i class="nav-icon fas fa-paw"></i> Formular</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="index.php">Acasă</a></li>
-                                <li class="breadcrumb-item active">Formular </li>
+                                <li class="breadcrumb-item active"><i class="nav-icon fas fa-paw"></i> Formular </li>
                             </ol>
                         </div>
                     </div>
@@ -60,11 +60,11 @@
                         <div class="col-md-6">
                             <div class="card card-success">
                                 <div class="card-header">
-                                    <h3 class="card-title">Adăugare animăluț</h3>
+                                    <h3 class="card-title"><i class="nav-icon fas fa-paw"></i> Adăugare animăluț</h3>
                                 </div>
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="inputName">Nume animăluț</label>
+                                        <label for="inputName"> Nume animăluț</label>
                                         <input type="text" id="inputName" name="animal_name" class="form-control" required="required">
                                     </div>
                                     <div class="form-group">
@@ -88,7 +88,7 @@
                                         <input type="text" class="form-control" name="animal_breed" id="inputRasa" required="required">
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputDescription">Descriere animăluț</label>
+                                        <label for="inputDescription"> Descriere animăluț</label>
                                         <textarea id="inputDescription" name="animal_description" class="form-control" rows="4" required="required"></textarea>
                                     </div>
                 
@@ -98,14 +98,14 @@
                             <!-- /.card -->
                         </div>
                         <div class="col-md-6">
-                            <div class="card card-secondary">
+                            <div class="card card-success">
                                 <div class="card-header">
-                                    <h3 class="card-title">Poza</h3>
+                                    <h3 class="card-title"><i class="nav-icon fas fa-paw"></i> Poza</h3>
                                 </div>
 
                                 <div class="card-body">
                                     <div class="form-group" style="margin: 0">
-                                        <button type="button" class="btn btn-secondary" style="margin: 5px" onclick="document.getElementById('getFile').click()">Încarcă o imagine</button>
+                                        <button type="button" class="btn btn-success" style="margin: 5px" onclick="document.getElementById('getFile').click()"><i class="nav-icon fas fa-paw"></i> Încarcă o imagine</button>
                                         <input type='file' id="getFile" name="animal_image" style="visibility:hidden;" onchange="readURL(this);"/><br>
                                         <!-- <input type='file' onchange="readURL(this);" > -->
                                         <div id="cropper_container" class="container">
@@ -136,9 +136,9 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <a href="index.php" class="btn btn-secondary">Anulare</a>
+                            <a href="index.php" class="btn btn-secondary"><i class="nav-icon fas fa-paw"></i> Anulare</a>
                             
-                            <input type="submit" value="Adăugare animăluț" class="btn btn-success float-right"/>
+                            <button type="submit" value="Adăugare animăluț" class="btn btn-success float-right"><i class="nav-icon fas fa-paw"></i> Adăugare animăluț</button>
                             <!-- <button type="submit" onchange="add_animal();" value="Submit">Adăugare animăluț</button> -->
                         </div>
                     </div>
