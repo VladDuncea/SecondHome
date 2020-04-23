@@ -137,12 +137,34 @@
 
                 <!--Meniu angajat -->
                 <?php if (isset($_SESSION['userId']) && $_SESSION['userType']>=1): ?>
+                
+                <?  include "server/php/connection.php";
+                    $sql1 = "SELECT COUNT(RID) nr FROM Requests JOIN Pets USING(PID) WHERE request_type = 0 AND request_state = 0";
+                    $sql2 = "SELECT COUNT(RID) nr FROM Requests JOIN Pets USING(PID) WHERE request_type = 1 AND request_state = 0";
+                    if(!$result1 = mysqli_query($conn,$sql1))
+                    {
+                        $response["status"]=-1;  //Database error
+                        error_log("SQL ERROR: ".mysqli_error($conn));   //Error logging
+                        echo json_encode($response);
+                        return;
+                    }
+                    $nr_a = mysqli_fetch_assoc($result1)['nr'];
+                    if(!$result2 = mysqli_query($conn,$sql2))
+                    {
+                        $response["status"]=-1;  //Database error
+                        error_log("SQL ERROR: ".mysqli_error($conn));   //Error logging
+                        echo json_encode($response);
+                        return;
+                    }
+                    $nr_c = mysqli_fetch_assoc($result2)['nr'];
+                    
+                    ?>
                     <li class="nav-item">
                         <a href="admin_adoptie.php" class="nav-link">
                             <i class="nav-icon	fas fa-paw"></i>
                             <p>
                                 Cereri adoptie
-                                <span class="badge badge-info right">6</span>
+                                <span class="badge badge-info right"><? echo $nr_a; ?></span>
                             </p>
                         </a>
                     </li>
@@ -151,7 +173,7 @@
                             <i class="nav-icon	fas fa-paw"></i>
                             <p>
                                 Cereri cazare
-                                <span class="badge badge-info right">6</span>
+                                <span class="badge badge-info right"><? echo $nr_c; ?></span>
                             </p>
                         </a>
                     </li>
