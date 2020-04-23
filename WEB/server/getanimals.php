@@ -21,7 +21,11 @@ if($req_type == 0)
     if(!isset($_POST['pet_type']) || $_POST['pet_type']==0)
         $sql="SELECT * FROM Pets ORDER BY PID";
     else
-        $sql="SELECT * FROM Pets WHERE pet_type = {$_POST['pet_type']} ORDER BY PID";
+    {
+        $pet_type = mysqli_real_escape_string( $conn,$_POST['pet_type']);
+        $sql="SELECT * FROM Pets WHERE pet_type = $pet_type ORDER BY PID";
+    }
+        
 
     //Get animals and format them
     if(!$result = mysqli_query($conn,$sql))
@@ -71,7 +75,7 @@ else if($req_type >= 1 && $req_type <= 3)
     else if($_POST['security_code'] == '8981ASDGHJ22123' && isset($_POST['UID']))
     {
         //ANDROID
-        $UID = $_POST['UID'];
+        $UID = mysqli_real_escape_string( $conn,$_POST['UID']);
         $sql = "SELECT user_type FROM Users WHERE UID = $UID";
         if(!$result = mysqli_query($conn,$sql))
         {
