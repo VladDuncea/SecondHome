@@ -111,10 +111,8 @@
                     </a>
                 </li>
                 
-               
-
-                <!-- Deconectare, apare doar cand userul e conectat -->
-                <?php if (isset($_SESSION['userId'])): ?>
+                <!--Meniu utilizator -->
+                <?php if (isset($_SESSION['userId']) && $_SESSION['userType']==0): ?>
                     <li class="nav-item">
                         <a href="animalele_mele.php" class="nav-link">
                             <i class="nav-icon	fas fa-paw"></i>
@@ -125,26 +123,51 @@
                             </p>
                         </a>
                     </li>
-                <li class="nav-item">
-                    <a href="formular_add.php" class="nav-link">
-                        <i class="nav-icon	fas fa-paw"></i>
-                        <p>
-                            Formular 
-                            <!-- <i class="fas fa-angle-left right"></i> -->
-                            <!-- <span class="badge badge-info right">6</span> -->
-                        </p>
-                    </a>
-                </li>
-               
-                <li class="nav-item">
-                    <a href="deconectare.php" class="nav-link">
-                        <i class="nav-icon fal fa-sign-out-alt"></i>
-                        <p>Deconectare</p>
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a href="formular_add.php" class="nav-link">
+                            <i class="nav-icon	fas fa-paw"></i>
+                            <p>
+                                Formular 
+                                <!-- <i class="fas fa-angle-left right"></i> -->
+                                <!-- <span class="badge badge-info right">6</span> -->
+                            </p>
+                        </a>
+                    </li>
                 <?php endif; ?>
-                <!-- Final deconectare -->
 
+                <!--Meniu angajat -->
+                <?php if (isset($_SESSION['userId']) && $_SESSION['userType']>=1): ?>
+                    <li class="nav-item">
+                        <a href="admin_adoptie.php" class="nav-link">
+                            <i class="nav-icon	fas fa-paw"></i>
+                            <p>
+                                Cereri adoptie
+                                <span class="badge badge-info right">6</span>
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="admin_cazare.php" class="nav-link">
+                            <i class="nav-icon	fas fa-paw"></i>
+                            <p>
+                                Cereri cazare
+                                <span class="badge badge-info right">6</span>
+                            </p>
+                        </a>
+                    </li>
+                <?php endif; ?>
+
+                
+                <?php if (isset($_SESSION['userId'])): ?>
+                    <!-- Deconectare, apare doar cand userul e conectat -->
+                    <li class="nav-item">
+                        <a href="deconectare.php" class="nav-link">
+                            <i class="nav-icon fal fa-sign-out-alt"></i>
+                            <p>Deconectare</p>
+                        </a>
+                    </li>
+                    <!-- Final deconectare -->
+                <?php endif; ?>
             </ul>
 
         </nav>
