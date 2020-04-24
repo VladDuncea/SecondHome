@@ -9,8 +9,8 @@ if(!isset($_POST['user_email']))
 {
     $response["status"]=0;
     $response["err_message"]="Missing parameters!";  
-    entry_log("resetpassword","Unknown",$respnse);
-    echo json_encode($respon,se);
+    entry_log("resetpassword","Unknown",$response);
+    echo json_encode($response);
     return;
 }
 
