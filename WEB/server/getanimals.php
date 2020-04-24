@@ -176,7 +176,7 @@ else if($req_type >= 1 && $req_type <= 3)
         while($row = mysqli_fetch_assoc($result))
         {
             $response['animals'][$poz]['RID'] = $row['RID'];
-            $response['animals'][$poz]['pet_name'] = $row['pet_name'];
+            $response['animals'][$poz]['name'] = $row['pet_name'];
             $response['animals'][$poz]['birthdate'] = date_diff(date_create("now") , date_create($row['pet_birthdate']))->y;
             $response['animals'][$poz]['description'] = $row['pet_description'];
             $response['animals'][$poz]['type'] = $row['pet_type'];
