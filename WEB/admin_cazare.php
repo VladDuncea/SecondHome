@@ -5,7 +5,7 @@
     <?php include 'pieces/head.php' ?>
 </head>
 
-<body class="hold-transition sidebar-mini" onload="get_animal(0,0);">
+<body class="hold-transition sidebar-mini" onload="get_animal(3,0);">
     <!-- Site wrapper -->
     <div class="wrapper">
         
@@ -93,7 +93,7 @@
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
     <script src="../dist/js/getanimals.js"></script>
-
+    <script src="../dist/js/animalrequest.js"></script>
     <!-- <style>
   
     .img-fluid {
