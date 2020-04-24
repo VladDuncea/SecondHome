@@ -17,9 +17,9 @@
                 <p class="login-box-msg">
                     Ai uitat parola? Aici vă puteți face cu ușurință una nouă.</p>
 
-                <form action="recover-password.html" method="post">
+               
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Email">
+                        <input type="email" class="form-control" placeholder="Email" id='resetpass'>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -28,11 +28,11 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary btn-block">Solicitați o nouă parolă</button>
+                            <button type="submit" class="btn btn-primary btn-block" onclick='resetpass();'>Solicitați o nouă parolă</button>
                         </div>
                         <!-- /.col -->
                     </div>
-                </form>
+                
 
                 <p class="mt-3 mb-1">
                     <a href="login.php">Autentificare</a>
@@ -62,6 +62,8 @@
     <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../../dist/js/adminlte.min.js"></script>
+
+    <script src="../../dist/js/utils.js" ></script>
 
 </body>
 
