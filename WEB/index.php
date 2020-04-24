@@ -26,7 +26,7 @@
                         </div> -->
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="5000">
                             <ol class="carousel-indicators">
                                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -168,7 +168,7 @@
     <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="dist/js/adminlte.js"></script>
-    <script src="dist/js/homePage.js"></script>
+    <script src="dist/js/utils.js"></script>
     <script src="../../plugins/chart.js/Chart.min.js"></script>
 </body>
 

@@ -41,19 +41,37 @@
 
             <!-- Main content -->
             <section class="content">
-            <div class="card-body pb-0" >
-               
-                        <div class="card-body"> 
-                            <div id="googleMap1" style="width:100%;height:400px;"></div> 
+            <div class="row">
+               <div class="col-md-4">
+                        <div class="card-body" style="background-color: white"> 
+                            <div style="margin-bottom: 10px"><div id="googleMap1" style="width:100%;height:400px;"></div> </div>
+                            <ul class="ml-4 mb-0 fa-ul text-muted">
+                                <li class="text-muted text-sm-12"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Adresa: Bucuresti</li>
+                                <li class="text-muted text-sm-12"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Telefon: 0274362537</li>
+                            </ul>   
                         </div>
-                 
+                 </div>
 
-               
-                        <div class="card-body"> 
-                        <div id="googleMap2" style="width:100%;height:400px;"></div> 
+                 <div class="col-md-4">
+                        <div class="card-body" style="background-color: white"> 
+                        <div style="margin-bottom: 10px"><div id="googleMap2" style="width:100%;height:400px;"></div> </div>
+                            <ul class="ml-4 mb-0 fa-ul text-muted">
+                                <li class="text-muted text-sm-12"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Adresa: Bucuresti</li>
+                                <li class="text-muted text-sm-12"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Telefon: 0246856937</li>
+                            </ul>   
                         </div>
-                 
-                </div>
+                 </div>
+
+                 <div class="col-md-4">
+                        <div class="card-body"   style="background-color: white"> 
+                        <div style="margin-bottom: 10px"> <div id="googleMap3" style="width:100%;height:400px; margin-bottom: 2px"></div> </div>
+                            <ul class="ml-4 mb-0 fa-ul text-muted">
+                                <li class="text-muted text-sm-12"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Adresa: Bucuresti</li>
+                                <li class="text-muted text-sm-12"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Telefon: 0246853726</li>
+                            </ul>   
+                         </div>
+                 </div>
+               </div> 
             </section>
             <!-- /.content -->
         </div>
@@ -72,27 +90,39 @@
     <!-- ./wrapper -->
     <script>
         function myMap() {
-            var myLatLng = {lat: 44.439663, lng: 26.096306};
+            var myLatLng1 = {lat: 44.439663, lng: 26.096306};
 
-            var map1= new google.maps.Map(document.getElementById("googleMap1"), {
-            center:myLatLng,
+            var map1 = new google.maps.Map(document.getElementById("googleMap1"), {
+            center:myLatLng1,
             zoom:17,
-        })
+            })
             var marker = new google.maps.Marker({
-            position: myLatLng,
+            position: myLatLng1,
             map: map1,
             title: 'Second Home'
             });
         
-            var myLatLng = {lat: 44.4396, lng: 26.196306};
+            var myLatLng2 = {lat: 44.4396, lng: 26.196306};
 
-            var map2= new google.maps.Map(document.getElementById("googleMap2"), {
-            center:myLatLng,
+            var map2 = new google.maps.Map(document.getElementById("googleMap2"), {
+            center:myLatLng2,
             zoom:17,
             })
             var marker = new google.maps.Marker({
-            position: myLatLng,
+            position: myLatLng2,
             map: map2,
+            title: 'Second Home'
+            });
+
+            var myLatLng3 = {lat: 44.4316, lng: 26.196306};
+
+            var map3 = new google.maps.Map(document.getElementById("googleMap3"), {
+            center:myLatLng3,
+            zoom:17,
+            })
+            var marker = new google.maps.Marker({
+            position: myLatLng3,
+            map: map3,
             title: 'Second Home'
             });
         }
