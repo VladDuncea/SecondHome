@@ -2,7 +2,8 @@
 include "php/connection.php";
 include "php/header.php";
 
-$response["registered-email"] = 0;  //Email presumably not used
+$response["registered_email"] = 0;
+$response["email_sent"]=0;
 
 if(!isset($_POST['user_email']))
 {
@@ -27,7 +28,7 @@ if(!$result = mysqli_query($conn,$sql))
 if($row = mysqli_fetch_assoc($result))
 {
     //Email exists
-    $response["registered-email"] = 1;
+    $response["registered_email"] = 1;
 
     $code = bin2hex(random_bytes(20)); // 20 chars.
     $sql ="INSERT INTO PassReset (code,user_email) VALUES ('$code','$user_email')"; 
@@ -47,10 +48,10 @@ if($row = mysqli_fetch_assoc($result))
 
     if(mail($user_email,$subject,$txt,$headers))       //Email
     {
-        $response["email-sent"]=1;
+        $response["email_sent"]=1;
     }
     else
-        $response["email-sent"]=0;
+        $response["email_sent"]=0;
 }
 else
 {
