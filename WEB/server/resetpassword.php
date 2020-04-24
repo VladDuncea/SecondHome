@@ -9,8 +9,8 @@ if(!isset($_POST['user_email']))
 {
     $response["status"]=0;
     $response["err_message"]="Missing parameters!";  
-    error_log("Connection failed".mysqli_error($conn));   //Error logging
-    echo json_encode($response);
+    entry_log("resetpassword","Unknown",$respnse);
+    echo json_encode($respon,se);
     return;
 }
 

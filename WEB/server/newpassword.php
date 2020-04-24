@@ -2,48 +2,59 @@
 include "php/connection.php";
 include "php/header.php";
 
-// $response["password-reset"] = false;      //Password is not yet reset
-// $response["correct-code"] = false;      //Presume code does not exist
+$response["password_reset"] = 0;      //Password is not yet reset
+$response["correct_code"] = 0;      //Presume code does not exist
 
-// $user_new_password = $_POST['user-new-password'];   //Reading data from request
-// $reset_code = $_POST['reset-code'];
+//Check request data
+if(!isset($_POST['user_password'],$_POST['code']))
+{
+    $response["status"]=0;
+    $response["err_message"]="Missing parameters!";  
+    entry_log("newpassword","Unknown",$response);   //Error logging
+    echo json_encode($response);
+    return;
+}
 
-// $sql ="SELECT  * FROM passreset WHERE reset_code='$reset_code'";
-// if(!$result = mysqli_query($conn,$sql))
-// {
-//     $response["status"]=-1;  // Database error
-//     error_log("Connection failed".mysqli_error($conn));  //Error logging
-//     return;
-// }
-// if($row = mysqli_fetch_assoc($result))
-// {
-//     $response["correct-code"] = true; //Code exists
-//     $user_email = $row["usr_email"];
-// }
-// else //Code does not exist
-// {
-//     entry_log("-",$response);     //Data logging
-//     echo json_encode($response);    //Send data to requester
-//     return;
-// }
+$user_password = password_hash($_POST['user_password'], PASSWORD_DEFAULT);   //Reading data from request
+$reset_code = mysqli_real_escape_string( $conn,$_POST['code']);
 
-// $sql ="UPDATE hrtusers SET usr_password='$user_new_password' WHERE usr_email='$user_email'";      //Send new password to database
-// if(!$result = mysqli_query($conn,$sql))
-// {
-//     $response["status"]=-1;  // Database error
-//     error_log("Connection failed".mysqli_error($conn));  //Error logging
-//     return;
-// }
-// $response["password-reset"] = true; //Password is reset
+$sql ="SELECT * FROM PassReset WHERE code='$reset_code'";
+if(!$result = mysqli_query($conn,$sql))
+{
+    $response["status"]=-1;  //Database error
+    error_log("SQL ERROR: ".mysqli_error($conn)."\nQUERY: ".$sql);   //Error logging
+    echo json_encode($response);
+    return;
+}
+if($row = mysqli_fetch_assoc($result))
+{
+    $response["correct_code"] = 1; //Code exists
+    $user_email = $row["user_email"];
+}
+else //Code does not exist
+{
+    entry_log("newpassword","Unknown",$response);     //Data logging
+    echo json_encode($response);    //Send data to requester
+    return;
+}
 
-// $sql ="DELETE FROM passreset WHERE reset_code='$reset_code'";      //Delete used code
-// if(!$result = mysqli_query($conn,$sql))     //Silent error
-// {
-//     error_log("Connection failed".mysqli_error($conn));  //Error logging
-// }
+$sql ="UPDATE Users SET user_password='$user_password' WHERE user_email='$user_email'";      //Send new password to database
+if(!$result = mysqli_query($conn,$sql))
+{
+    $response["status"]=-1;  //Database error
+    error_log("SQL ERROR: ".mysqli_error($conn)."\nQUERY: ".$sql);   //Error logging
+    echo json_encode($response);
+    return;
+}
+$response["password_reset"] = 1; //Password is reset
 
-//Not yet implemented
-$response["status"]=-1;  
-entry_log("-",$response);     //Data logging
+$sql ="DELETE FROM PassReset WHERE code='$reset_code'";      //Delete used code
+if(!$result = mysqli_query($conn,$sql))
+{
+    error_log("SQL ERROR: ".mysqli_error($conn)."\nQUERY: ".$sql);   //Error logging
+}
+
+$response["status"]=1;
+entry_log("newpassword",$user_email,$response);     //Data logging
 echo json_encode($response);    //Send data to requester
 ?>
