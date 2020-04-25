@@ -44,6 +44,7 @@
             <div class="row">
                <div class="col-md-4">
                         <div class="card-body" style="background-color: white"> 
+                        <p style="text-align: center; font-size: 20px" >Adăpostul <b><i class="fas fa-paw"></i> Mereu aproape <i class="fas fa-paw"></i></b></p>
                             <div style="margin-bottom: 10px"><div id="googleMap1" style="width:100%;height:400px;"></div> </div>
                             <ul class="ml-4 mb-0 fa-ul text-muted">
                                 <li class="text-muted text-sm-12"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Adresa: Bucuresti</li>
@@ -54,6 +55,7 @@
 
                  <div class="col-md-4">
                         <div class="card-body" style="background-color: white"> 
+                        <p style="text-align: center; font-size: 20px" >Adăpostul <b><i class="fas fa-paw"></i> Șansă la o viață nouă <i class="fas fa-paw"></i></b></p>
                         <div style="margin-bottom: 10px"><div id="googleMap2" style="width:100%;height:400px;"></div> </div>
                             <ul class="ml-4 mb-0 fa-ul text-muted">
                                 <li class="text-muted text-sm-12"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Adresa: Bucuresti</li>
@@ -64,6 +66,7 @@
 
                  <div class="col-md-4">
                         <div class="card-body"   style="background-color: white"> 
+                        <p style="text-align: center; font-size: 20px" >Adăpostul <b><i class="fas fa-paw"></i> O lăbuță de ajutor <i class="fas fa-paw"></i></b></p>
                         <div style="margin-bottom: 10px"> <div id="googleMap3" style="width:100%;height:400px; margin-bottom: 2px"></div> </div>
                             <ul class="ml-4 mb-0 fa-ul text-muted">
                                 <li class="text-muted text-sm-12"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Adresa: Bucuresti</li>
@@ -91,7 +94,7 @@
     <script>
         function myMap() {
             var myLatLng1 = {lat: 44.439663, lng: 26.096306};
-
+           
             var map1 = new google.maps.Map(document.getElementById("googleMap1"), {
             center:myLatLng1,
             zoom:17,
@@ -99,7 +102,7 @@
             var marker = new google.maps.Marker({
             position: myLatLng1,
             map: map1,
-            title: 'Second Home'
+            title: 'Mereu aproape'
             });
         
             var myLatLng2 = {lat: 44.4396, lng: 26.196306};
@@ -111,7 +114,7 @@
             var marker = new google.maps.Marker({
             position: myLatLng2,
             map: map2,
-            title: 'Second Home'
+            title: 'Șansă la o viață nouă'
             });
 
             var myLatLng3 = {lat: 44.4316, lng: 26.196306};
@@ -123,7 +126,7 @@
             var marker = new google.maps.Marker({
             position: myLatLng3,
             map: map3,
-            title: 'Second Home'
+            title: 'O lăbuță de ajutor'
             });
         }
     </script>

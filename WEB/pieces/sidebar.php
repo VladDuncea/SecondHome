@@ -102,14 +102,7 @@
                     </ul>
                 </li>
 
-                <li class="nav-item">
-                    <a href="location.php" class="nav-link">
-                        <i class="nav-icon	fas fa-paw"></i>
-                        <p>
-                            Locatiile noastre
-                        </p>
-                    </a>
-                </li>
+               
                 
                 <!--Meniu utilizator -->
                 <?php if (isset($_SESSION['userId']) && $_SESSION['userType']==0): ?>
@@ -134,6 +127,8 @@
                         </a>
                     </li>
                 <?php endif; ?>
+
+                
 
                 <!--Meniu angajat -->
                 <?php if (isset($_SESSION['userId']) && $_SESSION['userType']>=1): ?>
@@ -179,7 +174,14 @@
                     </li>
                 <?php endif; ?>
 
-                
+                <li class="nav-item">
+                    <a href="location.php" class="nav-link">
+                        <i class="nav-icon	fas fa-paw"></i>
+                        <p>
+                            Locatiile noastre
+                        </p>
+                    </a>
+                </li>
                 <?php if (isset($_SESSION['userId'])): ?>
                     <!-- Deconectare, apare doar cand userul e conectat -->
                     <li class="nav-item">

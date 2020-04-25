@@ -107,7 +107,7 @@
             <div class ='row' style="padding: 20px">
                 <!-- DONUT CHART -->
                 <div class="col-md-6">
-                    <div class="card card-orange">
+                    <div class="card card-success">
                     <div class="card-header">
                         <h3 class="card-title"><i class="nav-icon fas fa-paw"></i> Animale inregistrate</h3>
                     </div>
@@ -121,7 +121,7 @@
 
                 <!-- DONUT CHART -->
                 <div class="col-md-6">
-                    <div class="card card-orange">
+                    <div class="card card-success">
                     <div class="card-header">
                         <h3 class="card-title"><i class="nav-icon fas fa-paw"></i> Animale care si-au gasit o casa</h3>
                     </div>
