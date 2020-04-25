@@ -12,7 +12,8 @@ public class AppSingleton {
     private RequestQueue mRequestQueue;
     private static Context mContext;
     private static LoggedInUser user=null;
-    private String animalsToShow=null;
+    private static String animalsToShow=null;
+    private static int location=0;
     private AppSingleton(Context context) {
         mContext = context;
         mRequestQueue = getRequestQueue();
@@ -24,7 +25,8 @@ public class AppSingleton {
         }
         return mAppSingletonInstance;
     }
-
+    public void setLocation(int l){ location=l;}
+    public int getLocation(){return location;}
     public RequestQueue getRequestQueue() {
         if (mRequestQueue == null) {
             // getApplicationContext() is key, it keeps you from leaking the

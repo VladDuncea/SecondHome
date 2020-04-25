@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.secondhome.Main2LoggedInActivity;
+import com.example.secondhome.mains.Main2LoggedInActivity;
 import com.example.secondhome.R;
 import com.example.secondhome.data.model.LoggedInUser;
 import com.android.volley.Request;

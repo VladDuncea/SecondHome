@@ -39,4 +39,8 @@
         android:id="@+id/db8"
         android:title="Contact"
         android:icon="@drawable/ic_phone_black_24dp" />
+    <item
+        android:id="@+id/db10"
+        android:title="Locații"
+        android:icon="@drawable/ic_location_on_black_24dp" />
 </menu>

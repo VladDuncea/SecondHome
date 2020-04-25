@@ -12,8 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".contact.WriteUs"></activity>
-        <activity android:name=".showanimals.DogActivity" />
+        <activity android:name=".locations.ListOfLocations"></activity>
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity android:name=".locations.LocationsActvity" />
+        <activity android:name=".contact.WriteUs" />
         <activity android:name=".showanimals.AnimalsActivity" />
         <activity android:name=".contact.AchievmentsActivity" />
         <activity android:name=".contact.FacilitiesActivity" />
@@ -22,11 +31,11 @@
         <activity android:name=".AddAnimalFormActivity" />
         <activity android:name=".contact.ContactActivity" />
         <activity android:name=".ui.login.RegisterActivity" />
-        <activity android:name=".Main2LoggedInActivity" />
+        <activity android:name=".mains.Main2LoggedInActivity" />
         <activity
             android:name=".ui.login.LoginActivity"
             android:label="@string/title_activity_login" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".mains.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

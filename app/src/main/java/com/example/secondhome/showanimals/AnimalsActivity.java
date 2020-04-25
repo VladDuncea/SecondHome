@@ -8,12 +8,12 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
-import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.ImageView;
+import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,12 +22,11 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.secondhome.Main2LoggedInActivity;
-import com.example.secondhome.MainActivity;
+import com.example.secondhome.mains.Main2LoggedInActivity;
+import com.example.secondhome.mains.MainActivity;
 import com.example.secondhome.R;
 import com.example.secondhome.contact.ContactActivity;
 import com.example.secondhome.ui.login.AppSingleton;
-import com.example.secondhome.ui.login.LoginActivity;
 import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
@@ -90,46 +89,46 @@ public class AnimalsActivity extends AppCompatActivity implements NavigationView
                         System.out.println(animals.get(i).toString());
 //                        ImageView img=new ImageView(AnimalsActivity.this);
 //                        String encodedArray=animals.getJSONObject(i).getString("image");
-//                        encodedArray=encodedArray.replace("////","//");
-//                        encodedArray=encodedArray.replace("////","//");
+//                        encodedArray=encodedArray.replace("data:image/jpg;base64,/9j/","");
+////                        encodedArray=encodedArray.replace("////","//");
+//                        encodedArray=encodedArray.replace("\\","");
 //                        System.out.println(encodedArray);
 //                        byte [] encodeByte = Base64.decode(encodedArray,Base64.DEFAULT);
-//                        //Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+//                        Glide.with(AnimalsActivity.this)
+//                                .load(encodeByte)
+//                                .into(img);
+//                        Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
 //                        img.setImageBitmap(BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length));
 //                        }
+                       // Picasso.get().load().into(img);
                         TextView name=new TextView(AnimalsActivity.this);
                         TextView description=new TextView(AnimalsActivity.this);
-                        //JSONObject cat=animals.get(i);
+                        Drawable buttonBackground=getResources().getDrawable(R.drawable.btn_shape_round_green);
+                        Button viewDetails=new Button(AnimalsActivity.this);
+
+                        viewDetails.setBackground(buttonBackground);
+
+                        viewDetails.setTextColor(getResources().getColor(R.color.white));
+                        viewDetails.setLayoutParams(new LinearLayout.LayoutParams(400,120));
+                        viewDetails.setText("Mai multe detalii");
+
+
                         name.setText(animals.getJSONObject(i).getString("name"));
-                        name.setTextSize(20);
-                        name.setPadding(100,2,0,0);
-                        description.setText(animals.getJSONObject(i).getString("description"));
-                        description.setPadding(100,2,0,10);
+                        name.setTextSize(25);
+                        name.setGravity(View.TEXT_ALIGNMENT_GRAVITY);
+                        name.setPadding(0,60,0,0);
+                        description.setText("Vârstă:"+animals.getJSONObject(i).getString("birthdate"));
+                        description.setTextSize(20);
+                        description.setGravity(View.TEXT_ALIGNMENT_GRAVITY);
+
+
+                        //catsview.addView(img);
                         catsview.addView(name);
                         catsview.addView(description);
+                        catsview.addView(viewDetails);
 
                     }
 
-                    //boolean error = obj.getBoolean("error");
-
-                    // if(!error){
-//                    System.out.println("here");
-//                    String userName= obj.getString("user-firstname");
-//                    String UID=obj.getString("UID");
-//                    System.out.println(obj);
-//                    System.out.println("user");
-//
-//                    user=new LoggedInUser(UID,email,userName);
-//                    AppSingleton.getInstance(getApplicationContext()).setUser(user);
-//                    Intent intent=new Intent(LoginActivity.this, Main2LoggedInActivity.class);
-//                    System.out.println("We want to add user");
-//                    intent.putExtra("username", userName);
-//                    startActivity(intent);
-//                      }
-//                      else{
-//                          String errorMsg=obj.getString("error_msg");
-//                          Toast.makeText(getApplicationContext(),errorMsg,Toast.LENGTH_LONG).show();
-//                      }
 
                 } catch(JSONException e)
                 {
@@ -150,6 +149,7 @@ public class AnimalsActivity extends AppCompatActivity implements NavigationView
             protected Map<String,String> getParams(){
                 Map<String,String> params=new HashMap<String,String>();
                 params.put("security_code", "8981ASDGHJ22123");
+                params.put("request_type","0");
                 params.put("pet_type", animalType);
                 return params;
             }

@@ -1,4 +1,4 @@
-package com.example.secondhome;
+package com.example.secondhome.mains;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -12,60 +12,71 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.secondhome.AddAnimalFormActivity;
+import com.example.secondhome.R;
 import com.example.secondhome.contact.ContactActivity;
+import com.example.secondhome.locations.LocationsActvity;
 import com.example.secondhome.showanimals.AnimalsActivity;
-import com.example.secondhome.showanimals.DogActivity;
 import com.example.secondhome.ui.login.AppSingleton;
 import com.example.secondhome.ui.login.LoginActivity;
-import com.example.secondhome.ui.login.RegisterActivity;
 import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
-    private Button login,register;
+public class Main2LoggedInActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
+    private TextView nameMessage;
     private DrawerLayout mDrawer;
+    private Button contact;
+    private Button logout;
+    private Button addAnimal;
     private ActionBarDrawerToggle mToggle;
     private NavigationView navigationView;
     private ActionMenuItem item;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-
+        setContentView(R.layout.activity_main2_logged_in);
         setNavigationViewListener();
+        nameMessage=(TextView) findViewById(R.id.userMessage);
+        nameMessage.append(" Bine ai venit, "+ AppSingleton.getInstance(getApplicationContext()).getLoggedInUserName().toString()+"!");
+
         mDrawer=(DrawerLayout) findViewById(R.id.mainmenu);
         mToggle= new ActionBarDrawerToggle(this, mDrawer,R.string.open,R.string.close);
         navigationView = (NavigationView) findViewById(R.id.mymenu);
         mDrawer.addDrawerListener(mToggle);
+        //  mDrawer.addDrawerListener();
         mToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        login =(Button) findViewById(R.id.button5);
-        register=(Button) findViewById(R.id.button6);
+        //logout
+        logout=(Button) findViewById(R.id.logout);
+        View.OnClickListener lisenerLogout=new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppSingleton.getInstance(getApplicationContext()).logoutUser();
+                Toast.makeText(getApplicationContext(), "Ati fost deconectat", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(Main2LoggedInActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        };
+        logout.setOnClickListener(lisenerLogout);
 
-        View.OnClickListener lisenerLogin=new View.OnClickListener() {
+        addAnimal=(Button) findViewById(R.id.animalForm);
+        View.OnClickListener listenerAddAnimal=new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this, LoginActivity.class);
+                Intent intent=new Intent(Main2LoggedInActivity.this, AddAnimalFormActivity.class);
                 startActivity(intent);
             }
         };
-        View.OnClickListener lisenerRegister=new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this, RegisterActivity.class);
-                startActivity(intent);
-            }
-        };
-        login.setOnClickListener(lisenerLogin);
-        register.setOnClickListener(lisenerRegister);
+        addAnimal.setOnClickListener(listenerAddAnimal);
 
     }
 
 
     private void setNavigationViewListener() {
-        System.out.println("setting navigation listener");
+        System.out.println("in here");
         NavigationView navigationView = (NavigationView) findViewById(R.id.mymenu);
         navigationView.setNavigationItemSelectedListener(this);
     }
@@ -73,55 +84,58 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         System.out.println("On navigation selected item");
-        System.out.println(AppSingleton.getInstance(getApplicationContext()).getAnimalsToShow());
         switch (item.getItemId()) {
 
             case R.id.db0:
                 AppSingleton.getInstance(getApplicationContext()).setAnimalsToShow("0");
-                Intent intent=new Intent(MainActivity.this, AnimalsActivity.class);
+                Intent intent=new Intent(Main2LoggedInActivity.this, AnimalsActivity.class);
                 startActivity(intent);
                 break;
             case R.id.db1:
                 AppSingleton.getInstance(getApplicationContext()).setAnimalsToShow("1");
-                intent=new Intent(MainActivity.this, AnimalsActivity.class);
+                intent=new Intent(Main2LoggedInActivity.this, AnimalsActivity.class);
                 startActivity(intent);
                 break;
             case R.id.db2:
                 AppSingleton.getInstance(getApplicationContext()).setAnimalsToShow("2");
-                intent=new Intent(MainActivity.this, AnimalsActivity.class);
+                intent=new Intent(Main2LoggedInActivity.this, AnimalsActivity.class);
                 startActivity(intent);
                 break;
             case R.id.db3:
                 AppSingleton.getInstance(getApplicationContext()).setAnimalsToShow("3");
-                intent=new Intent(MainActivity.this, AnimalsActivity.class);
+                intent=new Intent(Main2LoggedInActivity.this, AnimalsActivity.class);
                 startActivity(intent);
                 break;
             case R.id.db4:
                 AppSingleton.getInstance(getApplicationContext()).setAnimalsToShow("4");
-                intent=new Intent(MainActivity.this, AnimalsActivity.class);
+                intent=new Intent(Main2LoggedInActivity.this, AnimalsActivity.class);
                 startActivity(intent);
                 break;
             case R.id.db5:
                 AppSingleton.getInstance(getApplicationContext()).setAnimalsToShow("5");
-                intent=new Intent(MainActivity.this, AnimalsActivity.class);
+                intent=new Intent(Main2LoggedInActivity.this, AnimalsActivity.class);
                 startActivity(intent);
                 break;
             case R.id.db6:
                 AppSingleton.getInstance(getApplicationContext()).setAnimalsToShow("6");
-                intent=new Intent(MainActivity.this, AnimalsActivity.class);
+                intent=new Intent(Main2LoggedInActivity.this,AnimalsActivity.class);
                 startActivity(intent);
                 break;
             case R.id.db:
                 if(AppSingleton.getInstance(getApplicationContext()).getUser()!=null)
                 {
-                    intent=new Intent(MainActivity.this, Main2LoggedInActivity.class);
+                    intent=new Intent(Main2LoggedInActivity.this, Main2LoggedInActivity.class);
                     intent.putExtra("username", AppSingleton.getInstance(getApplicationContext()).getLoggedInUserName());
                 }
-                else intent=new Intent(MainActivity.this, MainActivity.class);
+                else intent=new Intent(Main2LoggedInActivity.this, MainActivity.class);
                 startActivity(intent);
                 break;
             case R.id.db8:
-                intent=new Intent(MainActivity.this, ContactActivity.class);
+                intent=new Intent(Main2LoggedInActivity.this, ContactActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.db10:
+                intent=new Intent(Main2LoggedInActivity.this, LocationsActvity.class);
                 startActivity(intent);
                 break;
 
@@ -133,6 +147,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         System.out.println("in here");
+        if(item.getItemId()==R.id.db)
+        {
+            System.out.println("in here");
+            Intent intent=new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            return true;
+        }
         if(mToggle.onOptionsItemSelected(item))
         {
             return true;

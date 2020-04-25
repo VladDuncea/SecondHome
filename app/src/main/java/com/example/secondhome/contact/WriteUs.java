@@ -15,12 +15,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.secondhome.Main2LoggedInActivity;
 import com.example.secondhome.R;
-import com.example.secondhome.data.model.LoggedInUser;
 import com.example.secondhome.ui.login.AppSingleton;
-import com.example.secondhome.ui.login.LoginActivity;
-import com.example.secondhome.ui.login.RegisterActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;

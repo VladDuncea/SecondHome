@@ -4,22 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.content.Intent;
-import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.secondhome.Main2LoggedInActivity;
 import com.example.secondhome.R;
-import com.example.secondhome.data.model.LoggedInUser;
 import com.android.volley.Request;
 import com.android.volley.Response;
 
