@@ -19,11 +19,11 @@ if($req_type == 0)
 {
     //type of animals to be returned
     if(!isset($_POST['pet_type']) || $_POST['pet_type']==0)
-        $sql="SELECT * FROM Pets ORDER BY PID";
+        $sql="SELECT * FROM Pets WHERE pet_state=10 ORDER BY PID";
     else
     {
         $pet_type = mysqli_real_escape_string( $conn,$_POST['pet_type']);
-        $sql="SELECT * FROM Pets WHERE pet_type = $pet_type ORDER BY PID";
+        $sql="SELECT * FROM Pets WHERE pet_type = $pet_type AND pet_state=10 ORDER BY PID";
     }
         
 
