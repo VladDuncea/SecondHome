@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +30,7 @@ import com.example.secondhome.R;
 import com.example.secondhome.contact.ContactActivity;
 import com.example.secondhome.ui.login.AppSingleton;
 import com.google.android.material.navigation.NavigationView;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -91,7 +93,9 @@ public class AnimalsActivity extends AppCompatActivity implements NavigationView
                     {
 //                        if(i==0){
                         System.out.println(animals.get(i).toString());
-//                        ImageView img=new ImageView(AnimalsActivity.this);
+                        ImageView img=new ImageView(AnimalsActivity.this);
+                        Picasso.get().load("https://i.imgur.com/XAuRrVz.jpg").into(img);
+                        img.setPadding(0,60,0,0);
 //                        String encodedArray=animals.getJSONObject(i).getString("image");
 //                        encodedArray=encodedArray.replace("data:image/jpg;base64,/9j/","");
 ////                        encodedArray=encodedArray.replace("////","//");
@@ -120,13 +124,13 @@ public class AnimalsActivity extends AppCompatActivity implements NavigationView
                         name.setText(animals.getJSONObject(i).getString("name"));
                         name.setTextSize(25);
                         name.setGravity(View.TEXT_ALIGNMENT_GRAVITY);
-                        name.setPadding(0,60,0,0);
+                        //name.setPadding(0,60,0,0);
 
                         description.setText("Vârstă:"+animals.getJSONObject(i).getString("birthdate"));
                         description.setTextSize(20);
                         description.setGravity(View.TEXT_ALIGNMENT_GRAVITY);
 
-                        //catsview.addView(img);
+                        catsview.addView(img);
                         catsview.addView(name);
                         catsview.addView(description);
                         catsview.addView(viewDetails);

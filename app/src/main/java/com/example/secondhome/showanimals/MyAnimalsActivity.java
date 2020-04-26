@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,17 +25,24 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.secondhome.R;
 import com.example.secondhome.contact.ContactActivity;
+import com.example.secondhome.data.Animal;
 import com.example.secondhome.locations.ListOfLocations;
 import com.example.secondhome.mains.Main2LoggedInActivity;
 import com.example.secondhome.mains.MainActivity;
 import com.example.secondhome.ui.login.AppSingleton;
 import com.example.secondhome.ui.login.LoginActivity;
+
 import com.google.android.material.navigation.NavigationView;
+import com.squareup.moshi.JsonAdapter;
+import com.squareup.moshi.Moshi;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -55,7 +63,7 @@ public class MyAnimalsActivity extends AppCompatActivity implements NavigationVi
         setContentView(R.layout.activity_my_animals);
 
       animalType= AppSingleton.getInstance(getApplicationContext()).getAnimalsToShow();
-
+      paw= getApplicationContext().getResources().getDrawable(R.drawable.ic_pets_white_24dp);
        setNavigationViewListener();
         mDrawer=(DrawerLayout) findViewById(R.id.myanimals);
         mToggle= new ActionBarDrawerToggle(this, mDrawer,R.string.open,R.string.close);
@@ -96,9 +104,12 @@ public class MyAnimalsActivity extends AppCompatActivity implements NavigationVi
 
                     for(int i=0;i<animalNo;i++)
                     {
+                        Moshi moshi = new Moshi.Builder().build();
+                        JsonAdapter<Animal> adapter = moshi.adapter(Animal.class);
+                         Animal a =adapter.fromJson(animals.get(i).toString());
 //                        if(i==0){
                         System.out.println(animals.get(i).toString());
-//                        ImageView img=new ImageView(AnimalsActivity.this);
+                        ImageView img=new ImageView(MyAnimalsActivity.this);
 //                        String encodedArray=animals.getJSONObject(i).getString("image");
 //                        encodedArray=encodedArray.replace("data:image/jpg;base64,/9j/","");
 ////                        encodedArray=encodedArray.replace("////","//");
@@ -111,32 +122,69 @@ public class MyAnimalsActivity extends AppCompatActivity implements NavigationVi
 //                        Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
 //                        img.setImageBitmap(BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length));
 //                        }
-                        // Picasso.get().load().into(img);
+                        Picasso.get().load("./src/main/res/drawable/temporarydog.jpg").into(img);
+                        img.setPadding(0,10,0,0);
                         TextView name=new TextView(MyAnimalsActivity.this);
                         TextView description=new TextView(MyAnimalsActivity.this);
                         Drawable buttonBackground=getResources().getDrawable(R.drawable.btn_shape_round_green);
+
                         Button viewDetails=new Button(MyAnimalsActivity.this);
-
                         viewDetails.setBackground(buttonBackground);
-
                         viewDetails.setTextColor(getResources().getColor(R.color.white));
-                        viewDetails.setLayoutParams(new LinearLayout.LayoutParams(400,120));
+                        viewDetails.setLayoutParams(new LinearLayout.LayoutParams(500,160));
                         viewDetails.setText("Mai multe detalii");
                         viewDetails.setCompoundDrawables(paw,null,paw,null);
+
+                        Integer hasRequest, requestType,requestState;
+                        requestType=Integer.parseInt(a.getRequest_type());
+                        requestState=Integer.parseInt(a.getRequest_state());
+                        hasRequest=a.getHas_request();
+                        System.out.println(hasRequest+ " "+requestType+" "+requestState);
+                        Button adoptionState=new Button(MyAnimalsActivity.this);
+                        //viewDetails.setBackground(buttonBackground);
+                        adoptionState.setTextColor(getResources().getColor(R.color.white));
+                        adoptionState.setLayoutParams(new LinearLayout.LayoutParams(500,160));
+                        if(hasRequest==1)
+                        {
+                            if(requestType==0)
+                            {if(requestState==1)
+                                     adoptionState.setText("Cererea adopție acceptată");
+                                if(requestState==0)
+                                    adoptionState.setText("Cererea adopție în așteptare");
+                                if(requestState==-1)
+                                    adoptionState.setText("Cererea adopție respinsă");
+                            }
+                            if(requestType==1)
+                            {if(requestState==1)
+                                adoptionState.setText("Cererea cazare acceptată");
+                                if(requestState==0)
+                                    adoptionState.setText("Cererea cazare în așteptare");
+                                if(requestState==-1)
+                                    adoptionState.setText("Cererea cazare respinsă");
+                            }
+
+                        }
+                        else
+                            adoptionState.setText("Dă spre adopție");
+
+                        adoptionState.setCompoundDrawables(paw,null,paw,null);
+
+
 
                         name.setText(animals.getJSONObject(i).getString("name"));
                         name.setTextSize(25);
                         name.setGravity(View.TEXT_ALIGNMENT_GRAVITY);
-                        name.setPadding(0,60,0,0);
+
                         description.setText("Vârstă:"+animals.getJSONObject(i).getString("birthdate"));
                         description.setTextSize(20);
                         description.setGravity(View.TEXT_ALIGNMENT_GRAVITY);
 
 
-                        //catsview.addView(img);
+                        catsview.addView(img);
                         catsview.addView(name);
                         catsview.addView(description);
                         catsview.addView(viewDetails);
+                        catsview.addView(adoptionState);
 
                     }
 
@@ -144,6 +192,8 @@ public class MyAnimalsActivity extends AppCompatActivity implements NavigationVi
                 } catch(JSONException e)
                 {
                     System.out.println("error here");
+                    e.printStackTrace();
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }

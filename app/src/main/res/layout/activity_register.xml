@@ -122,6 +122,7 @@
         android:fontFamily="@font/dancingscript"
         android:text="Creaza un cont"
         android:textSize="40sp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
