@@ -4,6 +4,7 @@ include "php/header.php";
 
 $response["registered_email"] = 0;
 $response["email_sent"]=0;
+$response["status"]=1;
 
 if(!isset($_POST['user_email']))
 {
@@ -60,8 +61,7 @@ else
     return;
 }
 
-//Not yet implemented
-$response["status"]=1;  
+//Send data to requester
 entry_log("resetpassword","Unknown",$response);    
 echo json_encode($response);    
 ?>
