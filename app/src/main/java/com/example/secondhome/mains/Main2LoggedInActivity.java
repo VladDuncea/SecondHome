@@ -18,8 +18,10 @@ import android.widget.Toast;
 import com.example.secondhome.AddAnimalFormActivity;
 import com.example.secondhome.R;
 import com.example.secondhome.contact.ContactActivity;
+import com.example.secondhome.locations.ListOfLocations;
 import com.example.secondhome.locations.LocationsActvity;
 import com.example.secondhome.showanimals.AnimalsActivity;
+import com.example.secondhome.showanimals.MyAnimalsActivity;
 import com.example.secondhome.ui.login.AppSingleton;
 import com.example.secondhome.ui.login.LoginActivity;
 import com.google.android.material.navigation.NavigationView;
@@ -136,6 +138,10 @@ public class Main2LoggedInActivity extends AppCompatActivity implements Navigati
                 break;
             case R.id.db10:
                 intent=new Intent(Main2LoggedInActivity.this, LocationsActvity.class);
+                startActivity(intent);
+                break;
+            case R.id.db11:
+                intent=new Intent(Main2LoggedInActivity.this, MyAnimalsActivity.class);
                 startActivity(intent);
                 break;
 

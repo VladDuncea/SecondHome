@@ -22,12 +22,13 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.secondhome.locations.LocationsActvity;
-import com.example.secondhome.mains.Main2LoggedInActivity;
-import com.example.secondhome.mains.MainActivity;
 import com.example.secondhome.R;
 import com.example.secondhome.contact.ContactActivity;
+import com.example.secondhome.locations.ListOfLocations;
+import com.example.secondhome.mains.Main2LoggedInActivity;
+import com.example.secondhome.mains.MainActivity;
 import com.example.secondhome.ui.login.AppSingleton;
+import com.example.secondhome.ui.login.LoginActivity;
 import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
@@ -37,7 +38,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AnimalsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
+public class MyAnimalsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+
     private DrawerLayout mDrawer;
     private ActionBarDrawerToggle mToggle;
     private NavigationView navigationView;
@@ -50,23 +52,28 @@ public class AnimalsActivity extends AppCompatActivity implements NavigationView
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cat);
+        setContentView(R.layout.activity_my_animals);
 
-        paw= getApplicationContext().getResources().getDrawable(R.drawable.ic_pets_white_24dp);
+      animalType= AppSingleton.getInstance(getApplicationContext()).getAnimalsToShow();
 
-        animalType=AppSingleton.getInstance(getApplicationContext()).getAnimalsToShow();
-
-
-        setNavigationViewListener();
-        mDrawer=(DrawerLayout) findViewById(R.id.showallCats);
+       setNavigationViewListener();
+        mDrawer=(DrawerLayout) findViewById(R.id.myanimals);
         mToggle= new ActionBarDrawerToggle(this, mDrawer,R.string.open,R.string.close);
-        navigationView = (NavigationView) findViewById(R.id.mymenuCats);
+        navigationView = (NavigationView) findViewById(R.id.mymenu);
         mDrawer.addDrawerListener(mToggle);
         mToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        catsview=(LinearLayout) findViewById(R.id.linearCats);
+        catsview=(LinearLayout) findViewById(R.id.myLinearCats);
+        if(AppSingleton.getInstance(getApplicationContext()).getUser()!=null)
         getCats();
+        else sendToLogin();
+
+    }
+
+    private void sendToLogin() {
+        Intent intent=new Intent(MyAnimalsActivity.this, LoginActivity.class);
+        startActivity(intent);
 
     }
 
@@ -104,16 +111,16 @@ public class AnimalsActivity extends AppCompatActivity implements NavigationView
 //                        Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
 //                        img.setImageBitmap(BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length));
 //                        }
-                       // Picasso.get().load().into(img);
-                        TextView name=new TextView(AnimalsActivity.this);
-                        TextView description=new TextView(AnimalsActivity.this);
+                        // Picasso.get().load().into(img);
+                        TextView name=new TextView(MyAnimalsActivity.this);
+                        TextView description=new TextView(MyAnimalsActivity.this);
                         Drawable buttonBackground=getResources().getDrawable(R.drawable.btn_shape_round_green);
-                        Button viewDetails=new Button(AnimalsActivity.this);
+                        Button viewDetails=new Button(MyAnimalsActivity.this);
 
                         viewDetails.setBackground(buttonBackground);
 
                         viewDetails.setTextColor(getResources().getColor(R.color.white));
-                        viewDetails.setLayoutParams(new LinearLayout.LayoutParams(400,130));
+                        viewDetails.setLayoutParams(new LinearLayout.LayoutParams(400,120));
                         viewDetails.setText("Mai multe detalii");
                         viewDetails.setCompoundDrawables(paw,null,paw,null);
 
@@ -121,10 +128,10 @@ public class AnimalsActivity extends AppCompatActivity implements NavigationView
                         name.setTextSize(25);
                         name.setGravity(View.TEXT_ALIGNMENT_GRAVITY);
                         name.setPadding(0,60,0,0);
-
                         description.setText("Vârstă:"+animals.getJSONObject(i).getString("birthdate"));
                         description.setTextSize(20);
                         description.setGravity(View.TEXT_ALIGNMENT_GRAVITY);
+
 
                         //catsview.addView(img);
                         catsview.addView(name);
@@ -153,8 +160,8 @@ public class AnimalsActivity extends AppCompatActivity implements NavigationView
             protected Map<String,String> getParams(){
                 Map<String,String> params=new HashMap<String,String>();
                 params.put("security_code", "8981ASDGHJ22123");
-                params.put("request_type","0");
-                params.put("pet_type", animalType);
+                params.put("request_type","1");
+                params.put("UID", AppSingleton.getInstance(getApplicationContext()).getUser().getUID().toString());
                 return params;
             }
 
@@ -164,7 +171,7 @@ public class AnimalsActivity extends AppCompatActivity implements NavigationView
     }
     private void setNavigationViewListener() {
         System.out.println("setting navigation listener");
-        NavigationView navigationView = (NavigationView) findViewById(R.id.mymenuCats);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.mymenu);
         System.out.println(navigationView.toString());
         navigationView.setNavigationItemSelectedListener(this);
     }
@@ -177,58 +184,58 @@ public class AnimalsActivity extends AppCompatActivity implements NavigationView
 
             case R.id.db0:
                 AppSingleton.getInstance(getApplicationContext()).setAnimalsToShow("0");
-                Intent intent=new Intent(AnimalsActivity.this, AnimalsActivity.class);
+                Intent intent=new Intent(MyAnimalsActivity.this, AnimalsActivity.class);
                 startActivity(intent);
                 break;
             case R.id.db1:
                 AppSingleton.getInstance(getApplicationContext()).setAnimalsToShow("1");
-                intent=new Intent(AnimalsActivity.this, AnimalsActivity.class);
+                intent=new Intent(MyAnimalsActivity.this, AnimalsActivity.class);
                 startActivity(intent);
                 break;
             case R.id.db2:
                 AppSingleton.getInstance(getApplicationContext()).setAnimalsToShow("2");
-                intent=new Intent(AnimalsActivity.this, AnimalsActivity.class);
+                intent=new Intent(MyAnimalsActivity.this, AnimalsActivity.class);
                 startActivity(intent);
                 break;
             case R.id.db3:
                 AppSingleton.getInstance(getApplicationContext()).setAnimalsToShow("3");
-                intent=new Intent(AnimalsActivity.this, AnimalsActivity.class);
+                intent=new Intent(MyAnimalsActivity.this, AnimalsActivity.class);
                 startActivity(intent);
                 break;
             case R.id.db4:
                 AppSingleton.getInstance(getApplicationContext()).setAnimalsToShow("4");
-                intent=new Intent(AnimalsActivity.this, AnimalsActivity.class);
+                intent=new Intent(MyAnimalsActivity.this, AnimalsActivity.class);
                 startActivity(intent);
                 break;
             case R.id.db5:
                 AppSingleton.getInstance(getApplicationContext()).setAnimalsToShow("5");
-                intent=new Intent(AnimalsActivity.this, AnimalsActivity.class);
+                intent=new Intent(MyAnimalsActivity.this, AnimalsActivity.class);
                 startActivity(intent);
                 break;
             case R.id.db6:
                 AppSingleton.getInstance(getApplicationContext()).setAnimalsToShow("6");
-                intent=new Intent(AnimalsActivity.this, AnimalsActivity.class);
+                intent=new Intent(MyAnimalsActivity.this, AnimalsActivity.class);
                 startActivity(intent);
                 break;
             case R.id.db:
                 if(AppSingleton.getInstance(getApplicationContext()).getUser()!=null)
                 {
-                    intent=new Intent(AnimalsActivity.this, Main2LoggedInActivity.class);
+                    intent=new Intent(MyAnimalsActivity.this, Main2LoggedInActivity.class);
                     intent.putExtra("username", AppSingleton.getInstance(getApplicationContext()).getLoggedInUserName());
                 }
-                else intent=new Intent(AnimalsActivity.this, MainActivity.class);
+                else intent=new Intent(MyAnimalsActivity.this, MainActivity.class);
                 startActivity(intent);
                 break;
             case R.id.db8:
-                intent=new Intent(AnimalsActivity.this, ContactActivity.class);
+                intent=new Intent(MyAnimalsActivity.this, ContactActivity.class);
                 startActivity(intent);
                 break;
             case R.id.db10:
-                intent=new Intent(AnimalsActivity.this, LocationsActvity.class);
+                intent=new Intent(MyAnimalsActivity.this, ListOfLocations.class);
                 startActivity(intent);
                 break;
             case R.id.db11:
-                intent=new Intent(AnimalsActivity.this, MyAnimalsActivity.class);
+                intent=new Intent(MyAnimalsActivity.this, ListOfLocations.class);
                 startActivity(intent);
                 break;
 

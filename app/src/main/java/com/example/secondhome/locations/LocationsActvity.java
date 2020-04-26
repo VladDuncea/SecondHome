@@ -17,6 +17,7 @@ import com.example.secondhome.mains.MainActivity;
 import com.example.secondhome.R;
 import com.example.secondhome.contact.ContactActivity;
 import com.example.secondhome.showanimals.AnimalsActivity;
+import com.example.secondhome.showanimals.MyAnimalsActivity;
 import com.example.secondhome.ui.login.AppSingleton;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -117,6 +118,10 @@ public class LocationsActvity extends AppCompatActivity implements NavigationVie
                 break;
             case R.id.db10:
                 intent=new Intent(LocationsActvity.this, ListOfLocations.class);
+                startActivity(intent);
+                break;
+            case R.id.db11:
+                intent=new Intent(LocationsActvity.this, MyAnimalsActivity.class);
                 startActivity(intent);
                 break;
         }

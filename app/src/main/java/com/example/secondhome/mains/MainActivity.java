@@ -18,6 +18,7 @@ import com.example.secondhome.contact.ContactActivity;
 import com.example.secondhome.locations.ListOfLocations;
 import com.example.secondhome.locations.LocationsActvity;
 import com.example.secondhome.showanimals.AnimalsActivity;
+import com.example.secondhome.showanimals.MyAnimalsActivity;
 import com.example.secondhome.ui.login.AppSingleton;
 import com.example.secondhome.ui.login.LoginActivity;
 import com.example.secondhome.ui.login.RegisterActivity;
@@ -130,6 +131,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 intent=new Intent(MainActivity.this, ListOfLocations.class);
                 startActivity(intent);
                 break;
+            case R.id.db11:
+                intent=new Intent(MainActivity.this, MyAnimalsActivity.class);
+                startActivity(intent);
         }
         //close navigation drawer
         mDrawer.closeDrawer(GravityCompat.START);

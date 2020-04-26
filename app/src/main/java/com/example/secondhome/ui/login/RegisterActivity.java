@@ -39,9 +39,6 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        // Progress dialog
-//        progressDialog = new ProgressDialog(this);
-//        progressDialog.setCancelable(false);
 
        signupInputFirstName = (EditText) findViewById(R.id.firstName);
        signupInputLastName= (EditText) findViewById(R.id.lastName);
@@ -68,6 +65,11 @@ public class RegisterActivity extends AppCompatActivity {
         System.out.println(signupInputLastName.getText().toString());
         System.out.println(signupInputEmail.getText().toString());
         System.out.println(signupInputPassword.getText().toString());
+        if(signupInputPassword.getText().toString().length()<5)
+        {
+            Toast.makeText(getApplicationContext(),"Parola trebuie sa contina minim 6 caractere",Toast.LENGTH_SHORT).show();
+            return ;
+        }
         isUsed=false;
         //check if email is already in use
        StringRequest emailReq=new StringRequest(Request.Method.POST,

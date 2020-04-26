@@ -9,6 +9,10 @@
         android:id="@+id/db0"
         android:title="Toate animalele"
         android:icon="@drawable/ic_paw" />
+    <item
+        android:id="@+id/db11"
+        android:title="Animalele mele"
+        android:icon="@drawable/ic_paw" />
     <group>
         <item
         android:id="@+id/db1"
