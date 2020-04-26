@@ -34,23 +34,41 @@ function homepage() {
 
 function resetpass() {
 
-    var email = document.getElementById("resetpass").value
-        // console.log(email)
+    var email = document.getElementById("resetpass").value;
+    
     $.post('http://secondhome.fragmentedpixel.com/server/resetpassword.php', { user_email: email }, function(data, status) {
         var json_data = JSON.parse(data)
-        console.log(json_data.email_sent)
-        if (json_data.email_sent == 1)
-        // console.log("S-a trimis")
+        
+        if(json_data.status == 1)
+        {
+            if (json_data.email_sent == 1)
+            {
+                $(document).Toasts('create', {
+                    class: 'bg-success',
+                    title: 'Succes!',
+                    subtitle: '',
+                    body: 'Instructiunile pentru resetarea parolei au fost trimise la adresa de email introdusa!'
+                });
+            }
+            else if(json_data.registered_email == 0)
+            {
+                $(document).Toasts('create', {
+                    class: 'bg-warning',
+                    title: 'Atentie!',
+                    subtitle: '',
+                    body: 'Adresa de email introdusa nu este asociata unui cont!'
+                });
+            }
+        }
+        else
         {
             $(document).Toasts('create', {
-                class: 'bg-success',
-                title: 'Succes!',
+                class: 'bg-danger',
+                title: 'Eroare!',
                 subtitle: '',
-                body: 'Adresa de email a fost trimisa!'
+                body: 'A aparut o eroare, va rugam reincercati!'
             });
-            // location.replace("http://secondhome.fragmentedpixel.com/index.php")
         }
-
     })
 }
 
@@ -68,21 +86,38 @@ function recoverpass() {
         return (false);
     }
 
-    console.log("code  " + getQueryVariable("code"))
-    console.log("parola  " + new_pass)
     $.post('http://secondhome.fragmentedpixel.com/server/newpassword.php', { code: getQueryVariable("code"), user_password: new_pass }, function(data, status) {
         var json_data = JSON.parse(data)
-        console.log(json_data.email_sent)
-        if (json_data.password_reset == 1)
-        // console.log("S-a trimis")
+        if(json_data.status == 1)
+        {
+            if (json_data.password_reset == 1)
+            {
+                $(document).Toasts('create', {
+                    class: 'bg-success',
+                    title: 'Succes!',
+                    subtitle: '',
+                    body: 'Parola a fost schimbata, veti fi redirectionat catre pagina de login!'
+                });
+                setTimeout(function(){ window.location.href = '/login.php';}, 3000);
+            }
+            else if(json_data.correct_code == 0)
+            {
+                $(document).Toasts('create', {
+                    class: 'bg-danger',
+                    title: 'Eroare!',
+                    subtitle: '',
+                    body: 'Acest link de resetare a expirat sau este incorect!'
+                });
+            }
+        }
+        else
         {
             $(document).Toasts('create', {
-                class: 'bg-success',
-                title: 'Succes!',
+                class: 'bg-danger',
+                title: 'Eroare!',
                 subtitle: '',
-                body: 'Adresa de email a fost trimisa!'
+                body: 'A aparut o eroare, va rugam reincercati!'
             });
-
         }
     })
 

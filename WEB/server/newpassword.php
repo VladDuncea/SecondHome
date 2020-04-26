@@ -4,6 +4,7 @@ include "php/header.php";
 
 $response["password_reset"] = 0;      //Password is not yet reset
 $response["correct_code"] = 0;      //Presume code does not exist
+$response["status"]=1;
 
 //Check request data
 if(!isset($_POST['user_password'],$_POST['code']))
