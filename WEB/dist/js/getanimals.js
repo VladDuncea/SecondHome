@@ -12,7 +12,7 @@ function get_animal(request_type_active, pet_type) {
             var type_animal = ["Toate", "Pisici", "Câini", "Rozătoare", "Reptile", "Păsări", "Acvatice"]
             for (var i = 0; i < nr_animals; i++) {
                 // col-sm-3
-                const card = `<div class="d-flex ">
+                const card = `<div class="d-flex col-sm-3">
                 <div class="card bg-light">
                     <div class="card-header text-muted border-bottom-0" >
                        ${type_animal[animals[i].type]}

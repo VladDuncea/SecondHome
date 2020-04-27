@@ -159,7 +159,7 @@
                             <i class="nav-icon	fas fa-paw"></i>
                             <p>
                                 Cereri adoptie
-                                <span class="badge badge-info right"><? echo $nr_a; ?></span>
+                                <span class="badge badge-success right"><? echo $nr_a; ?></span>
                             </p>
                         </a>
                     </li>
@@ -168,20 +168,30 @@
                             <i class="nav-icon	fas fa-paw"></i>
                             <p>
                                 Cereri cazare
-                                <span class="badge badge-info right"><? echo $nr_c; ?></span>
+                                <span class="badge badge-success right"><? echo $nr_c; ?></span>
                             </p>
                         </a>
                     </li>
                 <?php endif; ?>
 
                 <li class="nav-item">
+                    <a href="contact.php" class="nav-link">
+                    <i class="nav-icon fa fa-phone"></i>
+                        <p>
+                            Contacte
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="location.php" class="nav-link">
-                        <i class="nav-icon	fas fa-paw"></i>
+                         <i class=" nav-icon fas fa-map-marker-alt"></i>
                         <p>
                             Locatiile noastre
                         </p>
                     </a>
                 </li>
+
+                
                 <?php if (isset($_SESSION['userId'])): ?>
                     <!-- Deconectare, apare doar cand userul e conectat -->
                     <li class="nav-item">
