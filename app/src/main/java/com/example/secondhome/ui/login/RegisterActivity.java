@@ -70,6 +70,11 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"Parola trebuie sa contina minim 6 caractere",Toast.LENGTH_SHORT).show();
             return ;
         }
+        if(signupInputFirstName.getText().length()<1 || signupInputLastName.getText().length()<1 || signupInputEmail.getText().length()<1 )
+        {
+            Toast.makeText(getApplicationContext(),"Toate campurile trebuie completate",Toast.LENGTH_SHORT).show();
+            return ;
+        }
         isUsed=false;
         //check if email is already in use
        StringRequest emailReq=new StringRequest(Request.Method.POST,
