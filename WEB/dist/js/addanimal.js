@@ -89,6 +89,7 @@ var validator = $('#addanimal_form').validate({
     },
     rules: {
         animal_name: {
+            maxlength: 10,
             required: true
         },
         animal_type: {
@@ -99,6 +100,7 @@ var validator = $('#addanimal_form').validate({
             range: [1, 100]
         },
         animal_breed: {
+            maxlength: 10,
             required: true
         },
         animal_description: {
@@ -111,6 +113,7 @@ var validator = $('#addanimal_form').validate({
     },
     messages: {
         animal_name: {
+            maxlength: "Numele poate sa aiba maxim 10 caractere",
             required: "Campul este obligatoriu"
         },
         animal_type: {
@@ -121,6 +124,7 @@ var validator = $('#addanimal_form').validate({
             range: "Valoare invalida"
         },
         animal_breed: {
+            maxlength: "Rasa poate sa aiba maxim 10 caractere",
             required: "Campul este obligatoriu"
         },
         animal_description: {
