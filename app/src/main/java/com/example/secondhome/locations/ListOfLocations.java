@@ -81,6 +81,15 @@ public class ListOfLocations extends AppCompatActivity implements NavigationView
         navigationView.setNavigationItemSelectedListener(this);
     }
     @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        System.out.println("in here");
+        if(mToggle.onOptionsItemSelected(item))
+        {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         System.out.println("On navigation selected item");
