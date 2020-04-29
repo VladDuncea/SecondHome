@@ -3,62 +3,6 @@ include "php/connection.php";
 include "php/header.php";
 $response["status"]=-1;
 
-//GET REQUEST TYPE
-if(!isset($_POST['UID']))
-{
-    $response["status"]=0;
-    $response["err_message"]="Missing parameters!";
-    entry_log("getuser","Unknown",$response);   
-    echo json_encode($response);
-    return;
-}
-
-//Get parameters
-$WantedUID = mysqli_real_escape_string( $conn,$_POST['UID']);
-
-//Get pet data
-$sql="SELECT * FROM Pets WHERE PID = $PID";
-if(!$result = mysqli_query($conn,$sql))
-{
-    $response["status"]=-1;  //Database error
-    error_log("SQL ERROR: ".mysqli_error($conn));
-    echo json_encode($response);
-    return;
-}
-if($row = mysqli_fetch_assoc($result))
-{
-    $pet['PID'] = $row['PID'];
-    $pet['LID'] = $row['LID'];
-    $pet['name'] = $row['pet_name'];
-    $pet['birthdate'] = date_diff(date_create("now") , date_create($row['pet_birthdate']))->y;
-    $pet['description'] = $row['pet_description'];
-    $pet['image'] = $row['pet_image'];
-    $pet['state'] = $row['pet_state'];
-    $pet['food'] = $row['pet_food'];
-    $pet['type'] = $row['pet_type'];
-    $pet['breed'] = $row['pet_breed'];
-}
-else
-{
-    //Pet doesn't exist in database
-    $response["status"]=0;
-    $response["err_message"] = "Wrong PID";
-    entry_log("getanimalextended","Unknown",$response);     
-    echo json_encode($response);  
-    return;
-}
-
-//Get pet owner
-$sql="SELECT * FROM Users_Pets WHERE PID = $PID AND relation_type = 0";
-if(!$result = mysqli_query($conn,$sql))
-{
-    $response["status"]=-1;  //Database error
-    error_log("SQL ERROR: ".mysqli_error($conn));
-    echo json_encode($response);
-    return;
-}
-$owner = mysqli_fetch_assoc($result)["UID"];
-
 //GENERAL UID/UType getter
 if(!isset($_POST['security_code']))
 {
@@ -94,43 +38,37 @@ else if($_POST['security_code'] == '8981ASDGHJ22123' && isset($_POST['UID']))
 }
 else
 {
-    $UID = -1;
-    $UType = -1;
-}
-
-//Pet is public and user is guest
-if($pet['state']==10 && ($UID == -1 || ($UType == 0 && $owner != $UID) ))
-{
-    //No error
-    $response["status"] = 1;
-    $response+=$pet; 
-    echo json_encode($response);
-    $response['image'] = "Imagine";
-    entry_log("getanimalextended",$user, $response);   //Data logging
+    $response["status"]=-1;
+    $response["err_message"] = "Unauthoried access!1";
+    echo json_encode($response);  
+    entry_log("getuser","Unknown",$response);     
     return;
 }
 
-//Get requests
-if($owner == $UID)
+if(isset($_POST['WantedUID']))
 {
-    $sql = "SELECT * FROM Requests WHERE PID = $PID AND UID = $UID";
-}
-else if($UType >=1)
-{
-    $sql = "SELECT * FROM Requests WHERE PID = $PID";
+    //Get parameters
+    $WantedUID = mysqli_real_escape_string( $conn,$_POST['WantedUID']);
 }
 else
 {
-    $response["status"]=0;
-    $response["err_message"] = "Unauthorzed access!2";
+    $WantedUID = $UID;
+}
+
+
+//No clearance
+if($UType <=0 && $UID != $WantedUID)
+{
+    $response["status"]=-1;
+    $response["err_message"] = "Unauthoried access!1";
     echo json_encode($response);  
-    $response['image'] = "Imagine";
-    entry_log("getanimalextended","Unknown",$response);     
+    entry_log("getuser","Unknown",$response);     
     return;
 }
 
-$response+=$pet; 
 
+//Get user data
+$sql="SELECT * FROM Users WHERE UID = $WantedUID";
 if(!$result = mysqli_query($conn,$sql))
 {
     $response["status"]=-1;  //Database error
@@ -138,16 +76,35 @@ if(!$result = mysqli_query($conn,$sql))
     echo json_encode($response);
     return;
 }
-$response['nr_requests'] = $result->num_rows;
-$poz = 0;
-while($row = mysqli_fetch_assoc($result))
+if($row = mysqli_fetch_assoc($result))
 {
-    $response['requests'][$poz]['UID'] = $row['UID'];
-    $response['requests'][$poz]['type'] = $row['request_type'];
-    $response['requests'][$poz]['state'] = $row['request_state'];
-    $response['requests'][$poz]['description'] = $row['request_description'];
-    $poz++;
+    $response['first_name'] = $row['first_name'];
+    $response['last_name'] = $row['last_name'];
+    $response['user_email'] = $row['user_email'];
+    $response['user_type'] = $row['user_type'];
+    
 }
+else
+{
+    //User doesn't exist
+    $response["status"]=0;
+    $response["err_message"] = "Wrong UID";
+    entry_log("getuser","Unknown",$response);     
+    echo json_encode($response);  
+    return;
+}
+
+//Get nr of pets for owner
+$sql="SELECT COUNT(UID) nr FROM Users_Pets WHERE UID = $UID AND relation_type = 0";
+if(!$result = mysqli_query($conn,$sql))
+{
+    $response["status"]=-1;  //Database error
+    error_log("SQL ERROR: ".mysqli_error($conn));
+    echo json_encode($response);
+    return;
+}
+$response['nr_owned_pets'] = mysqli_fetch_assoc($result)["nr"];
+
 
 //Data for entry_log
 if (session_status() == PHP_SESSION_NONE) {
