@@ -32,12 +32,15 @@ function get_animal(request_type_active, pet_type) {
                     </div>
                     <div class="card-footer">
                         <div class="text-right">
-                            <a href="#" class="btn btn-sm btn-success">
-                                <i class="fas fa-paw"id='detalii'></i> Mai multe detalii
-                            </a>
+                        <a href="/detalii_animal.php?PID=${animals[i].PID}" class="btn btn-sm btn-success">
+                                    <i class="fas fa-paw"id='detalii'></i> Mai multe detalii
+                                </a>
                         </div>
                     </div>`;
-                const animal_box = card + `   </div>
+                // <a href="detalii_animal.php" class="btn btn-sm btn-success">
+                //             <i class="fas fa-paw"id='detalii'></i> Mai multe detalii
+                //         </a>
+                const animal_box = card + ` </div>
                     </div>`;
                 if (request_type_active == 0) {
                     // console.log(document.getElementById('boxAnimals'));
