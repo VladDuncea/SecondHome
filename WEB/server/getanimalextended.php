@@ -65,18 +65,16 @@ if(!isset($_POST['security_code']))
     //WEB
     //Verify account level
     session_start();
-    if(!isset($_SESSION['userType']))
+    if(isset($_SESSION['userType']))
     {
-        $response["status"]=-1;
-        $response["err_message"] = "Unauthoried access!1";
-        echo json_encode($response);  
-        $response['image'] = "Imagine";
-        entry_log("getanimalextended","Unknown",$response);     
-        return;
+        $UID = $_SESSION['userId'];
+        $UType = $_SESSION['userType'];
     }
-    $UID = $_SESSION['userId'];
-    $UType = $_SESSION['userType'];
-    
+    else
+    {
+        $UID = -1;
+        $UType = -1;
+    }
 }
 else if($_POST['security_code'] == '8981ASDGHJ22123' && isset($_POST['UID']))
 {
@@ -94,8 +92,11 @@ else if($_POST['security_code'] == '8981ASDGHJ22123' && isset($_POST['UID']))
 }
 else
 {
-    $UID = -1;
-    $UType = -1;
+    $response["status"]=0;
+    $response["err_message"] = "Unauthorzed access!1";
+    echo json_encode($response);  
+    entry_log("getanimalextended","Unknown",$response);     
+    return;
 }
 
 //Pet is public and user is guest
