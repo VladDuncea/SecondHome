@@ -15,7 +15,7 @@ if(!isset($_POST['security_code']))
         $response["err_message"] = "Unauthoried access!1";
         echo json_encode($response);  
         $response['image'] = "Imagine";
-        entry_log("getanimalextended","Unknown",$response);     
+        entry_log("getuser","Unknown",$response);     
         return;
     }
     $UID = $_SESSION['userId'];
@@ -38,6 +38,7 @@ else if($_POST['security_code'] == '8981ASDGHJ22123' && isset($_POST['UID']))
 }
 else
 {
+    //HAS SECURITY CODE BUT WRONG !!
     $response["status"]=-1;
     $response["err_message"] = "Unauthoried access!1";
     echo json_encode($response);  
