@@ -36,7 +36,7 @@ function resetpass() {
 
     var email = document.getElementById("resetpass").value;
     
-    $.post('http://secondhome.fragmentedpixel.com/server/resetpassword.php', { user_email: email }, function(data, status) {
+    $.post('server/resetpassword.php', { user_email: email }, function(data, status) {
         var json_data = JSON.parse(data)
         
         if(json_data.status == 1)
@@ -86,7 +86,7 @@ function recoverpass() {
         return (false);
     }
 
-    $.post('http://secondhome.fragmentedpixel.com/server/newpassword.php', { code: getQueryVariable("code"), user_password: new_pass }, function(data, status) {
+    $.post('server/newpassword.php', { code: getQueryVariable("code"), user_password: new_pass }, function(data, status) {
         var json_data = JSON.parse(data)
         if(json_data.status == 1)
         {

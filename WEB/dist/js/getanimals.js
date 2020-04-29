@@ -1,6 +1,6 @@
 function get_animal(request_type_active, pet_type) {
 
-    $.post('http://secondhome.fragmentedpixel.com/server/getanimals.php', { request_type: request_type_active, pet_type: pet_type }, function(data, status) {
+    $.post('server/getanimals.php', { request_type: request_type_active, pet_type: pet_type }, function(data, status) {
 
         var json_data = JSON.parse(data)
         if (json_data.status == 1) {

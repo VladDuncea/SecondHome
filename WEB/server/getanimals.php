@@ -7,8 +7,8 @@ $response["status"]=-1;
 if(!isset($_POST['request_type']))
 {
     $response["status"]=0;
-    $response["err_message"]="Missing parameters!";  
-    error_log("Connection failed".mysqli_error($conn));   //Error logging
+    $response["err_message"]="Missing parameters!";
+    entry_log("getanimals","Unknown",$response);   
     echo json_encode($response);
     return;
 }
@@ -43,10 +43,8 @@ if($req_type == 0)
         $response['animals'][$poz]['PID'] = $row['PID'];
         $response['animals'][$poz]['name'] = $row['pet_name'];
         $response['animals'][$poz]['birthdate'] = date_diff(date_create("now") , date_create($row['pet_birthdate']))->y;
-        $response['animals'][$poz]['state'] = $row['pet_state'];
         $response['animals'][$poz]['description'] = $row['pet_description'];
         $response['animals'][$poz]['image'] = $row['pet_image'];
-        $response['animals'][$poz]['food'] = $row['pet_food'];
         $response['animals'][$poz]['type'] = $row['pet_type'];
         $response['animals'][$poz]['breed'] = $row['pet_breed'];
         $poz++;
@@ -120,9 +118,7 @@ else if($req_type >= 1 && $req_type <= 3)
             $response['animals'][$poz]['PID'] = $row['PID'];
             $response['animals'][$poz]['name'] = $row['pet_name'];
             $response['animals'][$poz]['birthdate'] = date_diff(date_create("now") , date_create($row['pet_birthdate']))->y;
-            $response['animals'][$poz]['state'] = $row['pet_state'];
             $response['animals'][$poz]['description'] = $row['pet_description'];
-            $response['animals'][$poz]['food'] = $row['pet_food'];
             $response['animals'][$poz]['type'] = $row['pet_type'];
             $response['animals'][$poz]['breed'] = $row['pet_breed'];
 

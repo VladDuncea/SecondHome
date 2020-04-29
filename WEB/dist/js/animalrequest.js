@@ -1,7 +1,7 @@
 function optiuni_animal(request_type, PID) {
     // console.log(PID)
     // console.log(request_type)
-    $.post('http://secondhome.fragmentedpixel.com/server/animalrequest.php', { request_type: request_type, PID: PID }, function(data, status) {
+    $.post('server/animalrequest.php', { request_type: request_type, PID: PID }, function(data, status) {
 
         // console.log(`${status}`)
         if (`${status}` == 'success') {
@@ -29,7 +29,7 @@ function optiuni_animal(request_type, PID) {
 function optiuni_angajat(value, RID) {
     console.log(RID)
     console.log(value)
-    $.post('http://secondhome.fragmentedpixel.com/server/updaterequest.php', { value: value, RID: RID }, function(data, status) {
+    $.post('server/updaterequest.php', { value: value, RID: RID }, function(data, status) {
         var json_data = JSON.parse(data)
 
         if (json_data.status == 1) {
