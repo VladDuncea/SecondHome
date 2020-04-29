@@ -92,6 +92,7 @@
     <script src="../dist/js/demo.js"></script>
     <script src="../dist/js/getanimals.js"></script>
     <script src="../dist/js/animalrequest.js"></script>
+    <script src="../dist/js/utils.js"></script>
 
     
     
