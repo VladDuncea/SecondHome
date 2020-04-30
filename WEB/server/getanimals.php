@@ -152,7 +152,7 @@ else if($req_type >= 1 && $req_type <= 3)
         }
 
         $sql = "SELECT RID,request_description,pet_name,pet_birthdate,pet_description,pet_image,pet_type,
-                    pet_breed,first_name,last_name 
+                    pet_breed,UID,first_name,last_name 
                 FROM Requests 
                 JOIN Pets USING (PID)
                 JOIN Users USING (UID)
@@ -180,6 +180,7 @@ else if($req_type >= 1 && $req_type <= 3)
             $response['animals'][$poz]['image'] = $row['pet_image'];
 
             //User data
+            $response['animals'][$poz]['UID'] = $row['UID'];
             $response['animals'][$poz]['first_name'] = $row['first_name'];
             $response['animals'][$poz]['last_name'] = $row['last_name'];
 
