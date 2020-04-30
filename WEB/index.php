@@ -88,14 +88,14 @@
                                 
                                
                             </div>
-                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
+                                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
                             </div>
                     </div>
                     <!-- /.card-body -->
@@ -108,12 +108,12 @@
                 <!-- DONUT CHART -->
                 <div class="col-md-6">
                     <div class="card card-success">
-                    <div class="card-header">
-                        <h3 class="card-title"><i class="nav-icon fas fa-paw"></i> Animale inregistrate</h3>
-                    </div>
-                    <div class="card-body">
-                        <canvas id="donutChart1" ></canvas>
-                    </div>
+                        <div class="card-header">
+                            <h3 class="card-title"><i class="nav-icon fas fa-paw"></i> Animale inregistrate</h3>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="donutChart1" ></canvas>
+                        </div>
                     <!-- /.card-body -->
                     </div>
                     <!-- /.card -->
@@ -122,17 +122,18 @@
                 <!-- DONUT CHART -->
                 <div class="col-md-6">
                     <div class="card card-success">
-                    <div class="card-header">
-                        <h3 class="card-title"><i class="nav-icon fas fa-paw"></i> Animale care si-au gasit o casa</h3>
-                    </div>
-                    <div class="card-body">
-                        <canvas id="donutChart2" ></canvas>
-                    </div>
+                        <div class="card-header">
+                            <h3 class="card-title"><i class="nav-icon fas fa-paw"></i> Animale care si-au gasit o casa</h3>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="donutChart2" ></canvas>
+                        </div>
                     <!-- /.card-body -->
                     </div>
                     <!-- /.card -->
                 </div>
             </div>
+
 
 
         </div>
@@ -147,7 +148,7 @@
             <!-- Control sidebar content goes here -->
         </aside>
         <!-- /.control-sidebar -->
-
+       
     </div>
     <!-- ./wrapper -->
     <!-- <style>

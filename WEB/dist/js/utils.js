@@ -1,4 +1,4 @@
-//doughnut
+//grafice pagina de home
 function homepage() {
     var ctxD = document.getElementById("donutChart1").getContext('2d');
     var myLineChart = new Chart(ctxD, {
@@ -31,6 +31,8 @@ function homepage() {
         }
     });
 }
+
+// functie pentru trimiterea cererii de resetare a parolei
 
 function resetpass() {
 
@@ -65,6 +67,8 @@ function resetpass() {
         }
     })
 }
+
+//Functie pt introducerea unei noi parole 
 
 function recoverpass() {
 
@@ -111,6 +115,8 @@ function recoverpass() {
 
 
 }
+
+// Functie pentru afisarea detaliilor despre un animal 
 
 function detalii() {
 
@@ -193,4 +199,121 @@ function detalii() {
 
     })
 
+}
+
+// functie pentru detaliile profilului 
+
+function detalii_user() {
+
+    function getQueryVariable(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split("=");
+            if (pair[0] == variable) { return pair[1]; }
+        }
+        return (false);
+    }
+    var uid = getQueryVariable('UID')
+
+    // pentru detaliile utilizatorului curent
+    if (uid == false) {
+        $.post('server/getuser.php', function(data) {
+            var json_data = JSON.parse(data)
+            if (json_data.status == 1) {
+                console.log(json_data)
+                var type_user = ["Utilizator", "Angajat"]
+                const contin = `
+            <div  class="centered card card-success card-outline" >
+                    <div class="card-body box-profile">
+                      <div class="text-center">
+                        <img class="profile-user-img img-fluid img-circle" src="../../dist/img/user.png" alt="User profile picture">
+                      </div>
+      
+                      <h3 class="profile-username text-center">${json_data.first_name} ${json_data.last_name}</h3>
+      
+                      <p class="text-muted text-center">${type_user[json_data.user_type]}</p>
+      
+                      <ul class="list-group list-group-unbordered mb-3">
+                        <li class="list-group-item">
+                          <b>Email</b> <a class="float-right">${json_data.user_email}</a>
+                        </li>
+                       `
+
+                if (json_data.user_type == 0) {
+                    caseta = contin + `<li class="list-group-item">
+                        <b>Număr de animale adăugate</b> <a class="float-right">${json_data.nr_owned_pets}</a>
+                    </li>
+                </ul>
+                     <a href="animalele_mele.php" class="btn btn-success btn-block"><b>Animalele mele</b></a>
+                 </div>
+                <!-- /.card-body -->
+            </div>`
+                } else
+                if (json_data.user_type == 1) {
+                    caseta = contin + `</ul>
+                </div>
+                <!-- /.card-body -->
+              </div>`
+                }
+
+                if (document.getElementById('continut_pag') != null) {
+                    document.getElementById('continut_pag').innerHTML += caseta;
+                } else {
+                    console.log('Nu s-a gasit detalii_user.php')
+                }
+            }
+        })
+    } else
+    // pentru angajatul care vrea sa vada contul unui utilizator
+    {
+        $.post('server/getuser.php', { WantedUID: uid },
+
+            function(data) {
+                var json_data = JSON.parse(data)
+                if (json_data.status == 1) {
+                    console.log(json_data)
+                    var type_user = ["Utilizator", "Angajat"]
+                    const contin = `
+            <div  class="centered card card-success card-outline" >
+                    <div class="card-body box-profile">
+                      <div class="text-center">
+                        <img class="profile-user-img img-fluid img-circle" src="../../dist/img/user.png" alt="User profile picture">
+                      </div>
+      
+                      <h3 class="profile-username text-center">${json_data.first_name} ${json_data.last_name}</h3>
+      
+                      <p class="text-muted text-center">${type_user[json_data.user_type]}</p>
+      
+                      <ul class="list-group list-group-unbordered mb-3">
+                        <li class="list-group-item">
+                          <b>Email</b> <a class="float-right">${json_data.user_email}</a>
+                        </li>
+                       `
+
+                    if (json_data.user_type == 0) {
+                        caseta = contin + `<li class="list-group-item">
+                        <b>Număr de animale adăugate</b> <a class="float-right">${json_data.nr_owned_pets}</a>
+                    </li>
+                </ul>
+                 </div>
+                <!-- /.card-body -->
+            </div>`
+                    } else
+                    if (json_data.user_type == 1) {
+                        caseta = contin + `</ul>
+                </div>
+                <!-- /.card-body -->
+              </div>`
+                    }
+
+                    if (document.getElementById('continut_pag') != null) {
+                        document.getElementById('continut_pag').innerHTML += caseta;
+                    } else {
+                        console.log('Nu s-a gasit detalii_user.php')
+                    }
+                }
+            })
+
+    }
 }

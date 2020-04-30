@@ -18,7 +18,7 @@
                 <img src="<?php echo $_SESSION['userImg']?>" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="utilizator.php" class="d-block" id='user_name'><?php echo $_SESSION['FirstName']." ".$_SESSION['LastName'];?></a>
+                <a href="detalii_user.php" class="d-block" id='user_name'><?php echo $_SESSION['FirstName']." ".$_SESSION['LastName'];?></a>
             </div>
         <?php else: ?>
             <div class="image">

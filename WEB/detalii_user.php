@@ -5,7 +5,7 @@
     <?php include 'pieces/head.php' ?>
 </head>
 
-<body class="hold-transition sidebar-mini" onload="detalii();">
+<body class="hold-transition sidebar-mini" onload="detalii_user();">
     <!-- Site wrapper -->
     <div class="wrapper">
         
@@ -52,7 +52,7 @@
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
-
+        
     <!-- jQuery -->
     <script src="../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
@@ -66,6 +66,14 @@
 
 
     
+  <style>
+  @media only screen and (min-width: 1300px) {
+    .centered {
+        margin-right: 350px;
+        margin-left: 350px;
+        }
+    }     
+  </style>
     
 </body>
 

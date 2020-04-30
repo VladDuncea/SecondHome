@@ -1,3 +1,4 @@
+// functie pt generarea casetelor animalelor
 function get_animal(request_type_active, pet_type) {
 
     $.post('server/getanimals.php', { request_type: request_type_active, pet_type: pet_type }, function(data, status) {
@@ -152,7 +153,7 @@ function get_animal(request_type_active, pet_type) {
 
                     const animal_box = card + `
                 <div class="card-body" style="padding: 2">   
-                <p class="lead" ><b>Utilizator: </b> <a href='#' >${animals[i].first_name} ${animals[i].last_name} </a></p>       
+                <p class="lead" ><b>Utilizator: </b> <a href='/detalii_user.php?UID=${animals[i].UID}' >${animals[i].first_name} ${animals[i].last_name} </a></p>       
                     <div class="text-center">
                     <button type="button" class="btn btn-secondary" id='${animals[i].RID}aadoptie' onclick="optiuni_angajat(1,${animals[i].RID});"><i class="fas fa-paw"id='detalii'></i> Accepta</button>    
                     <button type="button" class="btn btn-secondary" id='${animals[i].RID}radoptie' onclick="optiuni_angajat(-1,${animals[i].RID});"><i class="fas fa-paw"id='detalii'></i> Refuza</button> 
