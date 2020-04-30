@@ -96,7 +96,7 @@ else
 }
 
 //Get nr of pets for owner
-$sql="SELECT COUNT(UID) nr FROM Users_Pets WHERE UID = $UID AND relation_type = 0";
+$sql="SELECT COUNT(UID) nr FROM Users_Pets WHERE UID = $WantedUID AND relation_type = 0";
 if(!$result = mysqli_query($conn,$sql))
 {
     $response["status"]=-1;  //Database error
