@@ -57,10 +57,7 @@ function get_animal(request_type_active, pet_type) {
                     var buttonState1 = undefined,
                         buttonState2 = undefined,
                         buttonState = undefined;
-                    // console.log(`${animals[i].PID}`)
-                    // console.log(`${animals[i].has_request}`)
-                    // console.log(`${animals[i].request_type}`)
-                    // console.log(`${animals[i].request_state}`)
+
 
                     // const buttonState;
                     if (animals[i].has_request == 1) {
@@ -110,9 +107,12 @@ function get_animal(request_type_active, pet_type) {
                         const animal_box = card + `
                                             <div class="card-body" style="padding: 2">       
                                                 <div class="text-center">
-                                                <button type="button" class="btn btn-secondary" disabled>${buttonState}</button>       
-                                                <button type="button" class="btn btn-secondary" id='${animals[i].PID}e' ><i class="fas fa-paw"id='detalii'></i> Editează</button> 
-                                                </div> 
+                                                <button type="button" class="btn btn-sm btn-secondary" disabled>${buttonState}</button> 
+                                                <hr>      
+                                                <a href="/edit_animal.php?PID=${animals[i].PID}" class="btn btn-sm btn-success">
+                                                <i class="fas fa-paw"id='detalii'></i> Editează
+                                                </a>
+                                            </div> 
                                             </div>
                                             </div>
                                          </div>`;
@@ -129,10 +129,12 @@ function get_animal(request_type_active, pet_type) {
                         const animal_box = card + `
                                     <div class="card-body" style="padding: 2">       
                                         <div class="text-center">
-                                        <button type="button" class="btn btn-secondary" onclick="optiuni_animal(1,${animals[i].PID});" id='${animals[i].PID}c' value='Cazează'>${buttonState1}</button>       
-                                        <button type="button" class="btn btn-secondary" onclick="optiuni_animal(0,${animals[i].PID});" id='${animals[i].PID}a'  value='Dă spre adopție'>${buttonState2}</button>
-                                        <button type="button" class="btn btn-secondary" id='${animals[i].PID}e' ><i class="fas fa-paw"id='detalii'></i> Editează</button> 
-                                        </div> 
+                                        <button type="button" class="btn btn-sm btn-secondary" onclick="optiuni_animal(1,${animals[i].PID});" id='${animals[i].PID}c' value='Cazează'>${buttonState1}</button> <hr>      
+                                        <button type="button" class="btn btn-sm btn-secondary" onclick="optiuni_animal(0,${animals[i].PID});" id='${animals[i].PID}a'  value='Dă spre adopție'>${buttonState2}</button><hr>
+                                        <a href="/edit_animal.php?PID=${animals[i].PID}" class="btn btn-sm btn-success">
+                                        <i class="fas fa-paw"id='detalii'></i> Editează
+                                        </a> 
+                                    </div> 
                                     </div>
                                     </div>
                                 </div>`;

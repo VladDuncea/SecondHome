@@ -1,21 +1,22 @@
 var cropper;
+
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
 
         reader.onload = function(e) {
             $('#blah').attr('src', e.target.result);
-            
+
             var image = document.querySelector('#blah');
             //document.querySelector('#cropper_container').style.height = "500px";
             image.style.display = "initial";
-            if(cropper)
-            {
+            if (cropper) {
                 cropper.destroy();
             }
             cropper = new Cropper(image, {
-            aspectRatio: 1,
-            viewMode: 3});
+                aspectRatio: 1,
+                viewMode: 3
+            });
         };
         reader.readAsDataURL(input.files[0]);
 
@@ -30,8 +31,8 @@ function add_animal() {
     var canvas;
     if (cropper) {
         canvas = cropper.getCroppedCanvas({
-        width: 128,
-        height: 128,
+            width: 128,
+            height: 128,
         });
     }
     //jform.append('pet_image', $('#getFile')[0].files[0]);
@@ -41,10 +42,9 @@ function add_animal() {
     jform.append('pet_type', categorie);
     jform.append('pet_breed', document.getElementById('inputRasa').value);
     jform.append('pet_age', document.getElementById('inputVarsta').value);
-    if(cropper)
-    {
+    if (cropper) {
         cropper.destroy();
-        cropper= null;
+        cropper = null;
     }
     $.ajax({
         url: '/server/addanimal.php',
