@@ -1,6 +1,7 @@
 <?php
 include "php/connection.php";
 include "php/header.php";
+
 $response["status"]=-1;
 
 //GET REQUEST TYPE
@@ -79,16 +80,25 @@ if(!isset($_POST['security_code']))
 else if($_POST['security_code'] == '8981ASDGHJ22123' && isset($_POST['UID']))
 {
     //ANDROID
-    $UID = mysqli_real_escape_string( $conn,$_POST['UID']);
-    $sql = "SELECT user_type FROM Users WHERE UID = $UID";
-    if(!$result = mysqli_query($conn,$sql))
+    if($_POST['UID'] == -1)
     {
-        $response["status"]=-1;  //Database error
-        error_log("SQL ERROR: ".mysqli_error($conn));   //Error logging
-        echo json_encode($response);
-        return;
+        $UID = -1;
+        $UType = -1;
     }
-    $UType = mysqli_fetch_assoc($result)['user_type'];
+    else
+    {
+        $UID = mysqli_real_escape_string( $conn,$_POST['UID']);
+        $sql = "SELECT user_type FROM Users WHERE UID = $UID";
+        if(!$result = mysqli_query($conn,$sql))
+        {
+            $response["status"]=-1;  //Database error
+            error_log("SQL ERROR: ".mysqli_error($conn));   //Error logging
+            echo json_encode($response);
+            return;
+        }
+        $UType = mysqli_fetch_assoc($result)['user_type'];
+    }
+    
 }
 else
 {
@@ -107,7 +117,7 @@ if($pet['state']==10 && ($UID == -1 || ($UType == 0 && $owner != $UID) ))
     $response+=$pet; 
     echo json_encode($response);
     $response['image'] = "Imagine";
-    entry_log("getanimalextended",$user, $response);   //Data logging
+    entry_log("getanimalextended","Guest", $response);   //Data logging
     return;
 }
 

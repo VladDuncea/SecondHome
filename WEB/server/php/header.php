@@ -45,4 +45,75 @@ function check_email($email,$conn)
     return $response;
 }
 
+// Compress image
+function compressImage($source, $destination, $quality) 
+{
+
+    $info = getimagesize($source);
+  
+    if ($info['mime'] == 'image/jpeg') 
+      $image = imagecreatefromjpeg($source);
+  
+    elseif ($info['mime'] == 'image/gif') 
+      $image = imagecreatefromgif($source);
+  
+    elseif ($info['mime'] == 'image/png') 
+      $image = imagecreatefrompng($source);
+  
+    imagejpeg($image, $destination, $quality);
+  
+}
+
+    //GENERAL UID/UType getter
+function getUserData(&$UID,&$UType,$page,$conn)
+{
+    if(!isset($_POST['security_code']))
+    {
+        //WEB
+        //Verify account level
+        session_start();
+        if(isset($_SESSION['userType']))
+        {
+            $UID = $_SESSION['userId'];
+            $UType = $_SESSION['userType'];
+        }
+        else
+        {
+            $UID = -1;
+            $UType = -1;
+        }
+    }
+    else if($_POST['security_code'] == '8981ASDGHJ22123' && isset($_POST['UID']))
+    {
+        //ANDROID
+        if($_POST['UID'] == -1)
+        {
+            $UID = -1;
+            $UType = -1;
+        }
+        else
+        {
+            $UID = mysqli_real_escape_string( $conn,$_POST['UID']);
+            $sql = "SELECT user_type FROM Users WHERE UID = $UID";
+            if(!$result = mysqli_query($conn,$sql))
+            {
+                $response["status"]=-1;  //Database error
+                error_log("SQL ERROR: ".mysqli_error($conn));   //Error logging
+                echo json_encode($response);
+                return;
+            }
+            $UType = mysqli_fetch_assoc($result)['user_type'];
+        }
+    }
+    else
+    {
+        $UID = -2;
+        $response["status"]=0;
+        $response["err_message"] = "Unauthorzed access!1";
+        echo json_encode($response);  
+        entry_log($page,"Unknown",$response);     
+        return;
+    } 
+}
+
 ?>
