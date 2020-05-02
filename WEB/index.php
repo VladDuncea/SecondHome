@@ -109,7 +109,7 @@
                 <div class="col-md-6">
                     <div class="card card-success">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="nav-icon fas fa-paw"></i> Animale inregistrate</h3>
+                            <h3 class="card-title"><i class="nav-icon fas fa-paw"></i> Animale înregistrate</h3>
                         </div>
                         <div class="card-body">
                             <canvas id="donutChart1" ></canvas>
@@ -123,7 +123,7 @@
                 <div class="col-md-6">
                     <div class="card card-success">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="nav-icon fas fa-paw"></i> Animale care si-au gasit o casa</h3>
+                            <h3 class="card-title"><i class="nav-icon fas fa-paw"></i> Animale care și-au găsit o casă</h3>
                         </div>
                         <div class="card-body">
                             <canvas id="donutChart2" ></canvas>

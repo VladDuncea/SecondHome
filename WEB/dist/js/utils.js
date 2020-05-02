@@ -1,35 +1,41 @@
 //grafice pagina de home
 function homepage() {
-    var ctxD = document.getElementById("donutChart1").getContext('2d');
-    var myLineChart = new Chart(ctxD, {
-        type: 'doughnut',
-        data: {
-            labels: ["Pisici", "Caini", "Rozatoare", "Pasari", "Reptile", "Acvatice"],
-            datasets: [{
-                data: [300, 50, 100, 40, 120, 50],
-                backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360", "#800080"],
-                hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774", "#800080"]
-            }]
-        },
-        options: {
-            responsive: true
-        }
-    });
-    var ctxD = document.getElementById("donutChart2").getContext('2d');
-    var myLineChart = new Chart(ctxD, {
-        type: 'doughnut',
-        data: {
-            labels: ["Pisici", "Caini", "Rozatoare", "Pasari", "Reptile", "Acvatice"],
-            datasets: [{
-                data: [1, 1, 1, 0, 1, 0],
-                backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360", "#800080"],
-                hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774", "#800080"]
-            }]
-        },
-        options: {
-            responsive: true
-        }
-    });
+
+    $.post('server/getstatistics.php', function(data, status) {
+        var json_data = JSON.parse(data)
+        if (json_data.status == 1) {
+            var ctxD = document.getElementById("donutChart1").getContext('2d');
+            var myLineChart = new Chart(ctxD, {
+                type: 'doughnut',
+                data: {
+                    labels: ["Pisici", "Câini", "Rozătoare", "Păsări", "Reptile", "Acvatice"],
+                    datasets: [{
+                        data: [json_data['1'].nr_registered, json_data['2'].nr_registered, json_data['3'].nr_registered, json_data['4'].nr_registered, json_data['5'].nr_registered, json_data['6'].nr_registered],
+                        backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360", "#800080"],
+                        hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774", "#800080"]
+                    }]
+                },
+                options: {
+                    responsive: true
+                }
+            });
+            var ctxD = document.getElementById("donutChart2").getContext('2d');
+            var myLineChart = new Chart(ctxD, {
+                type: 'doughnut',
+                data: {
+                    labels: ["Pisici", "Câini", "Rozătoare", "Păsări", "Reptile", "Acvatice"],
+                    datasets: [{
+                        data: [json_data['1'].nr_saved, json_data['2'].nr_saved, json_data['3'].nr_saved, json_data['4'].nr_saved, json_data['5'].nr_saved, json_data['6'].nr_saved],
+                        backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360", "#800080"],
+                        hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774", "#800080"]
+                    }]
+                },
+                options: {
+                    responsive: true
+                }
+            });
+        } else { console.log("Eroaare server") }
+    })
 }
 
 function getQueryVariable(variable) {
