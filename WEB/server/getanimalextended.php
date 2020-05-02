@@ -173,5 +173,6 @@ else
 $response["status"] = 1; 
 echo json_encode($response);
 $response['image'] = "Imagine";
+$response['requests'] = "Requests....";
 entry_log("getanimalextended",$user, $response);   //Data logging
 ?>

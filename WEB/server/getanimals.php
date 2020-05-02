@@ -151,7 +151,7 @@ else if($req_type >= 1 && $req_type <= 3)
             return;
         }
 
-        $sql = "SELECT RID,request_description,pet_name,pet_birthdate,pet_description,pet_image,pet_type,
+        $sql = "SELECT RID,PID,request_description,pet_name,pet_birthdate,pet_description,pet_image,pet_type,
                     pet_breed,UID,first_name,last_name 
                 FROM Requests 
                 JOIN Pets USING (PID)
@@ -172,6 +172,7 @@ else if($req_type >= 1 && $req_type <= 3)
         while($row = mysqli_fetch_assoc($result))
         {
             $response['animals'][$poz]['RID'] = $row['RID'];
+            $response['animals'][$poz]['PID'] = $row['PID'];
             $response['animals'][$poz]['name'] = $row['pet_name'];
             $response['animals'][$poz]['birthdate'] = date_diff(date_create("now") , date_create($row['pet_birthdate']))->y;
             $response['animals'][$poz]['description'] = $row['pet_description'];

@@ -126,24 +126,4 @@ if(!$result = mysqli_query($conn,$sql))
 $response["status"] = 1; 
 echo json_encode($response);
 entry_log("addanimal",$UID, $response);   //Data logging
-
-
-// Compress image
-function compressImage($source, $destination, $quality) 
-{
-
-    $info = getimagesize($source);
-  
-    if ($info['mime'] == 'image/jpeg') 
-      $image = imagecreatefromjpeg($source);
-  
-    elseif ($info['mime'] == 'image/gif') 
-      $image = imagecreatefromgif($source);
-  
-    elseif ($info['mime'] == 'image/png') 
-      $image = imagecreatefrompng($source);
-  
-    imagejpeg($image, $destination, $quality);
-  
-}
 ?>
