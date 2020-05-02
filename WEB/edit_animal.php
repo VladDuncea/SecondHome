@@ -15,7 +15,7 @@
     {
         max-width:500px;
     }
-    #blah {
+    #blah_edit {
         width: 100%;
     }
     </style>

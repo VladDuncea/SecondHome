@@ -349,9 +349,9 @@ function edit_animal() {
                             <button type="button" class="btn btn-success" style="margin: 5px" onclick="document.getElementById('getFile').click()"><i class="nav-icon fas fa-paw"></i> Încarcă o imagine</button>
                             <input type='file' id="getFile" name="animal_image" style="visibility:hidden;" onchange="readURL(this);"/><br>
                             <div id="cropper_container" class="container">
-                                <img id="blah_edit" style="display: none" src="#" alt="Imagine încărcată" class="cropper-hidden"/>
+                                <img id="blah_edit" style="display: none; width:100%" src="#" alt="Imagine încărcată" class="cropper-hidden"/>
                             </div>
-                            <img  style="height:200 ; width: 200px" src="${json_data.image}"  alt="User profile picture">
+                            <img id="img_veche" style="height:200 ; width: 200px" src="${json_data.image}"  alt="Imagine animal">
                         </div>
                     </div>
                     
@@ -361,11 +361,11 @@ function edit_animal() {
                 </div>
             </div>
             <div class="row">
-                        <div class="col-12">
-                            <a href="index.php" class="btn btn-secondary"><i class="nav-icon fas fa-paw"></i> Anulare</a>
-                            <button type="submit" value="Editare animăluț" class="btn btn-success float-right"><i class="nav-icon fas fa-paw"></i> Editare animăluț</button>
-                        </div>
-                    </div>`
+                <div class="col-12">
+                    <a href="index.php" class="btn btn-secondary"><i class="nav-icon fas fa-paw"></i> Anulare</a>
+                    <button type="submit" value="Editare animăluț" class="btn btn-success float-right"><i class="nav-icon fas fa-paw"></i> Editare animăluț</button>
+                </div>
+            </div>`
             if (document.getElementById('continut_form') != null) {
                 document.getElementById('continut_form').innerHTML += formular;
             } else {
@@ -384,7 +384,7 @@ function readURL(input) {
 
         reader.onload = function(e) {
             $('#blah_edit').attr('src', e.target.result);
-
+            document.querySelector('#img_veche').style.display = "none";
             var image = document.querySelector('#blah_edit');
             //document.querySelector('#cropper_container').style.height = "500px";
             image.style.display = "initial";
@@ -470,7 +470,7 @@ var validator = $('.edit_animal_form').validate({
     submitHandler: function(form) {
         add_animal_edit();
         // form.reset();
-        window.location = 'https://www.secondhome.fragmentedpixel.com/detalii_animal.php?PID=' + getQueryVariable("PID");
+        window.location = '/detalii_animal.php?PID=' + getQueryVariable("PID");
         document.getElementById("blah_edit").style.display = "none";
         //document.querySelector('#cropper_container').style.height = "1";
     },
