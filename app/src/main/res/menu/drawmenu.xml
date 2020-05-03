@@ -6,6 +6,10 @@
         android:icon="@drawable/ic_home_black_24dp"
         />
     <item
+        android:id="@+id/db9"
+        android:title="Profil"
+        android:icon="@drawable/ic_person_black_24dp" />
+    <item
         android:id="@+id/db0"
         android:title="Toate animalele"
         android:icon="@drawable/ic_paw" />
