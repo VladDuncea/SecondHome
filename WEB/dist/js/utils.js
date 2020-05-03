@@ -420,9 +420,11 @@ function add_animal_edit() {
             width: 128,
             height: 128,
         });
+        jform.append('imgbase64', canvas.toDataURL());
+    } else {
+        canvas = document.getElementById("img_veche").src
+        jform.append('imgbase64', canvas);
     }
-    //jform.append('pet_image', $('#getFile')[0].files[0]);
-    // jform.append('imgbase64', canvas.toDataURL());
     jform.append('PID', pid)
     jform.append('pet_name', document.getElementById('inputNameEdit').value);
     jform.append('pet_description', document.getElementById('inputDescriptionEdit').value);
