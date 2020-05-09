@@ -28,5 +28,7 @@ while($row = mysqli_fetch_assoc($result))
 //No error
 $response["status"] = 1; 
 echo json_encode($response);
+$response=NULL;
+$response["status"] = 1;
 entry_log("getstatistics","Unknown", $response);   //Data logging
 ?>

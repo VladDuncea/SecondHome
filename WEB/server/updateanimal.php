@@ -46,6 +46,7 @@ $pet_image = null;
 if(isset($_POST["imgbase64"]))
 {
     $pet_image = $_POST["imgbase64"];
+    $_POST["imgbase64"] = "Imagine...";
 }
  
 //Reading data from request and sanitizing
@@ -80,5 +81,6 @@ if(!$result = mysqli_query($conn,$sql))
 $response["status"] = 1;
 $response["updated"] = 1; 
 echo json_encode($response);
+
 entry_log("updateanimal",$UID, $response);   //Data logging
 ?>

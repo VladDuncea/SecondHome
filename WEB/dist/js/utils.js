@@ -450,8 +450,10 @@ function add_animal_edit() {
                     class: 'bg-success',
                     title: 'Succes!',
                     subtitle: '',
-                    body: 'Animalul dvs a fost editat cu succes.'
+                    body: 'Animalul dvs a fost editat cu succes, veti fi redirectionat in curand catre pagina acestuia.'
                 });
+                setTimeout(function() {  window.location ='/detalii_animal.php?PID=' + getQueryVariable("PID"); }, 2000);
+                //window.location = '/detalii_animal.php?PID=' + getQueryVariable("PID");
             } else if (data['status'] == 0) {
                 $(document).Toasts('create', {
                     class: 'bg-danger',
@@ -478,7 +480,7 @@ var validator = $('.edit_animal_form').validate({
     submitHandler: function(form) {
         add_animal_edit();
         // form.reset();
-        window.location = '/detalii_animal.php?PID=' + getQueryVariable("PID");
+        //window.location = '/detalii_animal.php?PID=' + getQueryVariable("PID");
         document.getElementById("blah_edit").style.display = "none";
         //document.querySelector('#cropper_container').style.height = "1";
     },

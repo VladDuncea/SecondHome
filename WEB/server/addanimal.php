@@ -71,6 +71,7 @@ $pet_image = null;
 if(isset($_POST["imgbase64"]))
 {
     $pet_image = $_POST["imgbase64"];
+    $_POST["imgbase64"] = "Imagine...";
 }
 
 
