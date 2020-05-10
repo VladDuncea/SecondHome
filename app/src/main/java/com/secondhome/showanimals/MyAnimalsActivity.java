@@ -113,7 +113,7 @@ public class MyAnimalsActivity extends AppCompatActivity implements NavigationVi
                     {
                         Moshi moshi = new Moshi.Builder().build();
                         JsonAdapter<Animal> adapter = moshi.adapter(Animal.class);
-                         Animal a =adapter.fromJson(animals.get(i).toString());
+                        Animal a =adapter.fromJson(animals.get(i).toString());
 //                        if(i==0){
                         System.out.println(animals.get(i).toString());
                         ImageView img=new ImageView(MyAnimalsActivity.this);
@@ -149,9 +149,11 @@ public class MyAnimalsActivity extends AppCompatActivity implements NavigationVi
                             public void onClick(View v) {
                                 try {
                                     AppSingleton.getInstance(getApplicationContext()).setAnimalPid(animals.getJSONObject(j).getString("PID"));
+                                    AppSingleton.getInstance(getApplicationContext()).setUser(AppSingleton.getInstance(getApplicationContext()).getUser());
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
+                                System.out.println("Ready to see animal");
                                 Intent intent=new Intent(MyAnimalsActivity.this, MyAnimalActivity.class);
                                 startActivity(intent);
                             }
@@ -216,7 +218,8 @@ public class MyAnimalsActivity extends AppCompatActivity implements NavigationVi
                 {
                     System.out.println("error here");
                     e.printStackTrace();
-                } catch (IOException e) {
+                }
+                catch (IOException e) {
                     e.printStackTrace();
                 }
             }
@@ -232,9 +235,11 @@ public class MyAnimalsActivity extends AppCompatActivity implements NavigationVi
             @Override
             protected Map<String,String> getParams(){
                 Map<String,String> params=new HashMap<String,String>();
+                System.out.println(AppSingleton.getInstance(getApplicationContext()).getUser().toString());
                 params.put("security_code", "8981ASDGHJ22123");
                 params.put("request_type","1");
                 params.put("UID", AppSingleton.getInstance(getApplicationContext()).getUser().getUID().toString());
+                System.out.println(params);
                 return params;
             }
 
@@ -293,11 +298,11 @@ public class MyAnimalsActivity extends AppCompatActivity implements NavigationVi
             case R.id.db:
                 if(AppSingleton.getInstance(getApplicationContext()).getUser()!=null)
                 {
-                    intent=new Intent(MyAnimalsActivity.this, Main2LoggedInActivity.class);
-                    intent.putExtra("username", AppSingleton.getInstance(getApplicationContext()).getLoggedInUserName());
+//                    intent=new Intent(MyAnimalsActivity.this, Main2LoggedInActivity.class);
+//                    intent.putExtra("username", AppSingleton.getInstance(getApplicationContext()).getLoggedInUserName());
                 }
                 else intent=new Intent(MyAnimalsActivity.this, MainActivity.class);
-                startActivity(intent);
+//                startActivity(intent);
                 break;
             case R.id.db8:
                 intent=new Intent(MyAnimalsActivity.this, ContactActivity.class);

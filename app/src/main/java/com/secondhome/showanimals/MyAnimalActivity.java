@@ -55,8 +55,9 @@ public class MyAnimalActivity extends AppCompatActivity implements NavigationVie
     private ActionBarDrawerToggle mToggle;
     private NavigationView navigationView;
     private ActionMenuItem item;
-    private Button edit;
+    private Button edit,delete;
     private static final String UrlForAnimal="https://secondhome.fragmentedpixel.com/server/getanimalextended.php/";
+    private static final String UrlForDeletingAnimal="https://secondhome.fragmentedpixel.com/server/deleteanimal.php/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +66,7 @@ public class MyAnimalActivity extends AppCompatActivity implements NavigationVie
 
         loadViews();
         setNavigationViewListener();
-
+//
         // TODO CHANGE ID
         mDrawer=(DrawerLayout) findViewById(R.id.animalProfile);
         mToggle= new ActionBarDrawerToggle(this, mDrawer,R.string.open,R.string.close);
@@ -75,7 +76,7 @@ public class MyAnimalActivity extends AppCompatActivity implements NavigationVie
         mDrawer.addDrawerListener(mToggle);
         mToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+//
         loadAnimalDetails();
 
 
@@ -98,11 +99,11 @@ public class MyAnimalActivity extends AppCompatActivity implements NavigationVie
                     Moshi moshi = new Moshi.Builder().build();
                     JsonAdapter<Animal> adapter = moshi.adapter(Animal.class);
                     final Animal a =adapter.fromJson(obj.toString());
-                    System.out.println(a.toString());
-                    //ImageView img=new ImageView(AnimalProfileActivity.this);
-
-//                        Picasso.get().load("https://i.imgur.com/XAuRrVz.jpg").into(profilePic);
-//                        img.setPadding(0,20,0,20);
+                   System.out.println(a.toString());
+                  //ImageView img=new ImageView(AnimalProfileActivity.this);
+//
+////                        Picasso.get().load("https://i.imgur.com/XAuRrVz.jpg").into(profilePic);
+////                        img.setPadding(0,20,0,20);
                     String img64 = a.getImage();
                     System.out.println(img64);
                     String [] parts= img64.split(",");
@@ -115,7 +116,7 @@ public class MyAnimalActivity extends AppCompatActivity implements NavigationVie
                     profilePic.setPadding(0,40,0,20);
                     profilePic.setMinimumWidth(600);
                     profilePic.setMinimumHeight(600);
-
+//
                     System.out.println(a.getBirthdate());
                     age.setText(a.getBirthdate());
                     description.setText(a.getDescription());
@@ -131,7 +132,7 @@ public class MyAnimalActivity extends AppCompatActivity implements NavigationVie
                         }
                     };
                     edit.setOnClickListener(listenerEdit);
-
+                    delete.setOnClickListener(deleteListener);
 
 
                 } catch(JSONException e)
@@ -156,9 +157,11 @@ public class MyAnimalActivity extends AppCompatActivity implements NavigationVie
                 Map<String,String> params=new HashMap<String,String>();
                 params.put("security_code", "8981ASDGHJ22123");
                 params.put("PID", AppSingleton.getInstance(getApplicationContext()).getAnimalPid());
+                System.out.println(AppSingleton.getInstance(getApplicationContext()).getUser());
                 if(AppSingleton.getInstance(getApplicationContext()).getUser()!=null)
                     params.put("UID", AppSingleton.getInstance(getApplicationContext()).getUser().getUID().toString());
-                params.put("UID","-1");
+                else params.put("UID","-1");
+                System.out.println(params.toString());
                 return params;
             }
 
@@ -175,8 +178,47 @@ public class MyAnimalActivity extends AppCompatActivity implements NavigationVie
         breed =(TextView) findViewById(R.id.pedegree2);
         description=(TextView) findViewById(R.id.description2);
         edit=(Button) findViewById(R.id.editAnimal);
+        delete=(Button) findViewById(R.id.deleteAnimal);
     }
+    private View.OnClickListener deleteListener =new View.OnClickListener()
+    {
+        @Override
+        public void onClick(View v){
+            System.out.println("Trying delete animal");
+            StringRequest strReq= new StringRequest(
+                    Request.Method.POST,
+                    UrlForDeletingAnimal,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            Log.d("AnimalProfile", "Delete Response: "+ response.toString());
+                            Toast.makeText(getApplicationContext(),"Animaluțul a fost sters cu succes",Toast.LENGTH_LONG).show();
+                            Intent intent=new Intent(MyAnimalActivity.this,MyAnimalsActivity.class);
+                            startActivity(intent);
+                        }
+                    },
+                    new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("AnimalProfileActivity", " error: "+ error.getMessage());
+                        Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG);
+                    }
+            }){
+                @Override
+                protected Map<String,String> getParams(){
+                    Map<String,String> params= new HashMap<>();
+                    params.put("security_code", "8981ASDGHJ22123");
+                    System.out.println(AppSingleton.getInstance(getApplicationContext()).getUser());
+                    params.put("UID",AppSingleton.getInstance(getApplicationContext()).getUser().getUID().toString());
+                    params.put("PID", AppSingleton.getInstance(getApplicationContext()).getAnimalPid());
+                    System.out.println(params.toString());
+                    return params;
+                }
+            };
+            AppSingleton.getInstance(getApplicationContext()).addToRequestQueue(strReq,"deleteAnimal");
 
+        }
+    };
     private void setNavigationViewListener() {
         System.out.println("setting navigation listener");
         // TODO CHANGE ID

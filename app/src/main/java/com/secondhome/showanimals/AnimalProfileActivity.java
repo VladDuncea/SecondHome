@@ -55,7 +55,7 @@ public class AnimalProfileActivity extends AppCompatActivity implements Navigati
     private ActionBarDrawerToggle mToggle;
     private NavigationView navigationView;
     private ActionMenuItem item;
-    private Button edit;
+    private Button edit,delete;
     private static final String UrlForAnimal="https://secondhome.fragmentedpixel.com/server/getanimalextended.php/";
 
     @Override
@@ -134,7 +134,6 @@ public class AnimalProfileActivity extends AppCompatActivity implements Navigati
                         edit.setText("Adoptă");
 
 
-
                 } catch(JSONException e)
                 {
                     System.out.println("error here");
@@ -176,6 +175,8 @@ public class AnimalProfileActivity extends AppCompatActivity implements Navigati
         breed =(TextView) findViewById(R.id.pedegree2);
         description=(TextView) findViewById(R.id.description2);
         edit=(Button) findViewById(R.id.editAnimal);
+        delete=(Button) findViewById(R.id.deleteAnimal);
+        delete.setVisibility(View.GONE);
     }
 
     private void setNavigationViewListener() {
