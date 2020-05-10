@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
 
         );
       }
-      private void loginUser(final String email, final String password)
+      protected void loginUser(final String email, final String password)
       {
           System.out.println("Trying to log in");
           StringRequest strReq= new StringRequest(

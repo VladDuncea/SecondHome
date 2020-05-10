@@ -62,21 +62,13 @@ public class RegisterActivity extends AppCompatActivity {
     }
 //
     private void submitForm() {
-        System.out.println(signupInputFirstName.getText().toString());
-        System.out.println(signupInputLastName.getText().toString());
-        System.out.println(signupInputEmail.getText().toString());
-        System.out.println(signupInputPassword.getText().toString());
-        if(signupInputPassword.getText().toString().length()<5)
-        {
-            Toast.makeText(getApplicationContext(),"Parola trebuie sa contina minim 6 caractere",Toast.LENGTH_SHORT).show();
-            return ;
-        }
-        if(signupInputFirstName.getText().length()<1 || signupInputLastName.getText().length()<1 || signupInputEmail.getText().length()<1 )
-        {
-            Toast.makeText(getApplicationContext(),"Toate campurile trebuie completate",Toast.LENGTH_SHORT).show();
-            return ;
-        }
-        isUsed=false;
+       if(areValid(signupInputFirstName.getText().toString(), signupInputLastName.getText().toString(),signupInputEmail.getText().toString(),signupInputPassword.getText().toString())==-1)
+       {Toast.makeText(getApplicationContext(),"Parola trebuie sa contina minim 6 caractere",Toast.LENGTH_SHORT).show();
+           return;}
+        if(areValid(signupInputFirstName.getText().toString(), signupInputLastName.getText().toString(),signupInputEmail.getText().toString(),signupInputPassword.getText().toString())==-2)
+        {Toast.makeText(getApplicationContext(),"Parola trebuie sa contina minim 6 caractere",Toast.LENGTH_SHORT).show();
+            return;}
+       isUsed=false;
         //check if email is already in use
        StringRequest emailReq=new StringRequest(Request.Method.POST,
                urlForEmail,
@@ -131,24 +123,27 @@ public class RegisterActivity extends AppCompatActivity {
                params.put("user-email", signupInputEmail.getText().toString());
                return params;}
        };
-        AppSingleton.getInstance(getApplicationContext()).addToRequestQueue(emailReq, "checkemail");
-        //send to register if passwords match
-//        if(!isUsed){
-//        if(signupInputPassword.getText().toString().equals(signupInputSecondPassword.getText().toString())) {
-//            registerUser(signupInputFirstName.getText().toString(),
-//                    signupInputLastName.getText().toString(),
-//                    signupInputEmail.getText().toString(),
-//                    signupInputPassword.getText().toString(),
-//                    signupInputSecondPassword.getText().toString());
-//        }
-//        else  Toast.makeText(getApplicationContext(),  "Your passwords do not match", Toast.LENGTH_SHORT).show();}
+
     }
-//
+    protected int areValid(String firstName, String lastName, String email, String password){
+        System.out.println(firstName);
+        System.out.println(lastName);
+        System.out.println(email);
+        System.out.println(password);
+        if(password.length()<5)
+        {
+            return -1;
+        }
+        if(firstName.length()<1 || lastName.length()<1 || email.length()<1 )
+        {
+            return -2;
+        }
+        return 1;
+    }
     private void registerUser(final String firstName, final String lastName, final String email, final String password,
                               final String secondPass) {
-//        // Tag used to cancel the request
         String cancel_req_tag = "register";
-      System.out.println("here");
+       System.out.println("here");
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 URL_FOR_REGISTRATION, new Response.Listener<String>() {
 //
@@ -164,7 +159,6 @@ public class RegisterActivity extends AppCompatActivity {
 
                        // String user = jObj.getString("user-firstname");
                         Toast.makeText(getApplicationContext(),  ", You are successfully Added! Time to login", Toast.LENGTH_SHORT).show();
-                       // Launch login activity
                         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                         startActivity(intent);
                         finish();
@@ -193,7 +187,6 @@ public class RegisterActivity extends AppCompatActivity {
                 return params;
            }
        };
-//        // Adding request to request queue
         AppSingleton.getInstance(getApplicationContext()).addToRequestQueue(strReq, cancel_req_tag);
     }
 
