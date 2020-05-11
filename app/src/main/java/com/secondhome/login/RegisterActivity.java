@@ -32,8 +32,6 @@ public class RegisterActivity extends AppCompatActivity {
     private boolean isUsed=false;
     private EditText signupInputFirstName, signupInputLastName, signupInputEmail, signupInputPassword, signupInputSecondPassword;
     private Button btnSignUp;
-   // private Button btnLinkLogin;
-   // private RadioGroup genderRadioGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,14 +39,14 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
 
-       signupInputFirstName = (EditText) findViewById(R.id.firstName);
-       signupInputLastName= (EditText) findViewById(R.id.lastName);
+       signupInputFirstName = findViewById(R.id.firstName);
+       signupInputLastName=  findViewById(R.id.lastName);
 
-       signupInputEmail = (EditText) findViewById(R.id.emailRegister);
-       signupInputPassword = (EditText) findViewById(R.id.passwordRegister);
-       signupInputSecondPassword=(EditText) findViewById((R.id.passwordConfirmationRegister));
+       signupInputEmail =  findViewById(R.id.emailRegister);
+       signupInputPassword = findViewById(R.id.passwordRegister);
+       signupInputSecondPassword= findViewById((R.id.passwordConfirmationRegister));
 //
-        btnSignUp = (Button) findViewById(R.id.buttonRegisterPage);
+        btnSignUp =  findViewById(R.id.buttonRegisterPage);
 //        btnLinkLogin = (Button) findViewById(R.id.btn_link_login);
 //
 //        genderRadioGroup = (RadioGroup) findViewById(R.id.gender_radio_group);
@@ -75,7 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
                new Response.Listener<String>() {
            @Override
                    public void onResponse(String response){
-               Log.d(TAG, "Register Response: " + response.toString());
+               Log.d(TAG, "Register Response: " + response);
 //
                try {
                    JSONObject jObj = new JSONObject(response);
@@ -95,8 +93,7 @@ public class RegisterActivity extends AppCompatActivity {
                     if(signupInputPassword.getText().toString().equals(signupInputSecondPassword.getText().toString())) {
                             registerUser(signupInputFirstName.getText().toString(),
                                 signupInputLastName.getText().toString(), signupInputEmail.getText().toString(),
-                                signupInputPassword.getText().toString(),
-                                signupInputSecondPassword.getText().toString());
+                                signupInputPassword.getText().toString());
                             }
                        else  Toast.makeText(getApplicationContext(),  "Cele două parole nu coincid.", Toast.LENGTH_SHORT).show();}
                        }
@@ -119,10 +116,12 @@ public class RegisterActivity extends AppCompatActivity {
        ){
            @Override
            protected Map<String, String> getParams() {// Posting params to register url
-               Map<String, String> params = new HashMap<String, String>();
+               Map<String, String> params = new HashMap<>();
                params.put("user-email", signupInputEmail.getText().toString());
                return params;}
        };
+       String cancel_req_tag = "emailVerification";
+       AppSingleton.getInstance(getApplicationContext()).addToRequestQueue(emailReq, cancel_req_tag);
 
     }
     protected int areValid(String firstName, String lastName, String email, String password){
@@ -135,30 +134,25 @@ public class RegisterActivity extends AppCompatActivity {
             return -1;
         }
         if(firstName.length()<1 || lastName.length()<1 || email.length()<1 )
-        {
             return -2;
-        }
         return 1;
     }
-    private void registerUser(final String firstName, final String lastName, final String email, final String password,
-                              final String secondPass) {
-        String cancel_req_tag = "register";
+    private void registerUser(final String firstName, final String lastName, final String email, final String password) {
+       String cancel_req_tag = "register";
        System.out.println("here");
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 URL_FOR_REGISTRATION, new Response.Listener<String>() {
 //
            @Override
             public void onResponse(String response) {
-                Log.d(TAG, "Register Response: " + response.toString());
+                Log.d(TAG, "Register Response: " + response);
 //
                 try {
                    JSONObject jObj = new JSONObject(response);
                     String status=jObj.getString("status");
                     char c=status.charAt(0);
                     if(c=='1') {
-
-                       // String user = jObj.getString("user-firstname");
-                        Toast.makeText(getApplicationContext(),  ", You are successfully Added! Time to login", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),  "Ați fost adăugat! Conectați-vă la cont. ", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                         startActivity(intent);
                         finish();
@@ -179,7 +173,7 @@ public class RegisterActivity extends AppCompatActivity {
         }) {
             @Override
             protected Map<String, String> getParams() {// Posting params to register url
-                Map<String, String> params = new HashMap<String, String>();
+                Map<String, String> params = new HashMap<>();
                 params.put("user-email", email);
                 params.put("user-password", password);
                 params.put("user-firstname", firstName);

@@ -27,7 +27,6 @@ public class Animal {
     public String getName(){return this.name;}
     public String getBirthdate(){return this.birthdate;}
     public String getDescription(){return this.description;}
-    public String getState(){return this.state;}
     public String getType(){return this.type;}
     public String getBreed(){return this.breed;}
     public String getImage(){return this.image;}

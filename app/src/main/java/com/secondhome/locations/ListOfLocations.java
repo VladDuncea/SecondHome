@@ -48,7 +48,7 @@ public class ListOfLocations extends AppCompatActivity implements NavigationView
             @Override
             public void onClick(View v) {
                 AppSingleton.getInstance(getApplicationContext()).setLocation(1);
-                Intent intent=new Intent(ListOfLocations.this, LocationsActvity.class);
+                Intent intent=new Intent(ListOfLocations.this, LocationActvity.class);
                 startActivity(intent);
             }
         };
@@ -59,7 +59,7 @@ public class ListOfLocations extends AppCompatActivity implements NavigationView
             @Override
             public void onClick(View v) {
                 AppSingleton.getInstance(getApplicationContext()).setLocation(2);
-                Intent intent=new Intent(ListOfLocations.this, LocationsActvity.class);
+                Intent intent=new Intent(ListOfLocations.this, LocationActvity.class);
                 startActivity(intent);
             }
         };
@@ -70,7 +70,7 @@ public class ListOfLocations extends AppCompatActivity implements NavigationView
             @Override
             public void onClick(View v) {
                 AppSingleton.getInstance(getApplicationContext()).setLocation(3);
-                Intent intent=new Intent(ListOfLocations.this, LocationsActvity.class);
+                Intent intent=new Intent(ListOfLocations.this, LocationActvity.class);
                 startActivity(intent);
             }
         };

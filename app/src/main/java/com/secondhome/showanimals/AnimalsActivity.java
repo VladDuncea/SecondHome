@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.menu.ActionMenuItem;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -12,7 +11,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,8 +21,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import java.util.Base64.Decoder;
-import java.util.Base64.Encoder;
+
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -33,7 +30,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.google.android.material.navigation.NavigationView;
 import com.secondhome.R;
 import com.secondhome.contact.ContactActivity;
-import com.secondhome.locations.LocationsActvity;
+import com.secondhome.locations.LocationActvity;
 import com.secondhome.login.AppSingleton;
 import com.secondhome.login.LoginActivity;
 import com.secondhome.login.MyProfileActivity;
@@ -52,7 +49,6 @@ public class AnimalsActivity extends AppCompatActivity implements NavigationView
     private DrawerLayout mDrawer;
     private ActionBarDrawerToggle mToggle;
     private NavigationView navigationView;
-    private ActionMenuItem item;
     private LinearLayout catsview;
     private Drawable paw;
     private static final String UrlForLogin="https://secondhome.fragmentedpixel.com/server/getanimals.php/";
@@ -61,7 +57,7 @@ public class AnimalsActivity extends AppCompatActivity implements NavigationView
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cat);
+        setContentView(R.layout.activity_animals);
 
         paw= getApplicationContext().getResources().getDrawable(R.drawable.ic_pets_white_24dp);
 
@@ -69,14 +65,14 @@ public class AnimalsActivity extends AppCompatActivity implements NavigationView
 
 
         setNavigationViewListener();
-        mDrawer=(DrawerLayout) findViewById(R.id.showallCats);
+        mDrawer= findViewById(R.id.showallCats);
         mToggle= new ActionBarDrawerToggle(this, mDrawer,R.string.open,R.string.close);
-        navigationView = (NavigationView) findViewById(R.id.mymenuCats);
+        navigationView = findViewById(R.id.mymenuCats);
         mDrawer.addDrawerListener(mToggle);
         mToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        catsview=(LinearLayout) findViewById(R.id.linearCats);
+        catsview= findViewById(R.id.linearCats);
         getCats();
 
     }
@@ -89,7 +85,7 @@ public class AnimalsActivity extends AppCompatActivity implements NavigationView
             @Override
             public void onResponse(String response)
             {
-                Log.d("AnimalSource", "Register Response: "+ response.toString());
+                Log.d("AnimalSource", "Register Response: "+ response);
                 try{
 
                     System.out.println("Trying to request Object");
@@ -115,7 +111,7 @@ public class AnimalsActivity extends AppCompatActivity implements NavigationView
                         //img64.replace("\\", "");
 
                         byte[] decodedString = Base64.getDecoder().decode(parts[1]);
-                        System.out.println(decodedString.toString());
+//                        System.out.println(decodedString);
                         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
                         img.setImageBitmap(decodedByte);
                         img.setPadding(0,40,0,20);
@@ -174,13 +170,13 @@ public class AnimalsActivity extends AppCompatActivity implements NavigationView
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("CatsActivity", "Login error: "+ error.getMessage());
-                Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG);
+                Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG).show();
             }
         })
         {
             @Override
             protected Map<String,String> getParams(){
-                Map<String,String> params=new HashMap<String,String>();
+                Map<String,String> params=new HashMap<>();
                 params.put("security_code", "8981ASDGHJ22123");
                 params.put("request_type","0");
                 params.put("pet_type", animalType);
@@ -193,7 +189,7 @@ public class AnimalsActivity extends AppCompatActivity implements NavigationView
     }
     private void setNavigationViewListener() {
         System.out.println("setting navigation listener");
-        NavigationView navigationView = (NavigationView) findViewById(R.id.mymenuCats);
+        navigationView = findViewById(R.id.mymenuCats);
         System.out.println(navigationView.toString());
         navigationView.setNavigationItemSelectedListener(this);
     }
@@ -259,7 +255,7 @@ public class AnimalsActivity extends AppCompatActivity implements NavigationView
                 startActivity(intent);
                 break;
             case R.id.db10:
-                intent=new Intent(AnimalsActivity.this, LocationsActvity.class);
+                intent=new Intent(AnimalsActivity.this, LocationActvity.class);
                 startActivity(intent);
                 break;
             case R.id.db11:
@@ -273,7 +269,7 @@ public class AnimalsActivity extends AppCompatActivity implements NavigationView
         return true;
     }
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
         System.out.println("in OptionsItemSelected");
 
         if(mToggle.onOptionsItemSelected(item))

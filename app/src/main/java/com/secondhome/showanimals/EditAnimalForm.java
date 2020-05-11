@@ -6,9 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,14 +43,11 @@ public class EditAnimalForm extends AppCompatActivity {
         setBreed();
         setDescription();
         setSubmit();
-        //set the spinner
-
-        //submit button
 
     }
 
     private void setSubmit() {
-        submit=(Button) findViewById(R.id.editAnimalSubmit);
+        submit=findViewById(R.id.editAnimalSubmit);
         View.OnClickListener listenerAddAnimal=new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,19 +62,19 @@ public class EditAnimalForm extends AppCompatActivity {
     }
 
     private void setDescription() {
-        description=(TextView) findViewById(R.id.editAnimalDescription);
+        description=findViewById(R.id.editAnimalDescription);
     }
 
     private void setBreed() {
-        breed=(TextView) findViewById(R.id.editAnimalBreed);
+        breed= findViewById(R.id.editAnimalBreed);
     }
 
     private void setAge() {
-        age=(TextView) findViewById(R.id.editAnimalAge);
+        age= findViewById(R.id.editAnimalAge);
     }
 
     private void setName() {
-        name=(TextView) findViewById(R.id.editAnimalName);
+        name= findViewById(R.id.editAnimalName);
     }
 
 
@@ -91,7 +86,7 @@ public class EditAnimalForm extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.d("LoginDataSource", "Register Response: " + response.toString());
+                        Log.d("LoginDataSource", "Register Response: " + response);
                         try {
                             JSONObject obj = new JSONObject(response);
                             if(obj.getString("status").equals("1")){
@@ -111,12 +106,12 @@ public class EditAnimalForm extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("LoginActivity", "Login error: " + error.getMessage());
-                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG);
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
             }
         }){
             @Override
             protected Map<String,String> getParams(){
-                Map<String,String> params=new HashMap<String,String>();
+                Map<String,String> params=new HashMap<>();
                 params.put("pet_name", name);
                 params.put("pet_description", description);
                 params.put("pet_age", age);

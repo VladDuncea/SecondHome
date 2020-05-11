@@ -3,7 +3,6 @@ package com.secondhome.mains;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.menu.ActionMenuItem;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -24,12 +23,12 @@ import com.secondhome.login.RegisterActivity;
 import com.secondhome.showanimals.AnimalsActivity;
 import com.secondhome.showanimals.MyAnimalsActivity;
 
+import org.jetbrains.annotations.NotNull;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
     private Button login,register;
     private DrawerLayout mDrawer;
     private ActionBarDrawerToggle mToggle;
-    private NavigationView navigationView;
-    private ActionMenuItem item;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,15 +36,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         setNavigationViewListener();
-        mDrawer=(DrawerLayout) findViewById(R.id.mainmenu);
+        mDrawer=findViewById(R.id.mainmenu);
         mToggle= new ActionBarDrawerToggle(this, mDrawer,R.string.open,R.string.close);
-        navigationView = (NavigationView) findViewById(R.id.mymenu);
+
         mDrawer.addDrawerListener(mToggle);
         mToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        login =(Button) findViewById(R.id.button5);
-        register=(Button) findViewById(R.id.button6);
+        login =findViewById(R.id.button5);
+        register= findViewById(R.id.button6);
 
         View.OnClickListener lisenerLogin=new View.OnClickListener() {
             @Override
@@ -146,7 +145,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
+    public boolean onOptionsItemSelected(@NotNull MenuItem item){
         System.out.println("in here");
         if(mToggle.onOptionsItemSelected(item))
         {

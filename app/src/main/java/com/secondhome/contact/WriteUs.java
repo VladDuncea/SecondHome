@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,16 +32,16 @@ public class WriteUs extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write_us);
 
-        from= (EditText)findViewById(R.id.emailToContact);
+        from= findViewById(R.id.emailToContact);
         String email="";
         if(AppSingleton.getInstance(getApplicationContext()).getUser()!=null)
         {
             from.setText(email);
         }
 
-        subject=(EditText) findViewById(R.id.subjectContact);
-        message=(EditText) findViewById(R.id.messageWriteUs);
-        send=(Button) findViewById(R.id.send);
+        subject=findViewById(R.id.subjectContact);
+        message= findViewById(R.id.messageWriteUs);
+        send= findViewById(R.id.send);
         send.setOnClickListener(new View.OnClickListener() {
                                      @Override
                                      public void onClick(View v) {
@@ -62,14 +61,11 @@ public class WriteUs extends AppCompatActivity {
             @Override
             public void onResponse(String response)
             {
-                Log.d("WriteUsSource", "Register Response: "+ response.toString());
+                Log.d("WriteUsSource", "Register Response: "+ response);
                 try{
                     System.out.println("Trying to request Object");
                     JSONObject obj=new JSONObject(response);
                     System.out.println(obj.toString());
-                    //boolean error = obj.getBoolean("error");
-
-                    // if(!error){
                     System.out.println("here");
                     String status= obj.getString("status");
                     if(status.equals("1"))
@@ -79,11 +75,6 @@ public class WriteUs extends AppCompatActivity {
                         startActivity(intent);
                     }
                     System.out.println(status);
-//                      }
-//                      else{
-//                          String errorMsg=obj.getString("error_msg");
-//                          Toast.makeText(getApplicationContext(),errorMsg,Toast.LENGTH_LONG).show();
-//                      }
 
                 } catch(JSONException e)
                 {
@@ -102,7 +93,7 @@ public class WriteUs extends AppCompatActivity {
         {
             @Override
             protected Map<String,String> getParams(){
-                Map<String,String> params=new HashMap<String,String>();
+                Map<String,String> params=new HashMap<>();
                 params.put("security-code", "8981ASDGHJ22123");
                 params.put("email", sender);
                 params.put("subject", messageSubject);

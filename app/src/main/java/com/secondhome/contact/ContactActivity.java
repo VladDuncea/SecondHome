@@ -3,7 +3,7 @@ package com.secondhome.contact;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.menu.ActionMenuItem;
+
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -20,7 +20,7 @@ import com.secondhome.mains.MainActivity;
 import com.secondhome.showanimals.AnimalsActivity;
 import com.secondhome.showanimals.MyAnimalsActivity;
 import com.secondhome.login.AppSingleton;
-import com.secondhome.contact.FacilitiesActivity;
+
 import com.google.android.material.navigation.NavigationView;
 
 public class ContactActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -30,22 +30,20 @@ public class ContactActivity extends AppCompatActivity implements NavigationView
     Button facilities;
     private DrawerLayout mDrawer;
     private ActionBarDrawerToggle mToggle;
-    private NavigationView navigationView;
-    private ActionMenuItem item;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
 
         setNavigationViewListener();
-        mDrawer=(DrawerLayout) findViewById(R.id.contactPage);
+        mDrawer=findViewById(R.id.contactPage);
         mToggle= new ActionBarDrawerToggle(this, mDrawer,R.string.open,R.string.close);
-        navigationView = (NavigationView) findViewById(R.id.mymenu);
+
         mDrawer.addDrawerListener(mToggle);
         mToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        aboutus=(Button) findViewById(R.id.aboutUs);
+        aboutus=findViewById(R.id.aboutUs);
         View.OnClickListener lisenerAboutUs=new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,7 +53,7 @@ public class ContactActivity extends AppCompatActivity implements NavigationView
         };
         aboutus.setOnClickListener(lisenerAboutUs);
 
-        facilities=(Button) findViewById(R.id.facilities);
+        facilities= findViewById(R.id.facilities);
         View.OnClickListener lisenerFacilities=new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,7 +64,7 @@ public class ContactActivity extends AppCompatActivity implements NavigationView
         facilities.setOnClickListener(lisenerFacilities);
 
 
-        achievements=(Button) findViewById(R.id.achievments);
+        achievements=findViewById(R.id.achievments);
         View.OnClickListener lisenerAchievments=new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,7 +73,7 @@ public class ContactActivity extends AppCompatActivity implements NavigationView
             }
         };
         achievements.setOnClickListener(lisenerAchievments);
-        contactUs=(Button) findViewById(R.id.contactUs);
+        contactUs=findViewById(R.id.contactUs);
         View.OnClickListener lisenerWriteUs=new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,7 +85,7 @@ public class ContactActivity extends AppCompatActivity implements NavigationView
     }
     private void setNavigationViewListener() {
         System.out.println("setting navigation listener");
-        NavigationView navigationView = (NavigationView) findViewById(R.id.mymenu);
+        NavigationView navigationView =  findViewById(R.id.mymenu);
         navigationView.setNavigationItemSelectedListener(this);
     }
     @Override

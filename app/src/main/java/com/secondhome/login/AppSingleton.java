@@ -29,7 +29,7 @@ public class AppSingleton {
     }
     public void setLocation(int l){ location=l;}
     public int getLocation(){return location;}
-    public RequestQueue getRequestQueue() {
+    private RequestQueue getRequestQueue() {
         if (mRequestQueue == null) {
             mRequestQueue = Volley.newRequestQueue(mContext.getApplicationContext());
         }
@@ -50,7 +50,7 @@ public class AppSingleton {
         return "0";}
     public void setUser(LoggedInUser u)
     {
-        this.user=u;
+        user=u;
     }
     public <T> void addToRequestQueue(Request<T> req,String tag) {
         req.setTag(tag);
@@ -58,7 +58,7 @@ public class AppSingleton {
     }
     public void logoutUser()
     {
-        this.user=null;
+        user=null;
     }
 
     public void setAnimalPid(String pid){

@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.menu.ActionMenuItem;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -41,7 +40,6 @@ import com.secondhome.mains.Main2LoggedInActivity;
 import com.secondhome.mains.MainActivity;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -57,7 +55,6 @@ public class MyAnimalsActivity extends AppCompatActivity implements NavigationVi
     private DrawerLayout mDrawer;
     private ActionBarDrawerToggle mToggle;
     private NavigationView navigationView;
-    private ActionMenuItem item;
     private LinearLayout catsview;
     private Drawable paw;
     private static final String UrlForLogin="https://secondhome.fragmentedpixel.com/server/getanimals.php/";
@@ -71,14 +68,14 @@ public class MyAnimalsActivity extends AppCompatActivity implements NavigationVi
       animalType= AppSingleton.getInstance(getApplicationContext()).getAnimalsToShow();
       paw= getApplicationContext().getResources().getDrawable(R.drawable.ic_pets_white_24dp);
        setNavigationViewListener();
-        mDrawer=(DrawerLayout) findViewById(R.id.myanimals);
+        mDrawer=findViewById(R.id.myanimals);
         mToggle= new ActionBarDrawerToggle(this, mDrawer,R.string.open,R.string.close);
-        navigationView = (NavigationView) findViewById(R.id.mymenu);
+        navigationView = findViewById(R.id.mymenu);
         mDrawer.addDrawerListener(mToggle);
         mToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        catsview=(LinearLayout) findViewById(R.id.myLinearCats);
+        catsview= findViewById(R.id.myLinearCats);
         if(AppSingleton.getInstance(getApplicationContext()).getUser()!=null)
         getCats();
         else sendToLogin();
@@ -99,7 +96,7 @@ public class MyAnimalsActivity extends AppCompatActivity implements NavigationVi
             @Override
             public void onResponse(String response)
             {
-                Log.d("AnimalSource", "Register Response: "+ response.toString());
+                Log.d("AnimalSource", "Register Response: "+ response);
                 try{
 
                     System.out.println("Trying to request Object");
@@ -125,7 +122,6 @@ public class MyAnimalsActivity extends AppCompatActivity implements NavigationVi
                         //img64.replace("\\", "");
 
                         byte[] decodedString = Base64.getDecoder().decode(parts[1]);
-                        System.out.println(decodedString.toString());
                         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
                         img.setImageBitmap(decodedByte);
                         img.setPadding(0,40,0,20);
@@ -228,17 +224,17 @@ public class MyAnimalsActivity extends AppCompatActivity implements NavigationVi
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("CatsActivity", "Login error: "+ error.getMessage());
-                Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG);
+                Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG).show();
             }
         })
         {
             @Override
             protected Map<String,String> getParams(){
-                Map<String,String> params=new HashMap<String,String>();
+                Map<String,String> params=new HashMap<>();
                 System.out.println(AppSingleton.getInstance(getApplicationContext()).getUser().toString());
                 params.put("security_code", "8981ASDGHJ22123");
                 params.put("request_type","1");
-                params.put("UID", AppSingleton.getInstance(getApplicationContext()).getUser().getUID().toString());
+                params.put("UID", AppSingleton.getInstance(getApplicationContext()).getUser().getUID());
                 System.out.println(params);
                 return params;
             }
@@ -249,7 +245,7 @@ public class MyAnimalsActivity extends AppCompatActivity implements NavigationVi
     }
     private void setNavigationViewListener() {
         System.out.println("setting navigation listener");
-        NavigationView navigationView = (NavigationView) findViewById(R.id.mymenu);
+        navigationView = findViewById(R.id.mymenu);
         System.out.println(navigationView.toString());
         navigationView.setNavigationItemSelectedListener(this);
     }
@@ -298,11 +294,11 @@ public class MyAnimalsActivity extends AppCompatActivity implements NavigationVi
             case R.id.db:
                 if(AppSingleton.getInstance(getApplicationContext()).getUser()!=null)
                 {
-//                    intent=new Intent(MyAnimalsActivity.this, Main2LoggedInActivity.class);
-//                    intent.putExtra("username", AppSingleton.getInstance(getApplicationContext()).getLoggedInUserName());
+                    intent=new Intent(MyAnimalsActivity.this, Main2LoggedInActivity.class);
+                    intent.putExtra("username", AppSingleton.getInstance(getApplicationContext()).getLoggedInUserName());
                 }
                 else intent=new Intent(MyAnimalsActivity.this, MainActivity.class);
-//                startActivity(intent);
+                startActivity(intent);
                 break;
             case R.id.db8:
                 intent=new Intent(MyAnimalsActivity.this, ContactActivity.class);
@@ -328,7 +324,7 @@ public class MyAnimalsActivity extends AppCompatActivity implements NavigationVi
         return true;
     }
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
         System.out.println("in OptionsItemSelected");
 
         if(mToggle.onOptionsItemSelected(item))

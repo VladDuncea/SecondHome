@@ -26,7 +26,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".locations.LocationsActvity" />
+        <activity android:name=".locations.LocationActvity" />
         <activity android:name=".contact.WriteUs" />
         <activity android:name=".showanimals.AnimalsActivity" />
         <activity android:name=".contact.AchievmentsActivity" />

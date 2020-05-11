@@ -29,7 +29,7 @@ import com.secondhome.login.MyProfileActivity;
 import com.secondhome.R;
 import com.secondhome.contact.ContactActivity;
 import com.secondhome.data.model.Animal;
-import com.secondhome.locations.LocationsActvity;
+import com.secondhome.locations.LocationActvity;
 import com.secondhome.mains.Main2LoggedInActivity;
 import com.secondhome.mains.MainActivity;
 import com.secondhome.login.AppSingleton;
@@ -37,7 +37,6 @@ import com.secondhome.login.LoginActivity;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -288,7 +287,7 @@ public class MyAnimalActivity extends AppCompatActivity implements NavigationVie
                 startActivity(intent);
                 break;
             case R.id.db10:
-                intent=new Intent(MyAnimalActivity.this, LocationsActvity.class);
+                intent=new Intent(MyAnimalActivity.this, LocationActvity.class);
                 startActivity(intent);
                 break;
             case R.id.db11:

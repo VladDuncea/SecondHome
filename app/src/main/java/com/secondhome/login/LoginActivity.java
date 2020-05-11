@@ -28,20 +28,18 @@ import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String UrlForLogin="https://secondhome.fragmentedpixel.com/server/login.php/";
-    //private LoginViewModel loginViewModel;
     private EditText loginInputEmail,loginInputPassword;
     private Button login;
-    LoggedInUser user;
-   // private Button signin;
+    private LoggedInUser user;
 
       @Override
       public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        loginInputEmail= (EditText)findViewById(R.id.email);
-        loginInputPassword=(EditText) findViewById(R.id.password);
-        login=(Button) findViewById(R.id.login);
+        loginInputEmail= findViewById(R.id.email);
+        loginInputPassword=findViewById(R.id.password);
+        login= findViewById(R.id.login);
         login.setOnClickListener(new View.OnClickListener() {
                                      @Override
                                      public void onClick(View v) {
@@ -60,14 +58,12 @@ public class LoginActivity extends AppCompatActivity {
               @Override
               public void onResponse(String response)
               {
-                  Log.d("LoginDataSource", "Register Response: "+ response.toString());
+                  Log.d("LoginDataSource", "Register Response: "+ response);
                   try{
                       System.out.println("Trying to request Object");
                       JSONObject obj=new JSONObject(response);
                       System.out.println(obj.toString());
-                      //boolean error = obj.getBoolean("error");
 
-                     // if(!error){
                           System.out.println("here");
                           String userName= obj.getString("user-firstname");
                           String UID=obj.getString("UID");
@@ -97,13 +93,13 @@ public class LoginActivity extends AppCompatActivity {
               @Override
               public void onErrorResponse(VolleyError error) {
                 Log.e("LoginActivity", "Login error: "+ error.getMessage());
-                Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG);
+                Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG).show();
               }
           })
           {
             @Override
             protected Map<String,String> getParams(){
-                Map<String,String> params=new HashMap<String,String>();
+                Map<String,String> params=new HashMap<>();
                 params.put("user-email", email);
                 params.put("user-password", password);
                 return params;

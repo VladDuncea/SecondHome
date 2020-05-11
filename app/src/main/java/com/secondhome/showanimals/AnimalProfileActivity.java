@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.menu.ActionMenuItem;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -29,7 +28,7 @@ import com.secondhome.login.MyProfileActivity;
 import com.secondhome.R;
 import com.secondhome.contact.ContactActivity;
 import com.secondhome.data.model.Animal;
-import com.secondhome.locations.LocationsActvity;
+import com.secondhome.locations.LocationActvity;
 import com.secondhome.mains.Main2LoggedInActivity;
 import com.secondhome.mains.MainActivity;
 import com.secondhome.login.AppSingleton;
@@ -37,7 +36,6 @@ import com.secondhome.login.LoginActivity;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -54,7 +52,6 @@ public class AnimalProfileActivity extends AppCompatActivity implements Navigati
     private DrawerLayout mDrawer;
     private ActionBarDrawerToggle mToggle;
     private NavigationView navigationView;
-    private ActionMenuItem item;
     private Button edit,delete;
     private static final String UrlForAnimal="https://secondhome.fragmentedpixel.com/server/getanimalextended.php/";
 
@@ -67,11 +64,11 @@ public class AnimalProfileActivity extends AppCompatActivity implements Navigati
         setNavigationViewListener();
 
         // TODO CHANGE ID
-        mDrawer=(DrawerLayout) findViewById(R.id.animalProfile);
+        mDrawer=findViewById(R.id.animalProfile);
         mToggle= new ActionBarDrawerToggle(this, mDrawer,R.string.open,R.string.close);
 
         // TODO CHANGE ID
-        navigationView = (NavigationView) findViewById(R.id.mymenu);
+        navigationView = findViewById(R.id.mymenu);
         mDrawer.addDrawerListener(mToggle);
         mToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -89,7 +86,7 @@ public class AnimalProfileActivity extends AppCompatActivity implements Navigati
             @Override
             public void onResponse(String response)
             {
-                Log.d("AnimalProfile", "Register Response: "+ response.toString());
+                Log.d("AnimalProfile", "Register Response: "+ response);
                 try{
 
                         System.out.println("Trying to request Object");
@@ -98,7 +95,7 @@ public class AnimalProfileActivity extends AppCompatActivity implements Navigati
                         Moshi moshi = new Moshi.Builder().build();
                         JsonAdapter<Animal> adapter = moshi.adapter(Animal.class);
                         final Animal a =adapter.fromJson(obj.toString());
-                        System.out.println(a.toString());
+//                        System.out.println(a.toString());
                         //ImageView img=new ImageView(AnimalProfileActivity.this);
 
 //                        Picasso.get().load("https://i.imgur.com/XAuRrVz.jpg").into(profilePic);
@@ -109,7 +106,7 @@ public class AnimalProfileActivity extends AppCompatActivity implements Navigati
                         //img64.replace("\\", "");
 
                         byte[] decodedString = Base64.getDecoder().decode(parts[1]);
-                        System.out.println(decodedString.toString());
+//                        System.out.println(decodedString);
                         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
                         profilePic.setImageBitmap(decodedByte);
                         profilePic.setPadding(0,40,0,20);
@@ -147,17 +144,17 @@ public class AnimalProfileActivity extends AppCompatActivity implements Navigati
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("AnimalProfileActivity", " error: "+ error.getMessage());
-                Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG);
+                Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG).show();
             }
         })
         {
             @Override
             protected Map<String,String> getParams(){
-                Map<String,String> params=new HashMap<String,String>();
+                Map<String,String> params=new HashMap<>();
                 params.put("security_code", "8981ASDGHJ22123");
                 params.put("PID", AppSingleton.getInstance(getApplicationContext()).getAnimalPid());
             if(AppSingleton.getInstance(getApplicationContext()).getUser()!=null)
-                     params.put("UID", AppSingleton.getInstance(getApplicationContext()).getUser().getUID().toString());
+                     params.put("UID", AppSingleton.getInstance(getApplicationContext()).getUser().getUID());
              params.put("UID","-1");
                 return params;
             }
@@ -168,21 +165,21 @@ public class AnimalProfileActivity extends AppCompatActivity implements Navigati
     }
 
     private void loadViews() {
-        profilePic=(ImageView) findViewById(R.id.profilePicAnimal);
-        name=(TextView) findViewById(R.id.animalName);
-        age=(TextView) findViewById(R.id.age2);
-        type=(TextView) findViewById(R.id.cathegory2);
-        breed =(TextView) findViewById(R.id.pedegree2);
-        description=(TextView) findViewById(R.id.description2);
-        edit=(Button) findViewById(R.id.editAnimal);
-        delete=(Button) findViewById(R.id.deleteAnimal);
+        profilePic= findViewById(R.id.profilePicAnimal);
+        name= findViewById(R.id.animalName);
+        age=findViewById(R.id.age2);
+        type= findViewById(R.id.cathegory2);
+        breed = findViewById(R.id.pedegree2);
+        description= findViewById(R.id.description2);
+        edit= findViewById(R.id.editAnimal);
+        delete= findViewById(R.id.deleteAnimal);
         delete.setVisibility(View.GONE);
     }
 
     private void setNavigationViewListener() {
         System.out.println("setting navigation listener");
         // TODO CHANGE ID
-        NavigationView navigationView = (NavigationView) findViewById(R.id.mymenu);
+        navigationView =findViewById(R.id.mymenu);
         System.out.println(navigationView.toString());
         navigationView.setNavigationItemSelectedListener(this);
     }
@@ -248,7 +245,7 @@ public class AnimalProfileActivity extends AppCompatActivity implements Navigati
                 startActivity(intent);
                 break;
             case R.id.db10:
-                intent=new Intent(AnimalProfileActivity.this, LocationsActvity.class);
+                intent=new Intent(AnimalProfileActivity.this, LocationActvity.class);
                 startActivity(intent);
                 break;
             case R.id.db11:
@@ -262,7 +259,7 @@ public class AnimalProfileActivity extends AppCompatActivity implements Navigati
         return true;
     }
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
         System.out.println("in OptionsItemSelected");
 
         if(mToggle.onOptionsItemSelected(item))

@@ -7,7 +7,7 @@ import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner;
 import androidx.test.rule.ActivityTestRule;
 
 import com.secondhome.R;
-import com.secondhome.mains.MainActivity;
+
 
 import org.junit.After;
 import org.junit.Before;

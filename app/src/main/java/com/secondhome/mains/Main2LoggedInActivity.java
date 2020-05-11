@@ -19,7 +19,7 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 import com.secondhome.R;
 import com.secondhome.contact.ContactActivity;
-import com.secondhome.locations.LocationsActvity;
+import com.secondhome.locations.LocationActvity;
 import com.secondhome.login.AppSingleton;
 import com.secondhome.login.LoginActivity;
 import com.secondhome.login.MyProfileActivity;
@@ -31,7 +31,6 @@ public class Main2LoggedInActivity extends AppCompatActivity implements Navigati
 
     private TextView nameMessage;
     private DrawerLayout mDrawer;
-    private Button contact;
     private Button logout;
     private Button addAnimal;
     private ActionBarDrawerToggle mToggle;
@@ -42,19 +41,18 @@ public class Main2LoggedInActivity extends AppCompatActivity implements Navigati
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2_logged_in);
         setNavigationViewListener();
-        nameMessage=(TextView) findViewById(R.id.userMessage);
+        nameMessage= findViewById(R.id.userMessage);
         nameMessage.append(" Bine ai venit, "+ AppSingleton.getInstance(getApplicationContext()).getLoggedInUserName().toString()+"!");
 
-        mDrawer=(DrawerLayout) findViewById(R.id.mainmenu);
+        mDrawer=findViewById(R.id.mainmenu);
         mToggle= new ActionBarDrawerToggle(this, mDrawer,R.string.open,R.string.close);
-        navigationView = (NavigationView) findViewById(R.id.mymenu);
+        navigationView = findViewById(R.id.mymenu);
         mDrawer.addDrawerListener(mToggle);
-        //  mDrawer.addDrawerListener();
         mToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //logout
-        logout=(Button) findViewById(R.id.logout);
+        logout= findViewById(R.id.logout);
         View.OnClickListener lisenerLogout=new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,7 +64,7 @@ public class Main2LoggedInActivity extends AppCompatActivity implements Navigati
         };
         logout.setOnClickListener(lisenerLogout);
 
-        addAnimal=(Button) findViewById(R.id.animalForm);
+        addAnimal= findViewById(R.id.animalForm);
         View.OnClickListener listenerAddAnimal=new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,7 +79,7 @@ public class Main2LoggedInActivity extends AppCompatActivity implements Navigati
 
     private void setNavigationViewListener() {
         System.out.println("in here");
-        NavigationView navigationView = (NavigationView) findViewById(R.id.mymenu);
+        navigationView = findViewById(R.id.mymenu);
         navigationView.setNavigationItemSelectedListener(this);
     }
     @Override
@@ -145,7 +143,7 @@ public class Main2LoggedInActivity extends AppCompatActivity implements Navigati
                 startActivity(intent);
                 break;
             case R.id.db10:
-                intent=new Intent(Main2LoggedInActivity.this, LocationsActvity.class);
+                intent=new Intent(Main2LoggedInActivity.this, LocationActvity.class);
                 startActivity(intent);
                 break;
             case R.id.db11:

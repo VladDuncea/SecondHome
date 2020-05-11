@@ -14,9 +14,6 @@ public class LoggedInUser {
         this.UID=uid;
     }
 
-    public String getUserEmail() {
-        return userEmail;
-    }
     public String getUID(){ return UID; }
     public String getDisplayName() {
         return displayName;

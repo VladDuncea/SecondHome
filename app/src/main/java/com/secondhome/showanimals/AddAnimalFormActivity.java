@@ -56,7 +56,7 @@ public class AddAnimalFormActivity extends AppCompatActivity implements
     }
 
     private void setSubmit() {
-        submit=(Button) findViewById(R.id.addAnimalSubmit);
+        submit=findViewById(R.id.addAnimalSubmit);
         View.OnClickListener listenerAddAnimal=new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,23 +72,23 @@ public class AddAnimalFormActivity extends AppCompatActivity implements
     }
 
     private void setDescription() {
-        description=(TextView) findViewById(R.id.addAnimalDescription);
+        description= findViewById(R.id.addAnimalDescription);
     }
 
     private void setBreed() {
-        breed=(TextView) findViewById(R.id.addAnimalBreed);
+        breed= findViewById(R.id.addAnimalBreed);
     }
 
     private void setAge() {
-        age=(TextView) findViewById(R.id.addAnimalAge);
+        age= findViewById(R.id.addAnimalAge);
     }
 
     private void setName() {
-        name=(TextView) findViewById(R.id.addAnimalName);
+        name= findViewById(R.id.addAnimalName);
     }
 
     private void setSpinner() {
-        spinner = (Spinner) findViewById(R.id.animalCathegorySpinner);
+        spinner = findViewById(R.id.animalCathegorySpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.animal_cathegory_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -104,7 +104,7 @@ public class AddAnimalFormActivity extends AppCompatActivity implements
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.d("LoginDataSource", "Register Response: " + response.toString());
+                        Log.d("LoginDataSource", "Register Response: " + response);
                         try {
                             JSONObject obj = new JSONObject(response);
                             if(obj.getString("status").equals("1")){
@@ -124,12 +124,12 @@ public class AddAnimalFormActivity extends AppCompatActivity implements
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("LoginActivity", "Login error: " + error.getMessage());
-                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG);
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
             }
         }){
             @Override
             protected Map<String,String> getParams(){
-                Map<String,String> params=new HashMap<String,String>();
+                Map<String,String> params=new HashMap<>();
                 params.put("pet_name", name);
                 params.put("pet_description", description);
                 params.put("pet_type", cathegory);

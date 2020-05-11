@@ -24,7 +24,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.secondhome.R;
 import com.secondhome.contact.ContactActivity;
 import com.secondhome.data.model.User;
-import com.secondhome.locations.LocationsActvity;
+import com.secondhome.locations.LocationActvity;
 import com.secondhome.mains.Main2LoggedInActivity;
 import com.secondhome.mains.MainActivity;
 import com.secondhome.showanimals.AnimalsActivity;
@@ -226,7 +226,7 @@ public class MyProfileActivity extends AppCompatActivity implements NavigationVi
                 startActivity(intent);
                 break;
             case R.id.db10:
-                intent=new Intent(MyProfileActivity.this, LocationsActvity.class);
+                intent=new Intent(MyProfileActivity.this, LocationActvity.class);
                 startActivity(intent);
                 break;
             case R.id.db11:
