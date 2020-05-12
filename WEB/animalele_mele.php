@@ -93,7 +93,7 @@
     <script src="../dist/js/getanimals.js"></script>
     <script src="../dist/js/animalrequest.js"></script>
     <script src="../dist/js/utils.js"></script>
-
+    <script src="../dist/js/utils_animal.js"></script>
     
     
 </body>

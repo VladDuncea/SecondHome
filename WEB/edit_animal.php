@@ -85,7 +85,7 @@
     <!--Toasts-->
     <script src="plugins/cropper/cropper.js"></script>
     <!--CUSTOM-->
-    <script src='dist/js/utils.js'></script>
+    <script src='dist/js/utils_animal.js'></script>
     <script src='dist/js/getanimals.js'></script>
   
 </body>

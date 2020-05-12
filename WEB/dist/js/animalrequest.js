@@ -1,3 +1,4 @@
+// functie pentru trimitea cererii pentru un animal
 function optiuni_animal(request_type, PID) {
     // console.log(PID)
     // console.log(request_type)
@@ -26,6 +27,7 @@ function optiuni_animal(request_type, PID) {
     })
 }
 
+// functie pentru actualizarea cererii refuz/accept animal 
 function optiuni_angajat(value, RID) {
     console.log(RID)
     console.log(value)

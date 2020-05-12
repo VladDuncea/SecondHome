@@ -13,7 +13,7 @@ function get_animal(request_type_active, pet_type) {
             var type_animal = ["Toate", "Pisici", "Câini", "Rozătoare", "Reptile", "Păsări", "Acvatice"]
             for (var i = 0; i < nr_animals; i++) {
                 // col-sm-3
-                const card = `<div class="d-flex col-sm-3">
+                const card = `<div class="d-flex col-sm-3" id = '${animals[i].PID}'>
                 <div class="card bg-light">
                     <div class="card-header text-muted border-bottom-0" >
                        ${type_animal[animals[i].type]}
@@ -103,19 +103,18 @@ function get_animal(request_type_active, pet_type) {
                         else
                         if (buttonState2 == undefined)
                             buttonState = buttonState1
-
                         const animal_box = card + `
-                                            <div class="card-body" style="padding: 2">       
-                                                <div class="text-center">
-                                                <button type="button" class="btn btn-sm btn-secondary" disabled>${buttonState}</button> 
-                                                <hr>      
-                                                <a href="/edit_animal.php?PID=${animals[i].PID}" class="btn btn-sm btn-success">
-                                                <i class="fas fa-paw"id='detalii'></i> Editează
-                                                </a>
-                                            </div> 
-                                            </div>
-                                            </div>
-                                         </div>`;
+                        <div class="card-body" style="padding: 2">       
+                            <div class="text-center">
+                            <button type="button" class="btn btn-sm btn-secondary" disabled>${buttonState}</button> 
+                            <hr>     
+                            <a href="/edit_animal.php?PID=${animals[i].PID}" class="btn btn-sm btn-success">
+                            <i class="fas fa-paw"id='detalii'></i> Editează
+                            </a>
+                        </div> 
+                        </div>
+                        </div>
+                    </div>`;
                         // console.log(document.getElementById('boxAnimals'));
 
                         if (document.getElementById('boxAnimals') != null) {
@@ -134,6 +133,7 @@ function get_animal(request_type_active, pet_type) {
                                         <a href="/edit_animal.php?PID=${animals[i].PID}" class="btn btn-sm btn-success">
                                         <i class="fas fa-paw"id='detalii'></i> Editează
                                         </a> 
+                                        <button type="button" class="btn btn-sm btn-danger" onclick="delete_animal(${animals[i].PID});" id='${animals[i].PID}a'  value='Sterge'>Sterge</button>
                                     </div> 
                                     </div>
                                     </div>
