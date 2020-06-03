@@ -15,7 +15,7 @@ function delete_animal(pid) {
     $.post('server/deleteanimal.php', { PID: pid }, function(data) {
         var json_data = JSON.parse(data)
         if (json_data.deleted == 1) {
-            document.getElementById(`${pid}`).style.display = "hidden";
+            location.reload()
         } else
         if (json_data.deleted == 0) {
             console.log("nu s-a sters")

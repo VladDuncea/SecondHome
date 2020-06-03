@@ -32,16 +32,22 @@ function get_animal(request_type_active, pet_type) {
                         </div>
                     </div>
                     <div class="card-footer">
-                        <div class="text-right">
-                        <a href="/detalii_animal.php?PID=${animals[i].PID}" class="btn btn-sm btn-success">
-                                    <i class="fas fa-paw"id='detalii'></i> Mai multe detalii
-                                </a>
-                        </div>
-                    </div>`;
+                <div class="text-right">
+                <a href="/detalii_animal.php?PID=${animals[i].PID}" class="btn btn-sm btn-success">
+                            <i class="fas fa-paw"id='detalii'></i> Mai multe detalii
+                            
+                        </a>
+                   `;
                 // <a href="detalii_animal.php" class="btn btn-sm btn-success">
                 //             <i class="fas fa-paw"id='detalii'></i> Mai multe detalii
                 //         </a>
-                const animal_box = card + ` </div>
+                const animal_box = card + ` 
+                <a  href="#"  class="btn btn-sm btn-success">
+                    <i class="fas fa-paw"id='detalii'></i> Adoptă
+                
+                </a>
+                </div>
+            </div> </div>
                     </div>`;
                 if (request_type_active == 0) {
                     // console.log(document.getElementById('boxAnimals'));
@@ -103,7 +109,8 @@ function get_animal(request_type_active, pet_type) {
                         else
                         if (buttonState2 == undefined)
                             buttonState = buttonState1
-                        const animal_box = card + `
+                        const animal_box = card + `  </div>
+                        </div> 
                         <div class="card-body" style="padding: 2">       
                             <div class="text-center">
                             <button type="button" class="btn btn-sm btn-secondary" disabled>${buttonState}</button> 
@@ -125,7 +132,7 @@ function get_animal(request_type_active, pet_type) {
 
                     } else if (`${buttonState2}` == '<i class="fas fa-paw"></i> Da spre adoptie' && `${buttonState1}` == '<i class="fas fa-paw"></i> Cazează') {
                         // --------------------------------------------------------------------------
-                        const animal_box = card + `
+                        const animal_box = card + `</div></div>
                                     <div class="card-body" style="padding: 2">       
                                         <div class="text-center">
                                         <button type="button" class="btn btn-sm btn-secondary" onclick="optiuni_animal(1,${animals[i].PID});" id='${animals[i].PID}c' value='Cazează'>${buttonState1}</button> <hr>      
@@ -133,7 +140,7 @@ function get_animal(request_type_active, pet_type) {
                                         <a href="/edit_animal.php?PID=${animals[i].PID}" class="btn btn-sm btn-success">
                                         <i class="fas fa-paw"id='detalii'></i> Editează
                                         </a> 
-                                        <button type="button" class="btn btn-sm btn-danger" onclick="delete_animal(${animals[i].PID});" id='${animals[i].PID}a'  value='Sterge'>Sterge</button>
+                                        <button type="button" class="btn btn-sm btn-danger" onclick="delete_animal(${animals[i].PID});" id='${animals[i].PID}a'  value='Șterge'><i class="fas fa-paw"></i> Sterge</button>
                                     </div> 
                                     </div>
                                     </div>
@@ -153,7 +160,7 @@ function get_animal(request_type_active, pet_type) {
                     // console.log("-----------------------")
                 } else if (request_type_active == 2 || request_type_active == 3) {
 
-                    const animal_box = card + `
+                    const animal_box = card + `</div></div>
                 <div class="card-body" style="padding: 2">   
                 <p class="lead" ><b>Utilizator: </b> <a href='/detalii_user.php?UID=${animals[i].UID}' >${animals[i].first_name} ${animals[i].last_name} </a></p>       
                     <div class="text-center">

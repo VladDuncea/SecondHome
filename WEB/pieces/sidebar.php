@@ -117,6 +117,16 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="animale_adoptate.php" class="nav-link">
+                            <i class="nav-icon	fas fa-paw"></i>
+                            <p>
+                                Animale adoptate
+                                <!-- <i class="fas fa-angle-left right"></i> -->
+                                <!-- <span class="badge badge-info right">6</span> -->
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="formular_add.php" class="nav-link">
                             <i class="nav-icon	fas fa-paw"></i>
                             <p>
@@ -178,7 +188,7 @@
                     <a href="contact.php" class="nav-link">
                     <i class="nav-icon fa fa-phone"></i>
                         <p>
-                            Contacte
+                            Contact
                         </p>
                     </a>
                 </li>
