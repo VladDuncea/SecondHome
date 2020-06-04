@@ -45,41 +45,91 @@ if(!isset($_POST['PID'],$_POST['request_type']))
 $PID = mysqli_real_escape_string( $conn,$_POST['PID']);
 $req_type = mysqli_real_escape_string( $conn,$_POST['request_type']);
 
-//Verify that user has that pet
-$sql = "SELECT COUNT(PID) nr FROM Users_Pets WHERE PID=$PID AND UID=$UID";
-if(!$result = mysqli_query($conn,$sql))
+
+if($req_type == 2)
 {
-    $response["status"]=-1;  //Database error
-    $response["err_message"] = "SQL error";
-    error_log("Connection failed".mysqli_error($conn));   //Error logging
-    echo json_encode($response);
-    return;
+    //Ask for adoption
+
+    //Verify that pet is avaialble for adoption
+    $sql = "SELECT  pet_state FROM Pets WHERE PID=$PID";
+    if(!$result = mysqli_query($conn,$sql))
+    {
+        $response["status"]=-1;  //Database error
+        $response["err_message"] = "SQL error";
+        error_log("Connection failed".mysqli_error($conn));   //Error logging
+        echo json_encode($response);
+        return;
+    }
+    if(mysqli_fetch_assoc($result)["pet_state"] != 10)
+    {
+        //Not available for adoption
+        $response["status"]=0;
+        $response["err_message"] = "Unauthorized access!";
+        echo json_encode($response);
+        return;
+    }
+
+    //Verify that user did not already request
+    $sql = "SELECT COUNT(*) nr FROM Requests WHERE PID=$PID AND UID=$UID AND request_type = 2";
+    if(!$result = mysqli_query($conn,$sql))
+    {
+        $response["status"]=-1;  //Database error
+        $response["err_message"] = "SQL error";
+        error_log("Connection failed".mysqli_error($conn));   //Error logging
+        echo json_encode($response);
+        return;
+    }
+    if(mysqli_fetch_assoc($result)["nr"] != 0)
+    {
+        //Not available for adoption
+        $response["status"]=0;
+        $response["err_message"] = "Already requested!";
+        entry_log("animalrequest",$UID, $response);   //Data logging
+        echo json_encode($response);
+        return;
+    }
+
 }
-if(mysqli_fetch_assoc($result)["nr"] == 0)
+else
 {
-    //Not his pet
-    $response["status"]=0;
-    $response["err_message"] = "Unauthorized access!";
-    echo json_encode($response);
-    return;
-}
-//Verify that pet has no current request
-$sql = "SELECT COUNT(PID) nr FROM Requests WHERE PID=$PID AND UID=$UID";
-if(!$result = mysqli_query($conn,$sql))
-{
-    $response["status"]=-1; 
-    $response["err_message"] = "SQL error";
-    error_log("Connection failed".mysqli_error($conn));   //Error logging
-    echo json_encode($response);
-    return;
-}
-if(mysqli_fetch_assoc($result)["nr"] > 0)
-{
-    //Pet already has request
-    $response["status"]=0;
-    $response["err_message"] = "Wrong action!";
-    echo json_encode($response);
-    return;
+    //Give to hotel/give to adoption
+
+    //Verify that user has that pet
+    $sql = "SELECT COUNT(PID) nr FROM Users_Pets WHERE PID=$PID AND UID=$UID";
+    if(!$result = mysqli_query($conn,$sql))
+    {
+        $response["status"]=-1;  //Database error
+        $response["err_message"] = "SQL error";
+        error_log("Connection failed".mysqli_error($conn));   //Error logging
+        echo json_encode($response);
+        return;
+    }
+    if(mysqli_fetch_assoc($result)["nr"] == 0)
+    {
+        //Not his pet
+        $response["status"]=0;
+        $response["err_message"] = "Unauthorized access!";
+        echo json_encode($response);
+        return;
+    }
+    //Verify that pet has no current request
+    $sql = "SELECT COUNT(PID) nr FROM Requests WHERE PID=$PID AND UID=$UID";
+    if(!$result = mysqli_query($conn,$sql))
+    {
+        $response["status"]=-1; 
+        $response["err_message"] = "SQL error";
+        error_log("Connection failed".mysqli_error($conn));   //Error logging
+        echo json_encode($response);
+        return;
+    }
+    if(mysqli_fetch_assoc($result)["nr"] > 0)
+    {
+        //Pet already has request
+        $response["status"]=0;
+        $response["err_message"] = "Wrong action!";
+        echo json_encode($response);
+        return;
+    }
 }
 
 //Add request
@@ -90,6 +140,10 @@ if($req_type == 0)
 else if($req_type == 1)
 {
     $sql="INSERT INTO Requests (UID, PID, request_type,request_state,request_description) VALUES ('$UID','$PID','1','0','Cerere dare spre cazare')";
+}
+else if($req_type == 2)
+{
+    $sql="INSERT INTO Requests (UID, PID, request_type,request_state,request_description) VALUES ('$UID','$PID','2','0','Cerere adoptie animal')";
 }
 
 if(!$result = mysqli_query($conn,$sql))

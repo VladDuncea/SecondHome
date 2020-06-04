@@ -68,8 +68,8 @@ if(!isset($_POST['RID'],$_POST['value']))
 $RID = mysqli_real_escape_string( $conn,$_POST['RID']);
 $value = mysqli_real_escape_string( $conn,$_POST['value']);
 
-//Check if request is still waiting 
-$sql ="SELECT PID,request_state,request_type FROM Requests WHERE RID = $RID";
+//Get request data
+$sql ="SELECT PID,UID,request_state,request_type FROM Requests WHERE RID = $RID";
 
 if(!$result = mysqli_query($conn,$sql))
 {
@@ -81,6 +81,7 @@ if(!$result = mysqli_query($conn,$sql))
 
 if($data = mysqli_fetch_assoc($result))
 {
+    //Check if request is still waiting 
     if($data['request_state']!=0)
     {
         //Request is already changed
@@ -88,6 +89,7 @@ if($data = mysqli_fetch_assoc($result))
         echo json_encode($response);
         return;
     }
+
     //Update request
     $sql ="UPDATE Requests SET request_state = '$value' WHERE RID = $RID";
     if(!$result = mysqli_query($conn,$sql))
@@ -101,7 +103,7 @@ if($data = mysqli_fetch_assoc($result))
 
     //Other actions
 
-    //Request for adoption
+    //Request for giving to adoption
     if($data['request_type']==0 && $value == 1)
     {
         $sql ="UPDATE Pets SET pet_state='10' WHERE PID = {$data['PID']}";
@@ -113,7 +115,49 @@ if($data = mysqli_fetch_assoc($result))
             return;
         }
     }
-    
+
+    //Request for adopting pet
+    if($data['request_type']==2 && $value == 1)
+    {
+        $sql ="UPDATE Pets SET pet_state='11' WHERE PID = {$data['PID']}";
+        if(!$result = mysqli_query($conn,$sql))
+        {
+            $response["status"]=-1;  //Database error
+            error_log("SQL ERROR: ".mysqli_error($conn)."\nQUERY: ".$sql);   //Error logging
+            echo json_encode($response);
+            return;
+        }
+
+        //Deny other requests for adoption
+        $sql = "UPDATE Requests SET request_state = '-1' WHERE request_type = 2 AND request_state=0 AND PID = {$data['PID']}";
+        if(!$result = mysqli_query($conn,$sql))
+        {
+            $response["status"]=-1;  //Database error
+            error_log("SQL ERROR: ".mysqli_error($conn)."\nQUERY: ".$sql);   //Error logging
+            echo json_encode($response);
+            return;
+        }
+
+        //Remove pet from old owner
+        $sql = "DELETE FROM Users_Pets WHERE PID = {$data['PID']} AND relation_type = 0";
+        if(!$result = mysqli_query($conn,$sql))
+        {
+            $response["status"]=-1;  //Database error
+            error_log("SQL ERROR: ".mysqli_error($conn)."\nQUERY: ".$sql);   //Error logging
+            echo json_encode($response);
+            return;
+        }
+
+        //Give to new owner
+        $sql = "INSERT INTO Users_Pets VALUES ( {$data['UID']}, {$data['PID']}, 0)";
+        if(!$result = mysqli_query($conn,$sql))
+        {
+            $response["status"]=-1;  //Database error
+            error_log("SQL ERROR: ".mysqli_error($conn)."\nQUERY: ".$sql);   //Error logging
+            echo json_encode($response);
+            return;
+        }
+    }
 }
 
 //No error
