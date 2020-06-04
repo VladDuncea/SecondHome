@@ -30,6 +30,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.google.android.material.navigation.NavigationView;
 import com.secondhome.R;
 import com.secondhome.contact.ContactActivity;
+import com.secondhome.locations.ListOfLocations;
 import com.secondhome.locations.LocationActvity;
 import com.secondhome.login.AppSingleton;
 import com.secondhome.login.LoginActivity;
@@ -255,7 +256,7 @@ public class AnimalsActivity extends AppCompatActivity implements NavigationView
                 startActivity(intent);
                 break;
             case R.id.db10:
-                intent=new Intent(AnimalsActivity.this, LocationActvity.class);
+                intent=new Intent(AnimalsActivity.this, ListOfLocations.class);
                 startActivity(intent);
                 break;
             case R.id.db11:
