@@ -101,9 +101,8 @@ else if($req_type >= 1 && $req_type <= 5)
     {
         //Get animals bound to user
         $sql="  SELECT * FROM Pets
-        LEFT JOIN (SELECT PID,request_type,request_state FROM Requests WHERE UID = $UID) aux USING (PID) 
-        WHERE PID IN (SELECT PID FROM Users_Pets WHERE UID = $UID)
-            AND pet_state = 11
+        LEFT JOIN (SELECT PID,request_type,request_state FROM Requests WHERE UID = $UID AND request_type = 2) aux USING (PID) 
+        WHERE PID IN (SELECT PID FROM Requests WHERE UID = $UID AND request_type = 2)
         ORDER BY PID DESC";
 
         //Get animals and format them
@@ -147,7 +146,7 @@ else if($req_type >= 1 && $req_type <= 5)
     {
         //Get animals bound to user
         $sql="  SELECT * FROM Pets
-        LEFT JOIN (SELECT PID,request_type,request_state FROM Requests WHERE UID = $UID) aux USING (PID) 
+        LEFT JOIN (SELECT PID,request_type,request_state FROM Requests WHERE UID = $UID AND request_type <> 2) aux USING (PID) 
         WHERE PID IN (SELECT PID FROM Users_Pets WHERE UID = $UID)
         AND pet_state <> 11
         ORDER BY PID DESC";

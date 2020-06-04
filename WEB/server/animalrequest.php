@@ -70,8 +70,7 @@ if($req_type == 2)
     }
 
     //Verify that user did not already request
-    //Verify that pet is avaialble for adoption
-    $sql = "SELECT COUNT(*) nr FROM Requests WHERE PID=$PID AND UID=$UID";
+    $sql = "SELECT COUNT(*) nr FROM Requests WHERE PID=$PID AND UID=$UID AND request_type = 2";
     if(!$result = mysqli_query($conn,$sql))
     {
         $response["status"]=-1;  //Database error
