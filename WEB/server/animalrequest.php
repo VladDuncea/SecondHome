@@ -68,6 +68,28 @@ if($req_type == 2)
         echo json_encode($response);
         return;
     }
+
+    //Verify that user did not already request
+    //Verify that pet is avaialble for adoption
+    $sql = "SELECT COUNT(*) nr FROM Requests WHERE PID=$PID AND UID=$UID";
+    if(!$result = mysqli_query($conn,$sql))
+    {
+        $response["status"]=-1;  //Database error
+        $response["err_message"] = "SQL error";
+        error_log("Connection failed".mysqli_error($conn));   //Error logging
+        echo json_encode($response);
+        return;
+    }
+    if(mysqli_fetch_assoc($result)["nr"] != 0)
+    {
+        //Not available for adoption
+        $response["status"]=0;
+        $response["err_message"] = "Already requested!";
+        entry_log("animalrequest",$UID, $response);   //Data logging
+        echo json_encode($response);
+        return;
+    }
+
 }
 else
 {
@@ -110,8 +132,6 @@ else
         return;
     }
 }
-
-
 
 //Add request
 if($req_type == 0)
