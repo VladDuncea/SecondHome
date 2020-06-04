@@ -139,7 +139,7 @@ else if($req_type >= 1 && $req_type <= 3)
     }
 
     //PETS WAITING FOR ADOPTION/HOTEL
-    if($req_type == 2 || $req_type == 3)
+    if($req_type == 2 || $req_type == 3 || $req_type == 4)
     {
         //Check user permision
         if($UType<1)
