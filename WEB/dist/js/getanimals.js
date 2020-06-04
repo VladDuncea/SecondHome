@@ -38,26 +38,57 @@ function get_animal(request_type_active, pet_type) {
                             
                         </a>
                    `;
-                // <a href="detalii_animal.php" class="btn btn-sm btn-success">
-                //             <i class="fas fa-paw"id='detalii'></i> Mai multe detalii
-                //         </a>
-                const animal_box = card + ` 
-                <a  href="#"  class="btn btn-sm btn-success">
-                    <i class="fas fa-paw"id='detalii'></i> Adoptă
-                
-                </a>
-                </div>
-            </div> </div>
-                    </div>`;
                 if (request_type_active == 0) {
-                    // console.log(document.getElementById('boxAnimals'));
 
-                    if (document.getElementById('boxAnimals') != null) {
-                        document.getElementById('boxAnimals').innerHTML += animal_box;
-                    } else {
-                        console.log('Nu s-a gasit animale.php')
+                    if (json_data.hasAccount == 1) {
+                        if (animals[i].has_request == 0) {
+                            const animal_box = card + ` 
+                        <button type="button" class="btn btn-sm btn-secondary" onclick="optiuni_animal(2,${animals[i].PID});" id='${animals[i].PID}adopta'> <i class="fas fa-paw"id='detalii'></i> Adopta</button>
+                        </div>
+                    </div> </div>
+                            </div>`;
+
+
+                            if (request_type_active == 0) {
+                                if (document.getElementById('boxAnimals') != null) {
+                                    document.getElementById('boxAnimals').innerHTML += animal_box;
+                                } else {
+                                    console.log('Nu s-a gasit animale.php')
+                                }
+                            }
+                        } else
+                        if (animals[i].has_request == 1) {
+                            const animal_box = card + ` 
+                        <button type="button" class="btn btn-sm btn-secondary" id='${animals[i].PID}adopta'> <i class="fas fa-paw"id='detalii'></i> Adopta</button>
+                        </div>
+                    </div> </div>
+                            </div>`;
+
+                            if (request_type_active == 0) {
+
+                                if (document.getElementById('boxAnimals') != null) {
+                                    document.getElementById('boxAnimals').innerHTML += animal_box;
+                                    document.getElementById(`${animals[i].PID}adopta`).disabled = true;
+                                } else {
+                                    console.log('Nu s-a gasit animale.php')
+                                }
+                            }
+                        }
                     }
 
+                } else if (json_data.hasAccount == 0) {
+
+                    const animal_box = card + `     
+                        </div> </div>
+                                </div>`;
+                    if (request_type_active == 0) {
+
+                        if (document.getElementById('boxAnimals') != null) {
+                            document.getElementById('boxAnimals').innerHTML += animal_box;
+                        } else {
+                            console.log('Nu s-a gasit animale.php')
+                        }
+                    }
                 } else if (request_type_active == 1) {
 
                     var buttonState1 = undefined,
@@ -94,7 +125,7 @@ function get_animal(request_type_active, pet_type) {
                             }
                         } else
                         if (animals[i].request_type == 2) {
-                            // TODO adoptia unui animal
+                            buttonState1 = '<i class="fas fa-paw"></i> Cerere cazare respinsă';
                         }
                     } else
                     if (animals[i].has_request == 0) {
@@ -158,7 +189,7 @@ function get_animal(request_type_active, pet_type) {
                     // console.log(`${buttonState1}`)
                     // console.log(`${buttonState2}`)
                     // console.log("-----------------------")
-                } else if (request_type_active == 2 || request_type_active == 3) {
+                } else if (request_type_active == 2 || request_type_active == 3 || request_type_active == 4) {
 
                     const animal_box = card + `</div></div>
                 <div class="card-body" style="padding: 2">   
@@ -177,8 +208,39 @@ function get_animal(request_type_active, pet_type) {
                     } else {
                         console.log('Nu s-a gasit animale.php')
                     }
+                } else if (request_type_active == 5) {
+                    if (animals[i].has_request == 1) {
+                        if (animals[i].request_type == 2) {
+                            if (animals[i].request_state == 0) {
+                                buttonState = '<i class="fas fa-paw"></i> Asteaptă acceptarea adopție';
+                            } else
+                            if (animals[i].request_state == 1) {
+                                buttonState = '<i class="fas fa-paw"></i> Cerere adoptie acceptată';
+                            } else
+                            if (animals[i].request_state == -1) {
+                                buttonState = '<i class="fas fa-paw"></i> Cerere adopție respinsă';
+                            }
+                        }
+                        const animal_box = card + `  </div>
+                        </div> 
+                        <div class="card-body" style="padding: 2">       
+                            <div class="text-center">
+                            <button type="button" class="btn btn-sm btn-secondary" disabled>${buttonState}</button> 
 
+
+                        </div> 
+                        </div>
+                        </div>
+                    </div>`;
+
+                        if (document.getElementById('boxAnimals') != null) {
+                            document.getElementById('boxAnimals').innerHTML += animal_box;
+                        } else {
+                            console.log('Nu s-a gasit animale.php')
+                        }
+                    }
                 }
+
             }
         }
     })

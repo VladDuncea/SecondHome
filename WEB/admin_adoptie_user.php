@@ -5,8 +5,7 @@
     <?php include 'pieces/head.php' ?>
 </head>
 
-<body class="hold-transition sidebar-mini" onload="get_animal(5,0);"> 
-<!-- onload="get_animal(1,0);" -->
+<body class="hold-transition sidebar-mini" onload="get_animal(4,0);">
     <!-- Site wrapper -->
     <div class="wrapper">
         
@@ -25,12 +24,14 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1><i class="nav-icon fas fa-paw"></i> Animale adoptate</h1>
+                            <h1>
+                            <i class="nav-icon fas fa-paw"></i> Cereri adoptie
+                            </h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="index.php">Acasă</a></li>
-                                <li class="breadcrumb-item active"><i class="nav-icon fas fa-paw"></i> Animale adoptate</li>
+                                <li class="breadcrumb-item active"><i class="nav-icon fas fa-paw"></i> Cereri adoptie</li>
                             </ol>
                         </div>
                     </div>
@@ -93,8 +94,13 @@
     <script src="../dist/js/demo.js"></script>
     <script src="../dist/js/getanimals.js"></script>
     <script src="../dist/js/animalrequest.js"></script>
-    <script src="../dist/js/utils.js"></script>
-    <script src="../dist/js/utils_animal.js"></script>
+    <!-- <style>
+  
+    .img-fluid {
+      max-width: 90%;
+      height: 80px;
+    }
+    </style> -->
     
     
 </body>

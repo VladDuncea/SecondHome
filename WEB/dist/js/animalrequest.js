@@ -13,6 +13,8 @@ function optiuni_animal(request_type, PID) {
                 document.getElementById(`${PID}c`).innerHTML = '<i class="fas fa-paw"></i> Asteapta cazarea'
                 document.getElementById(`${PID}c`).disabled = true;
                 elem1.style = "display: none"
+
+
             } else
             if (request_type == 0) {
                 var elem2 = document.getElementById(`${PID}c`);
@@ -22,6 +24,9 @@ function optiuni_animal(request_type, PID) {
                 elem3.value = 'Asteapta adoptia'
                 elem3.innerHTML = '<i class="fas fa-paw"></i> Asteapta adoptia'
 
+            } else
+            if (request_type == 2) {
+                document.getElementById(`${PID}adopta`).disabled = true;
             }
         }
     })

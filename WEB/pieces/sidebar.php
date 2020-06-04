@@ -146,6 +146,8 @@
                 <?  include "server/php/connection.php";
                     $sql1 = "SELECT COUNT(RID) nr FROM Requests JOIN Pets USING(PID) WHERE request_type = 0 AND request_state = 0";
                     $sql2 = "SELECT COUNT(RID) nr FROM Requests JOIN Pets USING(PID) WHERE request_type = 1 AND request_state = 0";
+                    $sql3 = "SELECT COUNT(RID) nr FROM Requests JOIN Pets USING(PID) WHERE request_type = 2 AND request_state = 0";
+
                     if(!$result1 = mysqli_query($conn,$sql1))
                     {
                         $response["status"]=-1;  //Database error
@@ -162,13 +164,22 @@
                         return;
                     }
                     $nr_c = mysqli_fetch_assoc($result2)['nr'];
+                  
+                    if(!$result3 = mysqli_query($conn,$sql3))
+                    {
+                        $response["status"]=-1;  //Database error
+                        error_log("SQL ERROR: ".mysqli_error($conn));   //Error logging
+                        echo json_encode($response);
+                        return;
+                    }
+                    $nr_ad = mysqli_fetch_assoc($result3)['nr'];
                     
                     ?>
                     <li class="nav-item">
                         <a href="admin_adoptie.php" class="nav-link">
                             <i class="nav-icon	fas fa-paw"></i>
                             <p>
-                                Cereri adoptie
+                                Cereri animale   
                                 <span class="badge badge-success right"><? echo $nr_a; ?></span>
                             </p>
                         </a>
@@ -179,6 +190,15 @@
                             <p>
                                 Cereri cazare
                                 <span class="badge badge-success right"><? echo $nr_c; ?></span>
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="admin_adoptie_user.php" class="nav-link">
+                            <i class="nav-icon	fas fa-paw"></i>
+                            <p>
+                                Cereri adopție
+                                <span class="badge badge-success right"><? echo $nr_ad; ?></span>
                             </p>
                         </a>
                     </li>
