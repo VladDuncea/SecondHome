@@ -74,19 +74,18 @@ function get_animal(request_type_active, pet_type) {
                                 }
                             }
                         }
-                    }
+                    } else if (json_data.hasAccount == 0) {
 
-                } else if (json_data.hasAccount == 0) {
-
-                    const animal_box = card + `     
+                        const animal_box = card + `     
                         </div> </div>
                                 </div>`;
-                    if (request_type_active == 0) {
+                        if (request_type_active == 0) {
 
-                        if (document.getElementById('boxAnimals') != null) {
-                            document.getElementById('boxAnimals').innerHTML += animal_box;
-                        } else {
-                            console.log('Nu s-a gasit animale.php')
+                            if (document.getElementById('boxAnimals') != null) {
+                                document.getElementById('boxAnimals').innerHTML += animal_box;
+                            } else {
+                                console.log('Nu s-a gasit animale.php')
+                            }
                         }
                     }
                 } else if (request_type_active == 1) {

@@ -26,6 +26,8 @@ function optiuni_animal(request_type, PID) {
 
             } else
             if (request_type == 2) {
+                document.getElementById(`${PID}adopta`).value = 'Cerere trimisa';
+                document.getElementById(`${PID}adopta`).innerHTML = '<i class="fas fa-paw"></i> Cerere trimisă'
                 document.getElementById(`${PID}adopta`).disabled = true;
             }
         }
