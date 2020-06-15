@@ -1,0 +1,1167 @@
+{
+	"info": {
+		"_postman_id": "dcc31a9d-dfd2-4f78-a45c-9b5664ae0406",
+		"name": "SecondHome",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Runnable",
+			"item": [
+				{
+					"name": "CheckEmail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f9e026db-1605-401c-ad79-976ba39bc4cb",
+								"exec": [
+									"pm.test(\"Email exists\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.status).to.eql(1);",
+									"    pm.expect(jsonData['email-used']).to.eql(1);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user-email",
+									"value": "vlad_duncea_31@yahoo.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://secondhome.fragmentedpixel.com/server/checkemail.php",
+							"protocol": "https",
+							"host": [
+								"secondhome",
+								"fragmentedpixel",
+								"com"
+							],
+							"path": [
+								"server",
+								"checkemail.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CheckEmail 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f9e026db-1605-401c-ad79-976ba39bc4cb",
+								"exec": [
+									"pm.test(\"Email doesn't exist\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.status).to.eql(1);",
+									"    pm.expect(jsonData['email-used']).to.eql(0);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user-email",
+									"value": "vlad_duncea_31@sigurnuexista.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://secondhome.fragmentedpixel.com/server/checkemail.php",
+							"protocol": "https",
+							"host": [
+								"secondhome",
+								"fragmentedpixel",
+								"com"
+							],
+							"path": [
+								"server",
+								"checkemail.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f9e026db-1605-401c-ad79-976ba39bc4cb",
+								"exec": [
+									"pm.test(\"Succesfull login\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.status).to.eql(1);",
+									"    pm.expect(jsonData['correct-credentials']).to.eql(1);",
+									"    pm.expect(jsonData['user-firstname']).not.eq(undefined);",
+									"    pm.expect(jsonData['user-lastname']).not.eq(undefined);",
+									"    pm.expect(jsonData['user-type']).not.eq(undefined);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user-email",
+									"value": "vlad_duncea_31@yahoo.com",
+									"type": "text"
+								},
+								{
+									"key": "user-password",
+									"value": "test",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://secondhome.fragmentedpixel.com/server/login.php",
+							"protocol": "https",
+							"host": [
+								"secondhome",
+								"fragmentedpixel",
+								"com"
+							],
+							"path": [
+								"server",
+								"login.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login_wrong",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f9e026db-1605-401c-ad79-976ba39bc4cb",
+								"exec": [
+									"pm.test(\"Login wrong\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.status).to.eql(1);",
+									"    pm.expect(jsonData['correct-credentials']).to.eql(0);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user-email",
+									"value": "vlad_duncea_31@yahoo.com",
+									"type": "text"
+								},
+								{
+									"key": "user-password",
+									"value": "gresit_sigur",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://secondhome.fragmentedpixel.com/server/login.php",
+							"protocol": "https",
+							"host": [
+								"secondhome",
+								"fragmentedpixel",
+								"com"
+							],
+							"path": [
+								"server",
+								"login.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Animals For Adoption",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f9e026db-1605-401c-ad79-976ba39bc4cb",
+								"exec": [
+									"pm.test(\"Get animals for adoption\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.status).to.eql(1);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "request_type",
+									"value": "0",
+									"type": "text"
+								}
+							],
+							"options": {
+								"formdata": {}
+							}
+						},
+						"url": {
+							"raw": "https://secondhome.fragmentedpixel.com/server/getanimals.php",
+							"protocol": "https",
+							"host": [
+								"secondhome",
+								"fragmentedpixel",
+								"com"
+							],
+							"path": [
+								"server",
+								"getanimals.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Animals for user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f9e026db-1605-401c-ad79-976ba39bc4cb",
+								"exec": [
+									"pm.test(\"Get animalss for user\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.status).to.eql(1);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "request_type",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "UID",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "security_code",
+									"value": "8981ASDGHJ22123",
+									"type": "text"
+								}
+							],
+							"options": {
+								"formdata": {}
+							}
+						},
+						"url": {
+							"raw": "https://secondhome.fragmentedpixel.com/server/getanimals.php",
+							"protocol": "https",
+							"host": [
+								"secondhome",
+								"fragmentedpixel",
+								"com"
+							],
+							"path": [
+								"server",
+								"getanimals.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Animals waiting adoption",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f9e026db-1605-401c-ad79-976ba39bc4cb",
+								"exec": [
+									"pm.test(\"Get animals waiting for adoption\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.status).to.eql(1);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "request_type",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "security_code",
+									"value": "8981ASDGHJ22123",
+									"type": "text"
+								},
+								{
+									"key": "UID",
+									"value": "7",
+									"type": "text"
+								}
+							],
+							"options": {
+								"formdata": {}
+							}
+						},
+						"url": {
+							"raw": "https://secondhome.fragmentedpixel.com/server/getanimals.php",
+							"protocol": "https",
+							"host": [
+								"secondhome",
+								"fragmentedpixel",
+								"com"
+							],
+							"path": [
+								"server",
+								"getanimals.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Animals waiting for Hotel",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f9e026db-1605-401c-ad79-976ba39bc4cb",
+								"exec": [
+									"pm.test(\"Get animals waiting for hotel\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.status).to.eql(1);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "request_type",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "UID",
+									"value": "7",
+									"type": "text"
+								},
+								{
+									"key": "security_code",
+									"value": "8981ASDGHJ22123",
+									"type": "text"
+								}
+							],
+							"options": {
+								"formdata": {}
+							}
+						},
+						"url": {
+							"raw": "https://secondhome.fragmentedpixel.com/server/getanimals.php",
+							"protocol": "https",
+							"host": [
+								"secondhome",
+								"fragmentedpixel",
+								"com"
+							],
+							"path": [
+								"server",
+								"getanimals.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Animal full data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "35acee1e-7875-41ee-acd2-3cfe3c5b2cf3",
+								"exec": [
+									"pm.test(\"Get animal full data\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.status).to.eql(1);",
+									"    pm.expect(jsonData.PID).to.eql('623');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "security_code",
+									"value": "8981ASDGHJ22123",
+									"type": "text"
+								},
+								{
+									"key": "PID",
+									"value": "623",
+									"type": "text"
+								},
+								{
+									"key": "UID",
+									"value": "5",
+									"type": "text"
+								}
+							],
+							"options": {
+								"formdata": {}
+							}
+						},
+						"url": {
+							"raw": "https://secondhome.fragmentedpixel.com/server/getanimalextended.php",
+							"protocol": "https",
+							"host": [
+								"secondhome",
+								"fragmentedpixel",
+								"com"
+							],
+							"path": [
+								"server",
+								"getanimalextended.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7c9afd8e-ac6f-4359-a88a-46f8c56ed07f",
+								"exec": [
+									"pm.test(\"Get user data\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.status).to.eql(1);",
+									"    pm.expect(jsonData.first_name).to.eql(\"Vlad\");",
+									"    pm.expect(jsonData.last_name).to.eql(\"Duncea\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "UID",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "security_code",
+									"value": "8981ASDGHJ22123",
+									"type": "text"
+								},
+								{
+									"key": "WantedUID",
+									"value": "3",
+									"type": "text"
+								}
+							],
+							"options": {
+								"formdata": {}
+							}
+						},
+						"url": {
+							"raw": "https://secondhome.fragmentedpixel.com/server/getuser.php",
+							"protocol": "https",
+							"host": [
+								"secondhome",
+								"fragmentedpixel",
+								"com"
+							],
+							"path": [
+								"server",
+								"getuser.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Statistics",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "36c99903-bec2-4a83-892b-2fc362ef796c",
+								"exec": [
+									"pm.test(\"Email exists\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.status).to.eql(1);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://secondhome.fragmentedpixel.com/server/getstatistics.php",
+							"protocol": "https",
+							"host": [
+								"secondhome",
+								"fragmentedpixel",
+								"com"
+							],
+							"path": [
+								"server",
+								"getstatistics.php"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "user-email",
+							"value": "vlad_duncea_31@yahoo.com",
+							"type": "text"
+						},
+						{
+							"key": "user-password",
+							"value": "Test1234",
+							"type": "text"
+						},
+						{
+							"key": "user-firstname",
+							"value": "Vlad",
+							"type": "text"
+						},
+						{
+							"key": "user-lastname",
+							"value": "Duncea",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://secondhome.fragmentedpixel.com/server/register.php",
+					"protocol": "https",
+					"host": [
+						"secondhome",
+						"fragmentedpixel",
+						"com"
+					],
+					"path": [
+						"server",
+						"register.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add animal",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7864feb8-67db-4eb4-a4e1-42708e22275a",
+						"exec": [
+							"pm.test(\"Email doesn't exist\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.status).to.eql(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "UID",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "pet_name",
+							"value": "Nero",
+							"type": "text"
+						},
+						{
+							"key": "pet_description",
+							"value": "Fostul meu caine :(",
+							"type": "text"
+						},
+						{
+							"key": "pet_type",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "pet_breed",
+							"value": "Semi Lup",
+							"type": "text"
+						},
+						{
+							"key": "pet_age",
+							"value": "5",
+							"type": "text"
+						}
+					],
+					"options": {
+						"formdata": {}
+					}
+				},
+				"url": {
+					"raw": "https://secondhome.fragmentedpixel.com/server/addanimal.php",
+					"protocol": "https",
+					"host": [
+						"secondhome",
+						"fragmentedpixel",
+						"com"
+					],
+					"path": [
+						"server",
+						"addanimal.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request adoption",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f9e026db-1605-401c-ad79-976ba39bc4cb",
+						"exec": [
+							"pm.test(\"Succesfull login\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.status).to.eql(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "security_code",
+							"value": "8981ASDGHJ22123",
+							"type": "text"
+						},
+						{
+							"key": "request_type",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "UID",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "PID",
+							"value": "537",
+							"type": "text"
+						}
+					],
+					"options": {
+						"formdata": {}
+					}
+				},
+				"url": {
+					"raw": "https://secondhome.fragmentedpixel.com/server/animalrequest.php",
+					"protocol": "https",
+					"host": [
+						"secondhome",
+						"fragmentedpixel",
+						"com"
+					],
+					"path": [
+						"server",
+						"animalrequest.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reset password",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f9e026db-1605-401c-ad79-976ba39bc4cb",
+						"exec": [
+							"pm.test(\"Succesfull login\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.status).to.eql(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "user_email",
+							"value": "vlad_duncea_31@yahoo.com",
+							"type": "text"
+						}
+					],
+					"options": {
+						"formdata": {}
+					}
+				},
+				"url": {
+					"raw": "https://secondhome.fragmentedpixel.com/server/resetpassword.php",
+					"protocol": "https",
+					"host": [
+						"secondhome",
+						"fragmentedpixel",
+						"com"
+					],
+					"path": [
+						"server",
+						"resetpassword.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New password",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f9e026db-1605-401c-ad79-976ba39bc4cb",
+						"exec": [
+							"pm.test(\"Succesfull login\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.status).to.eql(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "user_password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "code",
+							"value": "0f841f4c5e6b3a5aaa72",
+							"type": "text"
+						}
+					],
+					"options": {
+						"formdata": {}
+					}
+				},
+				"url": {
+					"raw": "https://secondhome.fragmentedpixel.com/server/newpassword.php",
+					"protocol": "https",
+					"host": [
+						"secondhome",
+						"fragmentedpixel",
+						"com"
+					],
+					"path": [
+						"server",
+						"newpassword.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b4f9c00d-2638-44ef-b546-c1b98e00d1ba",
+						"exec": [
+							"pm.test(\"Succesfull login\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.status).to.eql(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "security_code",
+							"value": "8981ASDGHJ22123",
+							"type": "text"
+						},
+						{
+							"key": "RID",
+							"value": "613",
+							"type": "text"
+						},
+						{
+							"key": "UID",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "value",
+							"value": "1",
+							"type": "text"
+						}
+					],
+					"options": {
+						"formdata": {}
+					}
+				},
+				"url": {
+					"raw": "https://secondhome.fragmentedpixel.com/server/updaterequest.php",
+					"protocol": "https",
+					"host": [
+						"secondhome",
+						"fragmentedpixel",
+						"com"
+					],
+					"path": [
+						"server",
+						"updaterequest.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update animal",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1286505a-d393-430c-9fbe-c00a3e91b5d0",
+						"exec": [
+							"pm.test(\"Succesfull login\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.status).to.eql(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "security_code",
+							"value": "8981ASDGHJ22123",
+							"type": "text"
+						},
+						{
+							"key": "PID",
+							"value": "623",
+							"type": "text"
+						},
+						{
+							"key": "UID",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "pet_name",
+							"value": "Dintisori",
+							"type": "text"
+						},
+						{
+							"key": "pet_description",
+							"value": "Ii place sa muste din ingrijitorul lui din cand in cand",
+							"type": "text"
+						},
+						{
+							"key": "pet_breed",
+							"value": "Pirahna",
+							"type": "text"
+						},
+						{
+							"key": "pet_age",
+							"value": "2",
+							"type": "text"
+						}
+					],
+					"options": {
+						"formdata": {}
+					}
+				},
+				"url": {
+					"raw": "https://secondhome.fragmentedpixel.com/server/updateanimal.php",
+					"protocol": "https",
+					"host": [
+						"secondhome",
+						"fragmentedpixel",
+						"com"
+					],
+					"path": [
+						"server",
+						"updateanimal.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete animal",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "aa577d5b-29a5-434b-bbff-b8a645d5c6b4",
+						"exec": [
+							"pm.test(\"Succesfull login\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.status).to.eql(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "security_code",
+							"value": "8981ASDGHJ22123",
+							"type": "text"
+						},
+						{
+							"key": "PID",
+							"value": "638",
+							"type": "text"
+						},
+						{
+							"key": "UID",
+							"value": "3",
+							"type": "text"
+						}
+					],
+					"options": {
+						"formdata": {}
+					}
+				},
+				"url": {
+					"raw": "https://secondhome.fragmentedpixel.com/server/deleteanimal.php",
+					"protocol": "https",
+					"host": [
+						"secondhome",
+						"fragmentedpixel",
+						"com"
+					],
+					"path": [
+						"server",
+						"deleteanimal.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete animal Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "67b8320e-6b73-4cc0-9a12-f6f91ffb2617",
+						"exec": [
+							"pm.test(\"Succesfull login\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.status).to.eql(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "security_code",
+							"value": "8981ASDGHJ22123",
+							"type": "text"
+						},
+						{
+							"key": "PID",
+							"value": "623",
+							"type": "text"
+						},
+						{
+							"key": "UID",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "pet_name",
+							"value": "Dintisori",
+							"type": "text"
+						},
+						{
+							"key": "pet_description",
+							"value": "Ii place sa muste din ingrijitorul lui din cand in cand",
+							"type": "text"
+						},
+						{
+							"key": "pet_breed",
+							"value": "Pirahna",
+							"type": "text"
+						},
+						{
+							"key": "pet_age",
+							"value": "2",
+							"type": "text"
+						}
+					],
+					"options": {
+						"formdata": {}
+					}
+				},
+				"url": {
+					"raw": "https://secondhome.fragmentedpixel.com/server/updateanimal.php",
+					"protocol": "https",
+					"host": [
+						"secondhome",
+						"fragmentedpixel",
+						"com"
+					],
+					"path": [
+						"server",
+						"updateanimal.php"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
