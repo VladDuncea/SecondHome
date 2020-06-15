@@ -17,7 +17,7 @@ import android.widget.Button;
 import com.google.android.material.navigation.NavigationView;
 import com.secondhome.R;
 import com.secondhome.contact.ContactActivity;
-import com.secondhome.login.AppSingleton;
+import com.secondhome.data.model.AppSingleton;
 import com.secondhome.login.LoginActivity;
 import com.secondhome.login.MyProfileActivity;
 import com.secondhome.mains.Main2LoggedInActivity;

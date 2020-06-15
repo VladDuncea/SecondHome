@@ -1,11 +1,9 @@
-package com.secondhome.login;
+package com.secondhome.data.model;
 import android.content.Context;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
-import com.secondhome.data.model.Animal;
-import com.secondhome.data.model.LoggedInUser;
 
 public class AppSingleton {
     private static AppSingleton mAppSingletonInstance;
@@ -15,10 +13,19 @@ public class AppSingleton {
     private static String animalsToShow=null;
     private static String animalPid=null;
     private static Animal currentAnimal=null;
+    private static int adoptionState=0;
     private static int location=0;
     private AppSingleton(Context context) {
         mContext = context;
         mRequestQueue = getRequestQueue();
+    }
+
+    public static int getAdoptionState() {
+        return adoptionState;
+    }
+
+    public static void setAdoptionState(int adoptionState) {
+        AppSingleton.adoptionState = adoptionState;
     }
 
     public static synchronized AppSingleton getInstance(Context context) {
