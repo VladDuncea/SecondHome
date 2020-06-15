@@ -54,6 +54,8 @@ $pet_name = mysqli_real_escape_string( $conn, $_POST['pet_name'] );
 $pet_description = mysqli_real_escape_string( $conn, $_POST['pet_description']);    
 $pet_breed  = mysqli_real_escape_string( $conn, $_POST['pet_breed']);
 $pet_age  = mysqli_real_escape_string( $conn, $_POST['pet_age']);
+if(!is_numeric($pet_age))
+    $pet_age = 1;
 //Convert pet_age to pet birthday
 $pet_birthdate = (date('Y')-$pet_age).date("-m-d");
 
