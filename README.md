@@ -11,7 +11,7 @@ Web: www.secondhome.fragmentedpixel.com
 Base website theme: [AdminLTE 3](https://adminlte.io/)
 
 ## Requirements
-**Video presentation:** [Here](presentation.mkv)   
+**Video presentation:** [Here](https://youtu.be/GmkidcaEi3k)   
 **User Stories:** [Here](Trello)  
 **UML:** [Database](Database-UML.pdf) and [Initial design](SecondHome-UML.png)   
 **Frontend Tests:** [Here](WEB/Teste_Frontend)  (Implemented in SELENIUM)  
