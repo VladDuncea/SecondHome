@@ -1,4 +1,4 @@
-# [SecondHome](www.secondhome.fragmentedpixel.com)
+# [SecondHome](https://www.secondhome.fragmentedpixel.com)
 SecondHome: Web+Mobile pet homing and rehoming application  
 Web: www.secondhome.fragmentedpixel.com
 
@@ -16,5 +16,5 @@ Base website theme: [AdminLTE 3](https://adminlte.io/)
 **UML:** [Database](Database-UML.pdf) and [Initial design](SecondHome-UML.png)   
 **Frontend Tests:** [Here](WEB/Teste_Frontend)  (Implemented in SELENIUM)  
 **Backend Tests:** [Here](WEB/Postman)  (Implemented in POSTMAN)  
-**Refactoring:** [Frontend PetBox](github.com/VladDuncea/SecondHome/commit/0a97faf681f199c98f4e519874a9b5edb14ee85f#diff-b718cae486f22916587eeafbd6a0a3dd)  
+**Refactoring:** [Frontend PetBox](https://github.com/VladDuncea/SecondHome/commit/0a97faf681f199c98f4e519874a9b5edb14ee85f#diff-b718cae486f22916587eeafbd6a0a3dd)  
 
