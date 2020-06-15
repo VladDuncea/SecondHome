@@ -1,5 +1,5 @@
 # SecondHome
-SecondHome: Web+Mobile pet homing and rehoming application
+SecondHome: Web+Mobile pet homing and rehoming application  
 Web: www.secondhome.fragmentedpixel.com/
 
 ## Team:  
